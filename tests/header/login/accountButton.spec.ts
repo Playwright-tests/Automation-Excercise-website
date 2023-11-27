@@ -1,17 +1,20 @@
 import { test, expect } from "../../../fixtures/header.spec";
-import { JSONReader } from "../../../json-reader/JSONReader.spec";
+import { getLinkData } from "../../../helpers/link.spec";
 
-const testdata = JSONReader.get();
+const links = getLinkData('accountPage');
 
 test.describe('Opening the "Account" page',async () => {
     
-    test('Clicking the "Account" button',async ({header, page}) => {
-        
-        await test.step('Click the "Account" button',async () => {
-            
-            await header.clickAccountButton();
-        })
+    for(const data of links) {
 
-        await expect(page).toHaveURL(testdata.URLs.accountPage[0].pageURL);
-    })
+        test('Clicking the "Account" button',async ({header, page}) => {
+            
+            await test.step('Click the "Account" button',async () => {
+                
+                await header.clickAccountButton();
+            })
+
+            await expect(page).toHaveURL(data.url);
+        })
+    }
 })
