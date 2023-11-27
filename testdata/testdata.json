@@ -756,6 +756,7 @@
         "accountPage": [
 
             {
+                "linkText": "",
                 "pageURL": "https://skleptest.pl/my-account/"
             }
         ],
@@ -763,6 +764,7 @@
         "shoppingCartPage": [
 
             {
+                "linkText": "",
                 "pageURL": "https://skleptest.pl/cart/"
             }
         ],
