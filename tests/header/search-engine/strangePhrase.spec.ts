@@ -1,17 +1,17 @@
 import { test, expect } from "../../../fixtures/header.spec";
-import { JSONReader } from "../../../json-reader/JSONReader.spec";
+import { getArrayData } from "../../../helpers/arrayData.spec";
 import { SearchResultsPage } from "../../../page-object/base/search-results/SearchResultsPage.spec";
 import { steps } from "./steps.spec";
 
-const testdata = JSONReader.get();
+const phrases = getArrayData('searchEngine', 'strangePhrase');
 
 test.describe('Searching products using part of strange phrases',async () => {
     
-    for(const data of testdata.searchEngine.strangePhrase) {
+    for(const phrase of phrases) {
 
-        test('Typing the "' + data + '" as the strange phrase',async ({header, page}) => {
+        test('Typing the "' + phrase + '" as the strange phrase',async ({header, page}) => {
             
-            await steps(await header.getSearchEngine(), data);
+            await steps(await header.getSearchEngine(), phrase);
 
             const searchResultsPage = new SearchResultsPage(page);
 

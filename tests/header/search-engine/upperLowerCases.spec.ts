@@ -1,17 +1,17 @@
 import { test, expect } from "../../../fixtures/header.spec";
-import { JSONReader } from "../../../json-reader/JSONReader.spec";
+import { getArrayData } from "../../../helpers/arrayData.spec";
 import { SearchResultsPage } from "../../../page-object/base/search-results/SearchResultsPage.spec";
 import { steps } from "./steps.spec";
 
-const testdata = JSONReader.get();
+const phrases = getArrayData('searchEngine', 'upperAndLowerCases');
 
 test.describe('Searching products using phrases that contain upper and lower cases',async () => {
 
-    for(const data of testdata.searchEngine.upperAndLowerCases) {
+    for(const phrase of phrases) {
 
-        test('Typing the "' + data + '" as the correct phrase',async ({header, page}) => {
+        test('Typing the "' + phrase + '" as the correct phrase',async ({header, page}) => {
             
-            await steps(await header.getSearchEngine(), data);
+            await steps(await header.getSearchEngine(), phrase);
 
             const searchResultsPage = new SearchResultsPage(page);
 
