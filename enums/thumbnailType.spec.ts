@@ -1,0 +1,5 @@
+enum ThumbnailType {
+
+    Product,
+    Blog
+}
