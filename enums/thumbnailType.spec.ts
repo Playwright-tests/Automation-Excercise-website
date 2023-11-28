@@ -1,4 +1,4 @@
-enum ThumbnailType {
+export enum ThumbnailType {
 
     Product,
     Blog
