@@ -1,4 +1,4 @@
-enum ThumbnailCategory {
+export enum ThumbnailCategory {
 
     AllBlackTops = '1',
     HighHeelShoes = '2',
