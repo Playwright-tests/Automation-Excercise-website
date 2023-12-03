@@ -701,52 +701,60 @@
         "correctCredentials": [
             
             {
-                "username": "The user",
-                "email": "karen@gmail.com"
+                "name": "The user",
+                "email": "karen@gmail.com",
+                "message": "Successfully Subscribed."
             }
         ],
 
-        "blankUsernameField": [ 
+        "blankNameField": [ 
             
             {
-                "username": "",
-                "email": "karen@gmail.com"
+                "name": "",
+                "email": "karen@gmail.com",
+                "message": "Successfully Subscribed."
             }
         ],
 
         "incorrectEmailFormat": [
             
             {
-                "username": "The user",
-                "email": "@tite.com"
+                "name": "The user",
+                "email": "@tite.com",
+                "message": "Invalid email format"
             },
 
             {
-                "username": "The user",
-                "email": ".__sara"
+                "name": "The user",
+                "email": ".__sara",
+                "message": "Invalid email format"
             },
 
             {
-                "username": "The user",
-                "email": "com.darko@"
+                "name": "The user",
+                "email": "com.darko@",
+                "message": "Invalid email format"
             },
 
             {
-                "username": "The user",
-                "email": "my@kazim@rrr__."
+                "name": "The user",
+                "email": "my@kazim@rrr__.",
+                "message": "Invalid email format"
             },
 
             {
-                "username": "The user",
-                "email": "#@$"
+                "name": "The user",
+                "email": "#@$",
+                "message":"Invalid email format"
             }
         ],
 
         "blankEmailField": [
 
             {
-                "username": "The user",
-                "email": ""
+                "name": "The user",
+                "email": "",
+                "message": "Please enter email address"
             }
         ] 
     },
