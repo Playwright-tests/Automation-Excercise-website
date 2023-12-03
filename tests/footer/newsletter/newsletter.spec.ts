@@ -1,5 +1,5 @@
 import { test, expect } from "../../../fixtures/footer.spec";
-import { getNewsletterData } from "../../../helpers/newsletterData.spec";
+import { getNewsletterData } from "../../../data-loaders/newsletterData.spec";
 import { handlePopup } from "./handlePopup.spec";
 import { steps } from "./steps.spec";
 

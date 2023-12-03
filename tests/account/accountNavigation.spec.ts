@@ -1,5 +1,5 @@
 import { test, expect } from "../../fixtures/account.spec";
-import { getLinkData } from "../../helpers/link.spec";
+import { getLinkData } from "../../data-loaders/link.spec";
 
 const links = getLinkData('accountNavigation')
 

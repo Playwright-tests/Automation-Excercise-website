@@ -1,5 +1,5 @@
 import { test as base } from "@playwright/test";
-import { NewsletterForm } from "../page-object/base/footer/newsletterForm.spec";
+import { NewsletterForm } from "../page-object/footer/newsletterForm.spec";
 
 
 type NewsletterFixture = {
