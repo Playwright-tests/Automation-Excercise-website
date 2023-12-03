@@ -1,0 +1,40 @@
+import { Locator, Page } from "@playwright/test";
+import { BasePage } from "../BasePage.spec";
+
+export class NewsletterForm extends BasePage {
+
+    readonly nameField: Locator;
+    readonly emailField: Locator;
+    readonly subscribeButton: Locator;
+    readonly message: Locator;
+
+    constructor(page: Page) {
+        
+        super(page);
+
+        this.nameField = page.locator('#es_txt_name');
+        this.emailField = page.locator('#es_txt_email');
+        this.subscribeButton = page.locator('#es_txt_button');
+        this.message = page.locator('#es_msg');
+    }
+
+    async setName(name: string) {
+
+        await this.nameField.fill(name);
+    }
+
+    async setEmail(email: string) {
+
+        await this.emailField.fill(email);
+    }
+
+    async clickSubscribeButton() {
+
+        await this.subscribeButton.click();
+    }
+
+    getMessageLocator() {
+
+        return this.message; 
+    }
+}
