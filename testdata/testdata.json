@@ -1114,7 +1114,22 @@
         {
             "linkText": "Logout",
             "pageURL":  "https://skleptest.pl/my-account/customer-logout/"
+        }
+    ],
 
+    "billingAddressFormLink": [
+
+        {
+            "linkText": "",
+            "pageURL": "https://skleptest.pl/my-account/edit-address/billing/"
+        }
+    ],
+
+    "shippingAddressFormLink": [
+
+        {
+            "linkText": "",
+            "pageURL": "https://skleptest.pl/my-account/edit-address/shipping/"
         }
     ]
 
