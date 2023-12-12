@@ -1,5 +1,5 @@
 import { test, expect } from "../../../fixtures/header.spec";
-import { getArrayData } from "../../../helpers/arrayData.spec";
+import { getArrayData } from "../../../data-loaders/JSONArray.spec";
 import { SearchResultsPage } from "../../../page-object/base/search-results/SearchResultsPage.spec";
 import { steps } from "./steps.spec";
 
