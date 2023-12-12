@@ -1,5 +1,6 @@
 import { test as base } from "@playwright/test";
 import { NewsletterForm } from "../page-object/footer/newsletterForm.spec";
+import { URLs } from "../enums/URLs.spec";
 
 
 type NewsletterFixture = {
@@ -13,7 +14,7 @@ export const test = base.extend<NewsletterFixture>({
         
         const newsletterForm = new NewsletterForm(page);
 
-        await newsletterForm.goto();
+        await newsletterForm.goto(URLs.HomePage);
         await use(newsletterForm);
     }
 })
