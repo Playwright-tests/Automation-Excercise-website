@@ -11,16 +11,9 @@ export class AddressForm extends BasePage {
     readonly addressField_2: Locator;
     readonly townCityField: Locator;
     readonly stateCountyField: Locator;
-    readonly stateCountyDropdownList: Locator;
-    readonly countyDropdownList: Locator;
-    readonly stateDropdownList: Locator;
-    readonly districtDropdownList: Locator;
-    readonly provinceDropdownList: Locator;
     readonly regionField: Locator;
-    readonly regionDropdownList: Locator;
-    readonly prefectureDropdownList: Locator;
     readonly municipalityField: Locator;
-    readonly stateZoneDropdownList: Locator;
+    readonly additionalDropdownList: Locator;
     readonly postcodeField: Locator;
     readonly phoneField: Locator;
     readonly emaiField: Locator;
@@ -39,16 +32,9 @@ export class AddressForm extends BasePage {
         this.addressField_2 = page.getByPlaceholder("Apartment, suite, unit etc. (')");
         this.townCityField = page.getByLabel('Town / City *');
         this.stateCountyField = page.getByLabel('State / County *');
-        this.stateCountyDropdownList = page.locator('#billing_state_field').getByLabel('', {exact: true});
-        this.countyDropdownList = page.locator('#billing_state_field').getByLabel('', {exact: true});
-        this.stateDropdownList = page.locator('#billing_state_field').getByLabel('', {exact: true});
-        this.districtDropdownList = page.locator('#billing_state_field').getByLabel('', {exact: true});
-        this.provinceDropdownList = page.locator('#billing_state_field').getByLabel('', {exact: true});
         this.regionField = page.getByLabel('Region *');
-        this.regionDropdownList = page.locator('#billing_state_field').getByLabel('', {exact: true});
-        this.prefectureDropdownList = page.locator('#billing_state_field').getByLabel('', {exact: true});
         this.municipalityField = page.getByLabel('Municipality');
-        this.stateZoneDropdownList = page.locator('#billing_state_field').getByLabel('', {exact: true});
+        this.additionalDropdownList = page.locator('#billing_state_field').getByLabel('', {exact: true});
         this.postcodeField = page.getByLabel('Postcode / ZIP *');
         this.phoneField = page.getByLabel('Phone *');
         this.emaiField = page.getByLabel('Email address *');
@@ -127,44 +113,9 @@ export class AddressForm extends BasePage {
         return this.stateCountyField;
     }
 
-    getStateCountyDropdownList() {
-
-        return this.stateCountyDropdownList;
-    }
-
-    getCountyDropdownList() {
-
-        return this.countyDropdownList;
-    }
-
-    getStateDropdownList() {
-
-        return this.stateDropdownList;
-    }
-
-    getDistrictDropdownList() {
-
-        return this.districtDropdownList;
-    }
-
-    getProvinceDropdownList() {
-
-        return this.provinceDropdownList;
-    }
-
     getRegionField() {
 
         return this.regionField;
-    }
-
-    getRegionDropdownList() {
-
-        return this.regionDropdownList;
-    }
-
-    getPrefectureDropdownList() {
-
-        return this.prefectureDropdownList;
     }
 
     getMunicipalityField() {
@@ -172,9 +123,9 @@ export class AddressForm extends BasePage {
         return this.municipalityField;
     }
 
-    getStateZoneDropdownList() {
+    getAdditionalDropdownList() {
 
-        return this.stateZoneDropdownList;
+        return this.additionalDropdownList;
     }
 
     getDropdownList() {
