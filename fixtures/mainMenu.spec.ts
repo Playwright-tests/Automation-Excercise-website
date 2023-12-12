@@ -1,5 +1,6 @@
 import { test as base } from "@playwright/test";
 import { MainMenu } from "../page-object/main-menu/mainMenu.spec";
+import { URLs } from "../enums/URLs.spec";
 
 type MainMenuFixture = {
 
@@ -12,7 +13,7 @@ export const test = base.extend<MainMenuFixture>({
         
         const mainMenu = new MainMenu(page);
 
-        await mainMenu.goto();
+        await mainMenu.goto(URLs.HomePage);
         await use(mainMenu);
     }
 })
