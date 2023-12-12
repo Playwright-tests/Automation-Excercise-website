@@ -2,21 +2,21 @@ import { getArrayData } from "../../../data-loaders/arrayData.spec";
 import { test, expect } from "../../../fixtures/account.spec";
 import { dropdownListSteps } from "./steps.spec";
 
-const stateCountyFieldCountries = getArrayData('addressForm', 'stateCountyField');
-const stateCountyDDLCountries = getArrayData('addressForm', 'stateCountyDropdownList');
-const countyDDLCountries = getArrayData('addressForm', 'countyDropdownList');
-const stateDDLCountries = getArrayData('addressForm', 'stateDropdownList');
-const districtDDLCountries = getArrayData('addressForm', 'districtDropdownList');
-const provinceDDLCountries = getArrayData('addressForm', 'provinceDropdownList');
-const regionFieldCountries = getArrayData('addressForm', 'regionField');
-const regionDDLCountries = getArrayData('addressForm', 'regionDropdownList');
-const prefectureDropdownListCountries = getArrayData('addressForm', 'prefectureDropdownList');
-const municipalityFieldCountries = getArrayData('addressForm', 'municipalityField');
-const stateZoneDDLCountries = getArrayData('addressForm', 'stateZoneDropdownList');
+const stateCountyField = getArrayData('addressForm', 'stateCountyField');
+const stateCountyDropdownList = getArrayData('addressForm', 'stateCountyDropdownList');
+const countyDropdownList = getArrayData('addressForm', 'countyDropdownList');
+const stateDropdownList = getArrayData('addressForm', 'stateDropdownList');
+const districtDropdownList = getArrayData('addressForm', 'districtDropdownList');
+const provinceDropdownList = getArrayData('addressForm', 'provinceDropdownList');
+const regionField = getArrayData('addressForm', 'regionField');
+const regionDropdownList = getArrayData('addressForm', 'regionDropdownList');
+const prefectureDropdownList = getArrayData('addressForm', 'prefectureDropdownList');
+const municipalityField = getArrayData('addressForm', 'municipalityField');
+const stateZoneDropdownList = getArrayData('addressForm', 'stateZoneDropdownList');
 
 test.describe('Additional "State / County" field',async () => {
     
-    for(const country of stateCountyFieldCountries) {
+    for(const country of stateCountyField) {
 
         test('Setting "' + country + '"',async ({addressForm}) => {
             
@@ -28,67 +28,67 @@ test.describe('Additional "State / County" field',async () => {
 
 test.describe('Additional "State / County dropdown list"',async () => {
     
-    for(const country of stateCountyDDLCountries) {
+    for(const country of stateCountyDropdownList) {
 
         test('Setting "' + country + '"',async ({addressForm}) => {
             
             await dropdownListSteps(country, addressForm);
-            expect(await addressForm.getStateCountyDropdownList().isVisible()).toBeTruthy();
+            expect(await addressForm.getAdditionalDropdownList().isVisible()).toBeTruthy();
         })
     }
 })
 
 test.describe('Additional "County" dropdown list',async () => {
     
-    for(const country of countyDDLCountries) {
+    for(const country of countyDropdownList) {
 
         test('Setting "' + country + '"',async ({addressForm}) => {
             
             await dropdownListSteps(country, addressForm);
-            expect(await addressForm.getCountyDropdownList().isVisible()).toBeTruthy();
+            expect(await addressForm.getAdditionalDropdownList().isVisible()).toBeTruthy();
         })
     }
 })
 
 test.describe('Additional "State dropdown list"',async () => {
     
-    for(const country of stateDDLCountries) {
+    for(const country of stateDropdownList) {
 
         test('Setting "' + country + '"',async ({addressForm}) => {
             
             await dropdownListSteps(country, addressForm);
-            expect(await addressForm.getStateDropdownList().isVisible()).toBeTruthy();
+            expect(await addressForm.getAdditionalDropdownList().isVisible()).toBeTruthy();
         })
     }
 })
 
 test.describe('Additional "District dropdown list"',async () => {
     
-    for(const country of districtDDLCountries) {
+    for(const country of districtDropdownList) {
 
         test('Setting "' + country + '"',async ({addressForm}) => {
             
             await dropdownListSteps(country, addressForm);
-            expect(await addressForm.getDistrictDropdownList().isVisible()).toBeTruthy();
+            expect(await addressForm.getAdditionalDropdownList().isVisible()).toBeTruthy();
         })
     }
 })
 
 test.describe('Additional "Province dropdown list"',async () => {
     
-    for(const country of provinceDDLCountries) {
+    for(const country of provinceDropdownList) {
 
         test('Setting "' + country + '"',async ({addressForm}) => {
             
             await dropdownListSteps(country, addressForm);
-            expect(await addressForm.getProvinceDropdownList().isVisible()).toBeTruthy();
+            expect(await addressForm.getAdditionalDropdownList().isVisible()).toBeTruthy();
         })
     }
 })
 
 test.describe('Additional "Region" field',async () => {
     
-    for(const country of regionFieldCountries) {
+    for(const country of regionField) {
 
         test('Setting "' + country + '"',async ({addressForm}) => {
             
@@ -100,19 +100,31 @@ test.describe('Additional "Region" field',async () => {
 
 test.describe('Additional "Region" dropdown list',async () => {
     
-    for(const country of regionDDLCountries) {
+    for(const country of regionDropdownList) {
 
         test('Setting "' + country + '"',async ({addressForm}) => {
             
             await dropdownListSteps(country, addressForm);
-            expect(await addressForm.getRegionDropdownList().isVisible()).toBeTruthy();
+            expect(await addressForm.getAdditionalDropdownList().isVisible()).toBeTruthy();
+        })
+    }
+})
+
+test.describe('Additional "Prefecture" dropdown list',async () => {
+    
+    for(const country of prefectureDropdownList) {
+
+        test('Setting "' + country + '"',async ({addressForm}) => {
+            
+            await dropdownListSteps(country, addressForm);
+            expect(await addressForm.getAdditionalDropdownList().isVisible()).toBeTruthy();
         })
     }
 })
 
 test.describe('Additional "Municipality" field',async () => {
     
-    for(const country of municipalityFieldCountries) {
+    for(const country of municipalityField) {
 
         test('Setting "' + country + '"',async ({addressForm}) => {
             
@@ -124,12 +136,12 @@ test.describe('Additional "Municipality" field',async () => {
 
 test.describe('Additional "State / Zone" dropdown list',async () => {
     
-    for(const country of stateZoneDDLCountries) {
+    for(const country of stateZoneDropdownList) {
 
         test('Setting "' + country + '"',async ({addressForm}) => {
             
             await dropdownListSteps(country, addressForm);
-            expect(await addressForm.getStateZoneDropdownList().isVisible()).toBeTruthy();
+            expect(await addressForm.getAdditionalDropdownList().isVisible()).toBeTruthy();
         })
     }
 })
