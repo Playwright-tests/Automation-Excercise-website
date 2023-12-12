@@ -17,7 +17,10 @@ export class AddressForm extends BasePage {
     readonly districtDropdownList: Locator;
     readonly provinceDropdownList: Locator;
     readonly regionField: Locator;
+    readonly regionDropdownList: Locator;
+    readonly prefectureDropdownList: Locator;
     readonly municipalityField: Locator;
+    readonly stateZoneDropdownList: Locator;
     readonly postcodeField: Locator;
     readonly phoneField: Locator;
     readonly emaiField: Locator;
@@ -42,7 +45,10 @@ export class AddressForm extends BasePage {
         this.districtDropdownList = page.locator('#billing_state_field').getByLabel('', {exact: true});
         this.provinceDropdownList = page.locator('#billing_state_field').getByLabel('', {exact: true});
         this.regionField = page.getByLabel('Region *');
+        this.regionDropdownList = page.locator('#billing_state_field').getByLabel('', {exact: true});
+        this.prefectureDropdownList = page.locator('#billing_state_field').getByLabel('', {exact: true});
         this.municipalityField = page.getByLabel('Municipality');
+        this.stateZoneDropdownList = page.locator('#billing_state_field').getByLabel('', {exact: true});
         this.postcodeField = page.getByLabel('Postcode / ZIP *');
         this.phoneField = page.getByLabel('Phone *');
         this.emaiField = page.getByLabel('Email address *');
@@ -149,6 +155,26 @@ export class AddressForm extends BasePage {
     getRegionField() {
 
         return this.regionField;
+    }
+
+    getRegionDropdownList() {
+
+        return this.regionDropdownList;
+    }
+
+    getPrefectureDropdownList() {
+
+        return this.prefectureDropdownList;
+    }
+
+    getMunicipalityField() {
+
+        return this.municipalityField;
+    }
+
+    getStateZoneDropdownList() {
+
+        return this.stateZoneDropdownList;
     }
 
     getDropdownList() {
