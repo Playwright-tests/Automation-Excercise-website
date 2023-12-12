@@ -9,9 +9,9 @@ export class BasePage {
         this.page = page;
     }
 
-    async goto() {
+    async goto(URL: string) {
 
-        await this.page.goto('https://skleptest.pl/')
+        await this.page.goto(URL);
     }
 
     async getPage() {
