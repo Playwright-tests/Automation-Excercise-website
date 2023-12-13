@@ -25,19 +25,19 @@ export class AddressForm extends BasePage {
 
         super(page);
 
-        this.firstNameField = page.getByLabel('First name *');
-        this.lastNameField = page.getByLabel('Last name *');
-        this.companyField = page.getByLabel('Company name');
-        this.addressField_1 = page.getByPlaceholder('House number and street name');
-        this.addressField_2 = page.getByPlaceholder("Apartment, suite, unit etc. (')");
-        this.townCityField = page.getByLabel('Town / City *');
+        this.firstNameField = page.locator('#billing_first_name');
+        this.lastNameField = page.locator('#billing_last_name');
+        this.companyField = page.locator('#billing_company');
+        this.addressField_1 = page.locator('#billing_address_1');
+        this.addressField_2 = page.locator("#billing_address_2");
+        this.townCityField = page.locator('#billing_city');
         this.stateCountyField = page.getByLabel('State / County *');
         this.regionField = page.getByLabel('Region *');
         this.municipalityField = page.getByLabel('Municipality');
         this.additionalDropdownList = page.locator('#billing_state_field').getByLabel('', {exact: true});
-        this.postcodeField = page.getByLabel('Postcode / ZIP *');
-        this.phoneField = page.getByLabel('Phone *');
-        this.emaiField = page.getByLabel('Email address *');
+        this.postcodeField = page.locator('#billing_postcode');
+        this.phoneField = page.locator('#billing_phone');
+        this.emaiField = page.locator('#billing_email');
         this.saveAddressButton = page.getByRole('button', {name: 'Save address'});
 
         this.dropdownList = new DropdownList(page);
@@ -95,17 +95,62 @@ export class AddressForm extends BasePage {
 
     async setPhone(phone: string) {
 
-        this.phoneField.fill(phone);
+        await this.phoneField.fill(phone);
     }
 
     async setEmail(email: string) {
 
-        this.emaiField.fill(email);
+        await this.emaiField.fill(email);
     }
 
     async clickSaveAddressButton() {
 
         await this.saveAddressButton.click();
+    }
+
+    async getFirstName() {
+
+        return await this.firstNameField.inputValue();
+    }
+
+    async getLastName() {
+
+        return await this.lastNameField.inputValue();
+    }
+
+    async getCompany() {
+
+        return await this.companyField.inputValue();
+    }
+
+    async getAddress1() {
+
+        return await this.addressField_1.inputValue();
+    }
+
+    async getAddress2() {
+
+        return await this.addressField_2.inputValue();
+    }
+
+    async getCity() {
+
+        return await this.townCityField.inputValue();
+    }
+
+    async getPostcode() {
+
+        return await this.postcodeField.inputValue();
+    }
+
+    async getPhone() {
+
+        return await this.phoneField.textContent();
+    }
+
+    async getEmail() {
+
+        return await this.emaiField.textContent();
     }
 
     getStateCountyField() {
