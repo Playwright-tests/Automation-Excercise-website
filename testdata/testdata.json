@@ -163,13 +163,13 @@
 
     "addressForm": {
 
-        "correctAddressData": [
+        "correct": [
 
             {
                 "country": "Portugal",
                 "firstName": "Pedro",
                 "lastName": "Ribeiro",
-                "companyName": "Tech Genius",
+                "company": "Tech Genius",
                 "address1": "Praca do Municipio",
                 "address2": "",
                 "city": "Lisbon",
@@ -223,7 +223,7 @@
                 "country": "Portugal",
                 "firstName": "Pedro",
                 "lastName": "Ribeiro",
-                "companyName": "Tech Genius",
+                "company": "Tech Genius",
                 "address1": "Praca do Municipio",
                 "address2": "",
                 "city": "Lisbon",
