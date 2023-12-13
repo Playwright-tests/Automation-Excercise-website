@@ -4,12 +4,14 @@ import { BasePage } from "../../base/BasePage.spec";
 export class DropdownList extends BasePage {
 
     readonly arrow: Locator;
+    readonly field: Locator;
 
     constructor(page: Page) {
 
         super(page);
 
         this.arrow = page.locator('.select2-selection__arrow');
+        this.field = page.getByRole('combobox').nth(1);
     }
 
     async clickArrow() {
@@ -19,6 +21,11 @@ export class DropdownList extends BasePage {
 
     async setCountry(country: string) {
 
-        await (await this.getPage()).getByRole('option', {name : country}).click();
+        await this.field.fill(country)
+    }
+
+    async pressEnter() {
+
+        await this.field.press('Enter');
     }
 }
