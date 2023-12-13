@@ -1,4 +1,5 @@
 import { Page } from "@playwright/test";
+import { ThumbnailCategory } from "../../enums/thumbnailCategory.spec";
 import { ThumbnailGenerator } from "./thumbnailGenerator.spec";
 import { BlogThumbnail } from "../../page-object/thumbnail/blogThumbnail.spec";
 
