@@ -79,7 +79,20 @@ export async function addressFormSteps(addressForm: AddressForm, addresFormData:
     })
 }
 
-export async function blankFieldsCheck(addressForm: AddressForm, data: any, page: Page) {
+export async function positiveCasesCheck(errors: string[]) {
+    
+    if (errors.length === 0) {
+
+        expect(true).toBeTruthy();
+
+    } else {
+
+        console.error('Validation errors:', errors);
+        expect(false).toBeTruthy();
+    }
+}
+
+export async function negativeCasesCheck(addressForm: AddressForm, data: any, page: Page) {
     
     await expect(page).toHaveURL(URLs.BillingAddressForm);
     expect(await addressForm.getErrorMessageLocator().isVisible()).toBeTruthy();
