@@ -1,5 +1,7 @@
+import { Page, expect } from "@playwright/test";
 import { test } from "../../../fixtures/account.spec";
 import { AddressForm } from "../../../page-object/account/address-form/addressForm.spec";
+import { URLs } from "../../../enums/URLs.spec";
 
 export async function dropdownListSteps(country: string, addressForm: AddressForm) {
     
@@ -75,4 +77,12 @@ export async function addressFormSteps(addressForm: AddressForm, addresFormData:
         
         await addressForm.clickSaveAddressButton();
     })
+}
+
+export async function blankFieldsCheck(addressForm: AddressForm, data: any, page: Page) {
+    
+    await expect(page).toHaveURL(URLs.BillingAddressForm);
+    expect(await addressForm.getErrorMessageLocator().isVisible()).toBeTruthy();
+    expect(await addressForm.getErrorMessage()).toEqual(data.errorMessage);
+
 }
