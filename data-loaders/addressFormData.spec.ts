@@ -15,6 +15,7 @@ export function getAddressFormData(node: string) {
         postcode: string,
         phone: string,
         email: string;    
+        errorMessage: string
     }[] = [];
 
     for(const data of JSONArray[node]) {
@@ -29,7 +30,8 @@ export function getAddressFormData(node: string) {
             city: data.city,
             postcode: data.postcode,
             phone: data.phone,
-            email: data.email
+            email: data.email,
+            errorMessage: data.errorMessage
         };
 
         addressFormData.push(temp);
