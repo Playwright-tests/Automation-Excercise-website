@@ -18,6 +18,7 @@ export class AddressForm extends BasePage {
     readonly phoneField: Locator;
     readonly emaiField: Locator;
     readonly saveAddressButton: Locator;
+    readonly errorMessage: Locator;
 
     readonly dropdownList: DropdownList;
 
@@ -39,68 +40,75 @@ export class AddressForm extends BasePage {
         this.phoneField = page.locator('#billing_phone');
         this.emaiField = page.locator('#billing_email');
         this.saveAddressButton = page.getByRole('button', {name: 'Save address'});
+        this.errorMessage = page.locator('.woocommerce-error');
 
         this.dropdownList = new DropdownList(page);
     }
 
+    private async clearAndFill(locator: Locator, text: string) {
+
+        await locator.clear();
+        await locator.fill(text);
+    }
+
     async setFirstName(firstName: string) {
 
-        await this.firstNameField.fill(firstName);
+        await this.clearAndFill(this.firstNameField, firstName);
     }
 
     async setLastName(lastName: string) {
 
-        await this.lastNameField.fill(lastName);
+        await this.clearAndFill(this.lastNameField, lastName);
     }
 
     async setCompany(company: string) {
 
-        await this.companyField.fill(company);
+        await this.clearAndFill(this.companyField, company);
     }
 
     async setAddress_1(address: string) {
 
-        await this.addressField_1.fill(address);
+        await this.clearAndFill(this.addressField_1, address);
     }
 
     async setAddress_2(address: string) {
 
-        await this.addressField_2.fill(address);
+        await this.clearAndFill(this.addressField_2, address);
     }
 
     async setTown(town: string) {
 
-        await this.townCityField.fill(town);
+        await this.clearAndFill(this.townCityField, town);
     }
 
     async setState(state: string) {
 
-        await this.stateCountyField.fill(state);
+        await this.clearAndFill(this.stateCountyField, state);
     }
 
     async setRegion(region: string) {
 
-        await this.regionField.fill(region);
+        await this.clearAndFill(this.regionField, region);
     }
 
     async setMunicipality(municipality: string) {
 
-        await this.municipalityField.fill(municipality);
+        await this.clearAndFill(this.municipalityField, municipality);
     }
 
     async setPostcode(postcode: string) {
 
-        await this.postcodeField.fill(postcode);
+        await this.clearAndFill(this.postcodeField, postcode);
     }
 
     async setPhone(phone: string) {
 
-        await this.phoneField.fill(phone);
+        await this.clearAndFill(this.phoneField, phone);
     }
 
     async setEmail(email: string) {
 
-        await this.emaiField.fill(email);
+        await this.clearAndFill(this.emaiField, email);
     }
 
     async clickSaveAddressButton() {
@@ -145,12 +153,12 @@ export class AddressForm extends BasePage {
 
     async getPhone() {
 
-        return await this.phoneField.textContent();
+        return await this.phoneField.inputValue();
     }
 
     async getEmail() {
 
-        return await this.emaiField.textContent();
+        return await this.emaiField.inputValue();
     }
 
     getStateCountyField() {
@@ -171,6 +179,16 @@ export class AddressForm extends BasePage {
     getAdditionalDropdownList() {
 
         return this.additionalDropdownList;
+    }
+
+    getErrorMessageLocator() {
+
+        return this.errorMessage;
+    }
+
+    async getErrorMessage() {
+
+        return await this.errorMessage.locator('li').textContent();
     }
 
     getDropdownList() {
