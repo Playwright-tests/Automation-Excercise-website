@@ -171,6 +171,42 @@
                 "lastName": "Ribeiro",
                 "company": "Tech Genius",
                 "address1": "Praca do Municipio",
+                "address2": "32",
+                "city": "Lisbon",
+                "postcode": "1100-365",
+                "phone": "213227000",
+                "email": "gocidey596@vigoneo.com",
+
+                "errorMessage": ""
+            }
+        ],
+
+        "blankCompanyField": [
+
+            {
+                "country": "Portugal",
+                "firstName": "Pedro",
+                "lastName": "Ribeiro",
+                "company": "",
+                "address1": "Praca do Municipio",
+                "address2": "32",
+                "city": "Lisbon",
+                "postcode": "1100-365",
+                "phone": "213227000",
+                "email": "gocidey596@vigoneo.com",
+
+                "errorMessage": ""
+            }
+        ],
+
+        "blankOptionalAddressField": [
+
+            {
+                "country": "Portugal",
+                "firstName": "Pedro",
+                "lastName": "Ribeiro",
+                "company": "Tech Genius",
+                "address1": "Praca do Municipio",
                 "address2": "",
                 "city": "Lisbon",
                 "postcode": "1100-365",
@@ -195,7 +231,7 @@
                 "phone": "213227000",
                 "email": "gocidey596@vigoneo.com",
 
-                "errorMessage": ""
+                "errorMessage": "Please enter a valid first name"
             }
         ],
 
@@ -213,7 +249,7 @@
                 "phone": "213227000",
                 "email": "gocidey596@vigoneo.com",
 
-                "errorMessage": ""
+                "errorMessage": "Please enter a valid last name"
             }
         ],
 
@@ -259,7 +295,7 @@
                 "country": "Portugal",
                 "firstName": "Pedro",
                 "lastName": "Ribeiro",
-                "companyName": "Tech Genius",
+                "company": "Tech Genius",
                 "address1": "Praca do Municipio",
                 "address2": "",
                 "city": "Lisbon",
@@ -274,7 +310,7 @@
                 "country": "Portugal",
                 "firstName": "Pedro",
                 "lastName": "Ribeiro",
-                "companyName": "Tech Genius",
+                "company": "Tech Genius",
                 "address1": "Praca do Municipio",
                 "address2": "",
                 "city": "Lisbon",
