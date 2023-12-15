@@ -7,7 +7,7 @@ export class ProductPage extends BasePage {
     readonly quantityField: QuantityField;
     readonly addToCartButton: Locator;
     readonly message: Locator;
-    readonly title: Locator;
+    readonly producTitle: Locator;
 
     constructor(page: Page) {
 
@@ -16,7 +16,12 @@ export class ProductPage extends BasePage {
         this.addToCartButton = page.getByRole('button', {name: 'Add to cart'});
         this.quantityField = new QuantityField(page);
         this.message = page.locator('.woocommerce-message');
-        
+        this.producTitle = page.locator('.product_title ');
+    }
+
+    async getProductTitle() {
+
+        return await this.producTitle.textContent();
     }
 
     async clickAddToCartButton() {
