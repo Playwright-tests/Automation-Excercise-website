@@ -1,6 +1,6 @@
 import { getJSONArray } from "./JSONArray.spec";
 
-export function getQuantityFieldValues() {
+export function getQuantities() {
 
     let JSONObject = getJSONArray('quantityFieldValues');
     let quantityFieldValues: {
