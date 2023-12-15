@@ -10,7 +10,7 @@ export function getQuantityFieldValues() {
         nominal: string,
         belowMax: string,
         max: string,
-        belowZero: string,
+        belowMin: string,
         aboveMax: string
     };
 
@@ -21,7 +21,7 @@ export function getQuantityFieldValues() {
         nominal: JSONObject.nominal,
         belowMax: JSONObject.belowMax,
         max: JSONObject.max,
-        belowZero: JSONObject.belowZero,
+        belowMin: JSONObject.belowMin,
         aboveMax: JSONObject.aboveMax
     }
 
