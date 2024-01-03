@@ -26,7 +26,7 @@ export class ProductPage extends BasePage {
 
     async clickAddToCartButton() {
 
-        this.addToCartButton.click();
+        await this.addToCartButton.click();
     }
 
     getQuantityField() {
