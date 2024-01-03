@@ -14,7 +14,7 @@ export class ProductPage extends BasePage {
         super(page);
 
         this.addToCartButton = page.getByRole('button', {name: 'Add to cart'});
-        this.quantityField = new QuantityField(page);
+        this.quantityField = QuantityField.createWithoutNth(page);
         this.message = page.locator('.woocommerce-message');
         this.producTitle = page.locator('.product_title ');
     }
