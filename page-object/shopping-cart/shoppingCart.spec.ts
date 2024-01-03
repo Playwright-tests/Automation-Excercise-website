@@ -50,7 +50,9 @@ export class ShoppingCart extends BasePage {
         return this.messageSelector;
     }
 
-    getRow() {
+    getRow(nth: number) {
+
+        this.row.setNth(nth);
 
         return this.row;
     }

@@ -6,7 +6,7 @@ export async function steps(page: Page, shoppingCart: ShoppingCart, index: numbe
 
     await test.step('Enter "' + quantity + '"in the quantity field',async () => {
         
-        await (await shoppingCart.getRow().getQuantityField(index)).setQuantity(quantity);
+        await (await shoppingCart.getRow(index).getQuantityField()).setQuantity(quantity);
     })
 
     await test.step('Click the "Update cart" button',async () => {
@@ -15,9 +15,9 @@ export async function steps(page: Page, shoppingCart: ShoppingCart, index: numbe
     })
 }
 
-export async function getExpectedTotal(shoppingCart: ShoppingCart, quantity: string) {
+export async function getExpectedTotal(shoppingCart: ShoppingCart, rowIndex: number, quantity: string) {
     
-    const price = toNumber(removeCurrencySymbol(await shoppingCart.getRow().getTotal(0)));
+    const price = toNumber(removeCurrencySymbol(await shoppingCart.getRow(rowIndex).getTotal()));
     const quantityNumber = toNumber(quantity);
     const total = price * quantityNumber;
 
@@ -31,9 +31,9 @@ export async function getExpectedTotal(shoppingCart: ShoppingCart, quantity: str
     }
 }
 
-export async function getActualTotal(shoppingCart: ShoppingCart) {
+export async function getActualTotal(shoppingCart: ShoppingCart, rowIndex: number) {
     
-    const total = await shoppingCart.getRow().getTotal(0);
+    const total = await shoppingCart.getRow(rowIndex).getTotal();
     const withoutCurrency = total?.replace('zł', '');
     const trimmed = withoutCurrency?.trim();
     

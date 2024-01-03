@@ -9,8 +9,8 @@ export async function checkShoppingCartState(shoppingCart: ShoppingCart, oldCoun
         errors.push('The message about empty shopping cart is not displayed');
     }
 
-    if(await shoppingCart.getRow().getCount() > oldCount) {
-        errors.push('Product has not been removed from the shopping cart- expected: "' + expectedCount + '", received: "' + await shoppingCart.getRow().getCount());
+    if(await shoppingCart.getRow(0).getCount() > oldCount) {
+        errors.push('Product has not been removed from the shopping cart- expected: "' + expectedCount + '", received: "' + await shoppingCart.getRow(0).getCount());
     }
 
     return errors;

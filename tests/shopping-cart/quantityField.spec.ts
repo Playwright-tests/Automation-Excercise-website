@@ -3,16 +3,18 @@ import { test, expect } from "../../fixtures/shoppingCart.spec";
 import { getActualTotal, getExpectedTotal, steps } from "./helpers.spec"
 
 const quantities = getQuantities();
+const rowIndex = 0;
+
 
 test.describe('Quantity field in the shopping cart',async () => {
     
     test('Minimum',async ({shoppingCart, page}) => {
         
-        const expectedTotal = await getExpectedTotal(shoppingCart, quantities.min);
+        const expectedTotal = await getExpectedTotal(shoppingCart, rowIndex, quantities.min);
 
-        await steps(page, shoppingCart, 0, quantities.min);
+        await steps(page, shoppingCart, rowIndex, quantities.min);
         
-        const actualTotal = await getActualTotal(shoppingCart);
+        const actualTotal = await getActualTotal(shoppingCart, rowIndex);
 
         expect(await shoppingCart.getMessageLocator().isVisible()).toBeFalsy();
         expect(actualTotal).toEqual(expectedTotal);
@@ -20,12 +22,12 @@ test.describe('Quantity field in the shopping cart',async () => {
 
     test('Above minimum',async ({shoppingCart, page}) => {
         
-        const expectedTotal = await getExpectedTotal(shoppingCart, quantities.aboveMin);
+        const expectedTotal = await getExpectedTotal(shoppingCart, rowIndex, quantities.aboveMin);
 
-        await steps(page, shoppingCart, 0, quantities.aboveMin);
+        await steps(page, shoppingCart, rowIndex, quantities.aboveMin);
         await page.waitForSelector(shoppingCart.getMessageSelector());
         
-        const actualTotal = await getActualTotal(shoppingCart);
+        const actualTotal = await getActualTotal(shoppingCart, rowIndex);
 
         expect(await shoppingCart.getMessageText()).toEqual('Cart updated.');
         expect(actualTotal).toEqual(expectedTotal);
@@ -33,12 +35,12 @@ test.describe('Quantity field in the shopping cart',async () => {
 
     test('Nominal',async ({shoppingCart, page}) => {
         
-        const expectedTotal = await getExpectedTotal(shoppingCart, quantities.nominal);
+        const expectedTotal = await getExpectedTotal(shoppingCart, rowIndex, quantities.nominal);
 
-        await steps(page, shoppingCart, 0, quantities.nominal);
+        await steps(page, shoppingCart, rowIndex, quantities.nominal);
         await page.waitForSelector(shoppingCart.getMessageSelector());
         
-        const actualTotal = await getActualTotal(shoppingCart);
+        const actualTotal = await getActualTotal(shoppingCart, rowIndex);
 
         expect(await shoppingCart.getMessageText()).toEqual('Cart updated.');
         expect(actualTotal).toEqual(expectedTotal);
@@ -46,12 +48,12 @@ test.describe('Quantity field in the shopping cart',async () => {
 
     test('Below max',async ({shoppingCart, page}) => {
         
-        const expectedTotal = await getExpectedTotal(shoppingCart, quantities.belowMax);
+        const expectedTotal = await getExpectedTotal(shoppingCart, rowIndex, quantities.belowMax);
 
-        await steps(page, shoppingCart, 0, quantities.belowMax);
+        await steps(page, shoppingCart, rowIndex, quantities.belowMax);
         await page.waitForSelector(shoppingCart.getMessageSelector());
         
-        const actualTotal = await getActualTotal(shoppingCart);
+        const actualTotal = await getActualTotal(shoppingCart, rowIndex);
 
         expect(await shoppingCart.getMessageText()).toEqual('Cart updated.');
         expect(actualTotal).toEqual(expectedTotal);
@@ -59,12 +61,12 @@ test.describe('Quantity field in the shopping cart',async () => {
 
     test('Maximum',async ({shoppingCart, page}) => {
         
-        const expectedTotal = await getExpectedTotal(shoppingCart, quantities.max);
+        const expectedTotal = await getExpectedTotal(shoppingCart, rowIndex, quantities.max);
 
-        await steps(page, shoppingCart, 0, quantities.max);
+        await steps(page, shoppingCart, rowIndex, quantities.max);
         await page.waitForSelector(shoppingCart.getMessageSelector());
         
-        const actualTotal = await getActualTotal(shoppingCart);
+        const actualTotal = await getActualTotal(shoppingCart, rowIndex);
 
         expect(await shoppingCart.getMessageText()).toEqual('Cart updated.');
         expect(actualTotal).toEqual(expectedTotal);
