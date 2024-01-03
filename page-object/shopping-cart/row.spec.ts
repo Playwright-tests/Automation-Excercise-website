@@ -1,5 +1,6 @@
 import { ElementHandle, Locator, Page } from "@playwright/test";
 import { BasePage } from "../base/BasePage.spec";
+import { QuantityField } from "../quantity-field/quantityField.spec";
 
 export class Row extends BasePage {
 
@@ -20,7 +21,12 @@ export class Row extends BasePage {
 
     async getCount() {
 
-        return await this.removeButton.count();
+        return await (await this.getPage()).locator('.woocommerce-cart-form__cart-item.cart_item').count();
+    }
+
+    async clickRemoveButton() {
+
+        await this.removeButton.click();
     }
 
     async getProductName(nth: number) {
@@ -31,6 +37,11 @@ export class Row extends BasePage {
     async getPrice(nth: number) {
 
         return this.price.nth(nth).textContent();
+    }
+
+    async getQuantityField(nth: number) {
+
+        return QuantityField.createWithNth(await this.getPage(), nth);
     }
 
     async getTotal(nth: number) {
