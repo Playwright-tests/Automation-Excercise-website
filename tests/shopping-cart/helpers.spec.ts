@@ -2,7 +2,7 @@ import { Page, test, expect } from "@playwright/test";
 import { ShoppingCart } from "../../page-object/shopping-cart/shoppingCart.spec";
 import { removeCurrencySymbol, toNumber } from "../../utils/toNumber.spec";
 
-export async function steps(page: Page, shoppingCart: ShoppingCart, index: number, quantity: string) {
+export async function steps(shoppingCart: ShoppingCart, index: number, quantity: string) {
 
     await test.step('Enter "' + quantity + '"in the quantity field',async () => {
         
