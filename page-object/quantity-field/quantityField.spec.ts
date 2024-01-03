@@ -32,4 +32,9 @@ export class QuantityField extends BasePage {
 
         return await this.field.inputValue();
     }
+
+    getFieldLocator() {
+
+        return this.field;
+    }
 }
