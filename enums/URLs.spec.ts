@@ -4,5 +4,6 @@ export enum URLs {
     LoginPage = 'https://skleptest.pl/my-account/',
     AddressFormNavigation = 'https://skleptest.pl/my-account/edit-address/',
     BillingAddressForm = 'https://skleptest.pl/my-account/edit-address/billing/',
-    AmariShirtProduct = 'https://skleptest.pl/product/amari-shirt/'
+    AmariShirtProduct = 'https://skleptest.pl/product/amari-shirt/',
+    ShoppingCart = 'https://skleptest.pl/cart/'
 }
