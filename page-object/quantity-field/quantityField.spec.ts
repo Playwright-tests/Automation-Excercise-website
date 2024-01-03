@@ -5,13 +5,23 @@ export class QuantityField extends BasePage {
 
     readonly field: Locator;
 
-    constructor(page: Page) {
+    constructor(page: Page, field: Locator) {
 
         super(page);
-
-        this.field = page.getByLabel('Quantity');
+        
+        this.field = field;
     }
 
+    static createWithoutNth(page: Page) {
+
+        return new QuantityField(page, page.getByLabel('Quantity'));
+    }
+
+    static createWithNth(page: Page, nth: number) {
+
+        return new QuantityField(page, page.getByLabel('Quantity').nth(nth));
+    }
+    
     async setQuantity(quantity: string) {
 
         await this.field.clear();
