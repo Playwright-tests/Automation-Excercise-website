@@ -3,6 +3,7 @@ import { test } from "../../fixtures/productPage.spec";
 import { check, getExpectedMessage, steps } from "./helpers.spec";
 
 const quantities = getQuantities();
+//const notNumbers = getArrayData('quantityField', '')
 
 test.describe('Quantity field tests',async () => {
     
