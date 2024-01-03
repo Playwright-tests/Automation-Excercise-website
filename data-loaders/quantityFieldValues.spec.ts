@@ -11,7 +11,9 @@ export function getQuantities() {
         belowMax: string,
         max: string,
         belowMin: string,
-        aboveMax: string
+        belowZero: string,
+        aboveMax: string,
+        blank: string
     };
 
     quantityFieldValues = {
@@ -22,7 +24,27 @@ export function getQuantities() {
         belowMax: JSONObject.belowMax,
         max: JSONObject.max,
         belowMin: JSONObject.belowMin,
-        aboveMax: JSONObject.aboveMax
+        belowZero: JSONObject.belowZero,
+        aboveMax: JSONObject.aboveMax,
+        blank: JSONObject.blank
+    }
+
+    return quantityFieldValues;
+}
+
+export function getQuantities2() {
+
+    let JSONArray = getJSONArray('quantityField');
+    let quantityFieldValues: { quantity: string, message: string }[] = [];
+
+    for(const data of JSONArray) {
+
+        let temp = {
+            quantity: data.quantity,
+            message: data.message
+        }
+
+        quantityFieldValues.push(temp);
     }
 
     return quantityFieldValues;
