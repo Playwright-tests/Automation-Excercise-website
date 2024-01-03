@@ -9,6 +9,8 @@ export class Row extends BasePage {
     private price: Locator;
     private total: Locator;
 
+    private nth: number;
+
     constructor(page: Page) {
 
         super(page);
@@ -24,28 +26,33 @@ export class Row extends BasePage {
         return await (await this.getPage()).locator('.woocommerce-cart-form__cart-item.cart_item').count();
     }
 
+    setNth(nth: number) {
+
+        this.nth = nth;
+    }
+
     async clickRemoveButton() {
 
-        await this.removeButton.click();
+        await this.removeButton.nth(this.nth).click();
     }
 
-    async getProductName(nth: number) {
+    async getProductName() {
 
-        return this.productName.nth(nth).textContent();
+        return this.productName.nth(this.nth).textContent();
     }
 
-    async getPrice(nth: number) {
+    async getPrice() {
 
-        return this.price.nth(nth).textContent();
+        return this.price.nth(this.nth).textContent();
     }
 
-    async getQuantityField(nth: number) {
+    async getQuantityField() {
 
-        return QuantityField.createWithNth(await this.getPage(), nth);
+        return QuantityField.createWithNth(await this.getPage(), this.nth);
     }
 
-    async getTotal(nth: number) {
+    async getTotal() {
 
-        return this.total.nth(nth).textContent();
+        return this.total.nth(this.nth).textContent();
     }
 }
