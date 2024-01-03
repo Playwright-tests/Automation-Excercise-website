@@ -522,29 +522,73 @@
         ]
     },
 
-    "quantityField": {
+    "quantityField": [
 
-        "first": [
+        {
+            "quantity": "-",
+            "message": "Wpisz liczbę"
+        },
 
-            "-",
-            "+",
-            ".",
-            ",",
-            "3+",
-            "3-",
-            "3.",
-            "5,",
-            "4+3",
-            "4-1",
-            ".9+4"
-        ],
+        {
+            "quantity": "+",
+            "message": "Wpisz liczbę"
+        },
 
-        "second": [
+        {
+            "quantity": ".",
+            "message": "Wpisz liczbę"
+        },
 
-            "1.2",
-            "4,2"
-        ]
-    },
+        {
+            "quantity": ",",
+            "message": "Wpisz liczbę"
+        },
+
+        {
+            "quantity": "3+",
+            "message": "Wpisz liczbę"
+        },
+
+        {
+            "quantity": "3-",
+            "message": "Wpisz liczbę"
+        },
+
+        {
+            "quantity": "3.",
+            "message": "Wpisz liczbę"
+        },
+
+        {
+            "quantity": "5,",
+            "message": "Wpisz liczbę"
+        },
+
+        {
+            "quantity": "4+3",
+            "message": "Wpisz liczbę"
+        },
+
+        {
+            "quantity": "4-1",
+            "message": "Wpisz liczbę"
+        },
+
+        {
+            "quantity": ".9+4",
+            "message": "Wpisz liczbę"
+        },
+
+        {
+            "quantity": "1.2",
+            "message": "Wpisz prawidłową wartość. Dwie najbliższe prwidłowe wartości to 1 i 2"
+        },
+
+        {
+            "quantity": "4,2",
+            "message": "Wpisz prawidłową wartość. Dwie najbliższe prwidłowe wartości to 4 i 5"
+        }
+    ],
 
     "quantityFieldValues": {
 
