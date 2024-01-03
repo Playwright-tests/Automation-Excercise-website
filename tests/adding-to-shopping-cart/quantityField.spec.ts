@@ -1,9 +1,8 @@
-import { getQuantities } from "../../data-loaders/quantityFieldValues.spec";
+import { getQuantities, getQuantities2 } from "../../data-loaders/quantityFieldValues.spec";
 import { test } from "../../fixtures/productPage.spec";
 import { check, getExpectedMessage, steps } from "./helpers.spec";
 
 const quantities = getQuantities();
-//const notNumbers = getArrayData('quantityField', '')
 
 test.describe('Quantity field tests',async () => {
     
@@ -39,15 +38,21 @@ test.describe('Quantity field tests',async () => {
         await check(productPage, await getExpectedMessage(productPage));
     })
 
-    test('Below minimum',async ({productPage, page}) => {
+    test('Below minimum',async ({productPage}) => {
         
         await steps(productPage, quantities.belowMin);
         await check(productPage, 'Please enter a valid quantity');
     })
 
-    test('Above maximum',async ({productPage, page}) => {
+    test('Above maximum',async ({productPage}) => {
         
         await steps(productPage, quantities.aboveMax);
         await check(productPage, 'Please enter a valid quantity');
+    })
+
+    test('Blank field',async ({productPage}) => {
+        
+        await steps(productPage, quantities.blank);
+        await check(productPage, 'Please enter a quantity');
     })
 })
