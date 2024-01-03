@@ -13,11 +13,6 @@ export class ShoppingCart extends BasePage {
         this.row = new Row(page);
     }
 
-    /*setRow(nth: number) {
-
-        this.row.set(nth);
-    }*/
-
     getRow() {
 
         return this.row;
