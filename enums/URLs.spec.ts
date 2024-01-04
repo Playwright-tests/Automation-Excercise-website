@@ -6,5 +6,6 @@ export enum URLs {
     BillingAddressForm = 'https://skleptest.pl/my-account/edit-address/billing/',
     AmariShirtProduct = 'https://skleptest.pl/product/amari-shirt/',
     ShoppingCart = 'https://skleptest.pl/cart/',
-    CheckoutPage = 'https://skleptest.pl/checkout/'
+    CheckoutPage = 'https://skleptest.pl/checkout/',
+    OrderReceivedPage = 'https://skleptest.pl/checkout/order-received/'
 }
