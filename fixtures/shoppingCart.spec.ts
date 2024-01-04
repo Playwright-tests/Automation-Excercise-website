@@ -3,12 +3,18 @@ import { ShoppingCart } from "../page-object/shopping-cart/shoppingCart.spec";
 import { ProductPage } from "../page-object/product-page/productPage.spec";
 import { URLs } from "../enums/URLs.spec";
 
-type ShoppingCartFixture = {
+export type ShoppingCartFixture = {
 
     shoppingCart: ShoppingCart
 }
 
-export const test = base.extend<ShoppingCartFixture>({
+export type EmptyShoppingCartFixture = {
+
+    emptyShoppingCart: ShoppingCart
+}
+
+
+export const test = base.extend<ShoppingCartFixture & EmptyShoppingCartFixture>({
 
     shoppingCart:async ({page}, use) => {
         
@@ -23,6 +29,15 @@ export const test = base.extend<ShoppingCartFixture>({
         await shoppingCart.goto(URLs.ShoppingCart);
         await use(shoppingCart);
 
+    },
+
+    emptyShoppingCart:async ({page}, use) => {
+        
+        await page.goto(URLs.HomePage);
+
+        const emptyShoppingCart = new ShoppingCart(page);
+
+        await use(emptyShoppingCart);
     }
 })
 
