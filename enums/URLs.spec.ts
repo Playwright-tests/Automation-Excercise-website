@@ -7,5 +7,6 @@ export enum URLs {
     AmariShirtProduct = 'https://skleptest.pl/product/amari-shirt/',
     ShoppingCart = 'https://skleptest.pl/cart/',
     CheckoutPage = 'https://skleptest.pl/checkout/',
-    OrderReceivedPage = 'https://skleptest.pl/checkout/order-received/'
+    OrderReceivedPage = 'https://skleptest.pl/checkout/order-received',
+    PayPalPage = 'https://www.paypal.com/webapps/shoppingcart/'
 }
