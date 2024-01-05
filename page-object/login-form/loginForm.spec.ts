@@ -3,6 +3,7 @@ import { BasePage } from "../base/BasePage.spec";
 
 export class LoginForm extends BasePage {
 
+    readonly form: Locator;
     readonly usernameField: Locator;
     readonly passwordField: Locator;
     readonly loginButton: Locator;
@@ -12,6 +13,7 @@ export class LoginForm extends BasePage {
 
         super(page);
 
+        this.form = page.locator('.woocommerce-form.woocommerce-form-login.login');
         this.usernameField = page.locator('#username');
         this.passwordField = page.locator('#password');
         this.loginButton = page.getByRole('button', {name: 'login'});
@@ -36,5 +38,10 @@ export class LoginForm extends BasePage {
     async getError() {
 
         await this.errorMessage.textContent();
+    }
+
+    getFormLocator() {
+
+        return this.form;
     }
 }
