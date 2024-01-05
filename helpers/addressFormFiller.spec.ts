@@ -5,6 +5,9 @@ export async function fillAddressForm(page: Page, data: any) {
     
     const addressForm = new AddressForm(page);
 
+    await addressForm.getDropdownList().clickParent();
+    await addressForm.getDropdownList().setCountry(data.country);
+    await addressForm.getDropdownList().pressEnter();
     await addressForm.setFirstName(data.firstName);
     await addressForm.setLastName(data.lastName);
     await addressForm.setCompany(data.company);
