@@ -3,6 +3,7 @@ import { BasePage } from "../../base/BasePage.spec";
 
 export class DropdownList extends BasePage {
 
+    readonly parent: Locator;
     readonly arrow: Locator;
     readonly field: Locator;
 
@@ -10,8 +11,14 @@ export class DropdownList extends BasePage {
 
         super(page);
 
+        this.parent = page.locator('#select2-billing_country-container');
         this.arrow = page.locator('.select2-selection__arrow');
         this.field = page.getByRole('combobox').nth(1);
+    }
+
+    async clickParent() {
+
+        await this.parent.click();
     }
 
     async clickArrow() {
