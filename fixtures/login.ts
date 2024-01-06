@@ -1,7 +1,6 @@
 import { test as base } from "@playwright/test";
-import { LoginForm } from "../page-object/login-form/loginForm.spec";
-import { Header } from "../page-object/header/Header.spec";
-import { URLs } from "../enums/URLs.spec";
+import { LoginForm } from "../page-object/login-form/loginForm";
+import { URLs } from "../enums/URLs";
 
 type LoginFixture = {
 
