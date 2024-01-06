@@ -3,6 +3,7 @@ import { BasePage } from "../base/BasePage.spec";
 import { DifferentAddressSection } from "./differentAddressSection.spec";
 import { PaymentMethodsSection } from "./paymentMethodsSection.spec";
 import { LoginForm } from "../login-form/loginForm.spec";
+import { CouponForm } from "../coupon-form/couponForm.spec";
 
 export class CheckoutPage extends BasePage {
 
@@ -11,6 +12,7 @@ export class CheckoutPage extends BasePage {
     readonly errorMessage: Locator;
 
     readonly loginForm: LoginForm;
+    readonly couponForm: CouponForm;
 
     private differentAddressSection: DifferentAddressSection;
     private paymentMethodsScetion: PaymentMethodsSection;
@@ -27,6 +29,7 @@ export class CheckoutPage extends BasePage {
         this.paymentMethodsScetion = new PaymentMethodsSection(page);
 
         this.loginForm = new LoginForm(page);
+        this.couponForm = new CouponForm(page);
     }
 
     async clickLoginLink() {
@@ -67,5 +70,10 @@ export class CheckoutPage extends BasePage {
     getLoginForm() {
 
         return this.loginForm;
+    }
+
+    getCouponForm() {
+
+        return this.couponForm;
     }
 }
