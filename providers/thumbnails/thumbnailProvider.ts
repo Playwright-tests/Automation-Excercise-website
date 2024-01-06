@@ -1,7 +1,7 @@
 import { ThumbnailType } from "../../enums/thumbnailType.spec";
-import { BlogThumbnailGenerator } from "./blogThumbnailGenerator.spec";
-import { ProductThumbnailGenerator } from "./productThumbnailGenerator.spec";
-import { ThumbnailGenerator } from "./thumbnailGenerator.spec";
+import { BlogThumbnailGenerator } from "./blogThumbnailGenerator";
+import { ProductThumbnailGenerator } from "./productThumbnailGenerator";
+import { ThumbnailGenerator } from "./thumbnailGenerator";
 
 export class ThumbnailProvider {
 
