@@ -1,7 +1,7 @@
 import { Page } from "@playwright/test";
 import { ThumbnailGenerator } from "./thumbnailGenerator.spec";
 import { ProductThumbnail } from "../../page-object/thumbnail/productThumbnail.spec";
-import { ThumbnailCategory } from "../../enums/thumbnailCategory.spec";
+import { ThumbnailCategory } from "../../enums/thumbnailCategory";
 
 export class ProductThumbnailGenerator implements ThumbnailGenerator {
 

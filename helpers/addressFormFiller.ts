@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { AddressForm } from "../page-object/account/address-form/addressForm.spec";
+import { AddressForm } from "../page-object/address-form/addressForm";
 
 export async function fillAddressForm(page: Page, data: any) {
     

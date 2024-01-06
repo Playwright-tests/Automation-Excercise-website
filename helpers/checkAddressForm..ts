@@ -1,4 +1,4 @@
-import { AddressForm } from "../page-object/account/address-form/addressForm.spec";
+import { AddressForm } from "../page-object/address-form/addressForm";
 
 export async function checkAddressForm(addressForm: AddressForm, data: any) {
     

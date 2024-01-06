@@ -1,7 +1,7 @@
 import { test as base } from "@playwright/test";
-import { CheckoutPage } from "../page-object/checkout-page/checkoutPage.spec";
-import { ProductPage } from "../page-object/product-page/productPage.spec";
-import { URLs } from "../enums/URLs.spec";
+import { CheckoutPage } from "../page-object/checkout-page/checkoutPage";
+import { ProductPage } from "../page-object/product-page/productPage";
+import { URLs } from "../enums/URLs";
 
 export { expect } from "@playwright/test";
 

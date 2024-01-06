@@ -1,4 +1,4 @@
-import { ShoppingCart } from "../page-object/shopping-cart/shoppingCart.spec";
+import { ShoppingCart } from "../page-object/shopping-cart/shoppingCart";
 
 export async function checkShoppingCartState(shoppingCart: ShoppingCart, oldCount: number) {
     
