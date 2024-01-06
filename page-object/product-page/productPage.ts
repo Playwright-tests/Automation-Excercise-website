@@ -1,6 +1,6 @@
 import { Locator, Page } from "@playwright/test";
-import { BasePage } from "../base/BasePage.spec";
-import { QuantityField } from "../quantity-field/quantityField.spec";
+import { BasePage } from "../base/BasePage";
+import { QuantityField } from "../quantity-field/quantityField";
 
 export class ProductPage extends BasePage {
 

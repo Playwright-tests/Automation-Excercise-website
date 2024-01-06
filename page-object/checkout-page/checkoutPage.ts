@@ -1,9 +1,9 @@
 import { Locator, Page } from "@playwright/test";
-import { BasePage } from "../base/BasePage.spec";
-import { DifferentAddressSection } from "./differentAddressSection.spec";
-import { PaymentMethodsSection } from "./paymentMethodsSection.spec";
-import { LoginForm } from "../login-form/loginForm.spec";
-import { CouponForm } from "../coupon-form/couponForm.spec";
+import { BasePage } from "../base/BasePage";
+import { DifferentAddressSection } from "./differentAddressSection";
+import { PaymentMethodsSection } from "./paymentMethodsSection";
+import { LoginForm } from "../login-form/loginForm";
+import { CouponForm } from "../coupon-form/couponForm";
 
 export class CheckoutPage extends BasePage {
 
