@@ -1,8 +1,8 @@
 import { test as base } from "@playwright/test";
-import { ThumbnailType } from "../enums/thumbnailType.spec";
-import { ThumbnailProvider } from "../providers/thumbnails/thumbnailProvider.spec";
-import { ThumbnailGenerator } from "../providers/thumbnails/thumbnailGenerator.spec";
-import { URLs } from "../enums/URLs.spec";
+import { ThumbnailType } from "../enums/thumbnailType";
+import { ThumbnailProvider } from "../providers/thumbnails/thumbnailProvider";
+import { ThumbnailGenerator } from "../providers/thumbnails/thumbnailGenerator";
+import { URLs } from "../enums/URLs";
 
 export type ProductThumbnailFixture = {
 

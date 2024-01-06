@@ -2,12 +2,10 @@ import { test as base } from "@playwright/test";
 import { LoginForm } from "../page-object/login-form/loginForm";
 import { URLs } from "../enums/URLs";
 
-type LoginFixture = {
+export { expect } from "@playwright/test";
 
-    loginForm: LoginForm
-}
 
-export const test = base.extend<LoginFixture>({
+export const test = base.extend<{loginForm: LoginForm}>({
 
     loginForm:async ({page}, use) => {
         
@@ -17,5 +15,3 @@ export const test = base.extend<LoginFixture>({
         await use(loginForm);
     }
 })
-
-export { expect } from "@playwright/test";

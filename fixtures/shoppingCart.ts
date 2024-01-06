@@ -1,20 +1,18 @@
 import { test as base } from "@playwright/test";
-import { ShoppingCart } from "../page-object/shopping-cart/shoppingCart.spec";
-import { ProductPage } from "../page-object/product-page/productPage.spec";
-import { URLs } from "../enums/URLs.spec";
+import { ShoppingCart } from "../page-object/shopping-cart/shoppingCart";
+import { ProductPage } from "../page-object/product-page/productPage";
+import { URLs } from "../enums/URLs";
+
+export { expect } from "@playwright/test";
+
 
 export type ShoppingCartFixture = {
 
-    shoppingCart: ShoppingCart
-}
-
-export type EmptyShoppingCartFixture = {
-
+    shoppingCart: ShoppingCart,
     emptyShoppingCart: ShoppingCart
 }
 
-
-export const test = base.extend<ShoppingCartFixture & EmptyShoppingCartFixture>({
+export const test = base.extend<ShoppingCartFixture>({
 
     shoppingCart:async ({page}, use) => {
         
@@ -34,11 +32,8 @@ export const test = base.extend<ShoppingCartFixture & EmptyShoppingCartFixture>(
     emptyShoppingCart:async ({page}, use) => {
         
         await page.goto(URLs.HomePage);
-
         const emptyShoppingCart = new ShoppingCart(page);
 
         await use(emptyShoppingCart);
     }
 })
-
-export { expect } from "@playwright/test";

@@ -1,4 +1,4 @@
-import { ThumbnailType } from "../../enums/thumbnailType.spec";
+import { ThumbnailType } from "../../enums/thumbnailType";
 import { BlogThumbnailGenerator } from "./blogThumbnailGenerator";
 import { ProductThumbnailGenerator } from "./productThumbnailGenerator";
 import { ThumbnailGenerator } from "./thumbnailGenerator";

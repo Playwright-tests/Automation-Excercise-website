@@ -1,27 +1,20 @@
 import { test as base } from "@playwright/test";
-import { AccountNavigation } from "../page-object/account/accountNavigation.spec";
-import { AccountService } from "../helpers/accountService.spec";
-import { AddressFormNavigation } from "../page-object/account/addressFormNavigation.spec";
-import { AddressForm } from "../page-object/account/address-form/addressForm.spec";
-import { URLs } from "../enums/URLs.spec";
+import { AccountNavigation } from "../page-object/account/accountNavigation";
+import { AccountService } from "../helpers/accountService";
+import { AddressFormNavigation } from "../page-object/account/addressFormNavigation";
+import { AddressForm } from "../page-object/address-form/addressForm";
+import { URLs } from "../enums/URLs";
 
-type AccountNavigationFixture = {
+export { expect } from "@playwright/test";
 
-    accountNavigation: AccountNavigation
-}
+type AccountFixture = {
 
-type AddressFormNavigationFixture = {
-
-    addressFormNavigation: AddressFormNavigation
-}
-
-type AddressFormFixture = {
-
+    accountNavigation: AccountNavigation,
+    addressFormNavigation: AddressFormNavigation,
     addressForm: AddressForm
 }
 
-
-export const test = base.extend<AccountNavigationFixture & AddressFormNavigationFixture & AddressFormFixture>({
+export const test = base.extend<AccountFixture>({
 
     accountNavigation:async ({page}, use) => {
         
@@ -50,5 +43,3 @@ export const test = base.extend<AccountNavigationFixture & AddressFormNavigation
         await use(addressForm);
     }
 })
-
-export { expect } from "@playwright/test";

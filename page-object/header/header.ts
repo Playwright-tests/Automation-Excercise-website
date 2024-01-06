@@ -1,5 +1,5 @@
 import { Locator, Page } from "@playwright/test";
-import { BasePage } from "../base/BasePage.spec";
+import { BasePage } from "../base/BasePage";
 import { SearchEngine } from "./searchEngine";
 
 export class Header extends BasePage {

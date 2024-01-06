@@ -1,6 +1,6 @@
 import { Locator, Page } from "@playwright/test";
-import { Thumbnail } from "./thumbnail.spec";
-import { BasePage } from "../base/BasePage.spec";
+import { Thumbnail } from "./thumbnail";
+import { BasePage } from "../base/BasePage";
 
 export class BlogThumbnail extends BasePage implements Thumbnail {
 

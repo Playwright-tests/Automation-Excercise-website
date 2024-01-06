@@ -1,6 +1,6 @@
 import { Page } from "@playwright/test";
-import { BasePage } from "../base/BasePage.spec";
-import { DropdownList } from "./dropdownList.spec";
+import { BasePage } from "../base/BasePage";
+import { DropdownList } from "./dropdownList";
 
 export class MainMenu extends BasePage {
 

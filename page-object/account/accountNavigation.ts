@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { BasePage } from "../base/BasePage.spec";
+import { BasePage } from "../base/BasePage";
 
 export class AccountNavigation extends BasePage {
 

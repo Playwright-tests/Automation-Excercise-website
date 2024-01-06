@@ -1,6 +1,6 @@
 import { Locator, Page } from "@playwright/test";
-import { BasePage } from "../base/BasePage.spec";
-import { Row } from "./row.spec";
+import { BasePage } from "../base/BasePage";
+import { Row } from "./row";
 
 export class ShoppingCart extends BasePage {
 

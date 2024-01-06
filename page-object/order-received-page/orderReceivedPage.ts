@@ -1,5 +1,5 @@
-import { Locator, Page } from "@playwright/test";
-import { BasePage } from "../base/BasePage.spec";
+import { Page } from "@playwright/test";
+import { BasePage } from "../base/BasePage";
 
 export class OrderReceivedPage extends BasePage {
 

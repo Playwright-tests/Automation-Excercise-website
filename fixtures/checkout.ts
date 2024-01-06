@@ -5,22 +5,15 @@ import { URLs } from "../enums/URLs";
 
 export { expect } from "@playwright/test";
 
-type CheckoutPageFixture = {
+type CheckoutFixture = {
 
-    checkoutPage: CheckoutPage
+    checkoutPage: CheckoutPage,
+    withExpandedLoginForm: CheckoutPage,
+    withExpandedCouponForm: CheckoutPage
 }
 
-type LoginFormExpanded = {
 
-    loginFormExpanded: CheckoutPage
-}
-
-type CouponFormExpanded = {
-
-    couponFormExpanded: CheckoutPage
-}
-
-export const test = base.extend<CheckoutPageFixture & LoginFormExpanded & CouponFormExpanded>({
+export const test = base.extend<CheckoutFixture>({
 
     checkoutPage:async ({page}, use) => {
         
@@ -36,7 +29,7 @@ export const test = base.extend<CheckoutPageFixture & LoginFormExpanded & Coupon
         await use(checkoutPage);
     },
 
-    loginFormExpanded:async ({checkoutPage}, use) => {
+    withExpandedLoginForm:async ({checkoutPage}, use) => {
         
         await checkoutPage.clickLoginLink();
         const loginFormExpanded = checkoutPage;
@@ -44,7 +37,7 @@ export const test = base.extend<CheckoutPageFixture & LoginFormExpanded & Coupon
         await use(loginFormExpanded);
     },
 
-    couponFormExpanded:async ({checkoutPage}, use) => {
+    withExpandedCouponForm:async ({checkoutPage}, use) => {
         
         await checkoutPage.clickCouponCodeLink();
         const couponFormExpanded = checkoutPage;
