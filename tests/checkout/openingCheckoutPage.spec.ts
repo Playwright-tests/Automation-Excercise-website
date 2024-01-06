@@ -1,5 +1,5 @@
-import { URLs } from "../../enums/URLs.spec";
-import { test, expect } from "../../fixtures/shoppingCart.spec";
+import { URLs } from "../../enums/URLs";
+import { test, expect } from "../../fixtures/shoppingCart";
 
 
 test.describe('Opening checkout page',async () => {

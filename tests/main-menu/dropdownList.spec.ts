@@ -1,5 +1,5 @@
-import { test, expect } from "../../fixtures/mainMenu.spec";
-import { getLinkData } from "../../data-loaders/link.spec";
+import { test, expect } from "../../fixtures/mainMenu";
+import { getLinkData } from "../../data-loaders/link";
 
 const links = getLinkData('mainMenuDropdownList');
 

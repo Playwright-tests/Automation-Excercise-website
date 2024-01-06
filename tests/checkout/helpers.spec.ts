@@ -1,9 +1,9 @@
 import { Page, expect, test } from "@playwright/test";
-import { CheckoutPage } from "../../page-object/checkout-page/checkoutPage.spec";
-import { fillAddressForm } from "../../helpers/addressFormFiller.spec";
-import { getAddressFormData } from "../../data-loaders/addressFormData.spec";
-import { OrderReceivedPage } from "../../page-object/order-received-page/orderReceivedPage.spec";
-import { URLs } from "../../enums/URLs.spec";
+import { CheckoutPage } from "../../page-object/checkout-page/checkoutPage";
+import { fillAddressForm } from "../../helpers/addressFormFiller";
+import { getAddressFormData } from "../../data-loaders/addressFormData";
+import { OrderReceivedPage } from "../../page-object/order-received-page/orderReceivedPage";
+import { URLs } from "../../enums/URLs";
 
 const addressFormData = getAddressFormData('correct')[0];
 

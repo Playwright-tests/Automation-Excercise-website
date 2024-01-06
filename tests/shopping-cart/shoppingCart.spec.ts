@@ -1,5 +1,5 @@
-import { test, expect } from "../../fixtures/shoppingCart.spec";
-import { checkShoppingCartState } from "../../helpers/checkShoppingCart.spec";
+import { test, expect } from "../../fixtures/shoppingCart";
+import { checkShoppingCartState } from "../../helpers/checkShoppingCart";
 
 const rowIndex = 0;
 

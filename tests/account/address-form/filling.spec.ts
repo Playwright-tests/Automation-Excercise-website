@@ -1,8 +1,8 @@
-import { test, expect } from "../../../fixtures/account.spec";
-import { getAddressFormData } from "../../../data-loaders/addressFormData.spec";
+import { test, expect } from "../../../fixtures/account";
+import { getAddressFormData } from "../../../data-loaders/addressFormData";
 import { addressFormSteps, negativeCasesCheck, positiveCasesCheck } from "./steps.spec";
-import { URLs } from "../../../enums/URLs.spec";
-import { checkAddressForm } from "../../../helpers/checkAddressForm.spec";
+import { URLs } from "../../../enums/URLs";
+import { checkAddressForm } from "../../../helpers/checkAddressForm";
 
 const correct = getAddressFormData('correct')[0];
 const blankCompanyField = getAddressFormData('blankCompanyField')[0];

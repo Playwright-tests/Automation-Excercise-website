@@ -1,5 +1,5 @@
-import { test, expect } from "../../../fixtures/login.spec";
-import { getCredentials } from "../../../helpers/credentials.spec";
+import { test, expect } from "../../../fixtures/login";
+import { getCredentials } from "../../../data-loaders/credentials";
 import { steps } from "./steps.spec";
 
 const credentials = getCredentials('incorrectEmail');

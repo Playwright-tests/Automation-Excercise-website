@@ -1,4 +1,4 @@
-import { test, expect } from "../../fixtures/checkout.spec";
+import { test, expect } from "../../fixtures/checkout";
 
 test.describe('Different address section functionalities',async () => {
     

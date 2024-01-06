@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { ProductPage } from "../../page-object/product-page/productPage.spec";
+import { ProductPage } from "../../page-object/product-page/productPage";
 
 export async function steps(productPage: ProductPage, value: string) {
     

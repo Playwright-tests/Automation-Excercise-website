@@ -1,5 +1,5 @@
-import { getLinkData } from "../../data-loaders/link.spec";
-import { test, expect } from "../../fixtures/account.spec";
+import { getLinkData } from "../../data-loaders/link";
+import { test, expect } from "../../fixtures/account";
 
 const billingAddressFormLink = getLinkData('billingAddressFormLink')
 const shippingAddressFormLink = getLinkData('shippingAddressFormLink'); 

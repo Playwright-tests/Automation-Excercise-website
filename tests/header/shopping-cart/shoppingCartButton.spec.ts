@@ -1,5 +1,5 @@
-import { test, expect } from "../../../fixtures/header.spec";
-import { getLinkData } from "../../../helpers/link.spec";
+import { test, expect } from "../../../fixtures/header";
+import { getLinkData } from "../../../data-loaders/link";
 
 const links = getLinkData('shoppingCartPage');
 

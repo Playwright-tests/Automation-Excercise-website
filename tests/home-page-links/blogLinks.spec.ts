@@ -1,7 +1,7 @@
-import { ThumbnailCategory } from "../../enums/thumbnailCategory.spec";
-import { ThumbnailType } from "../../enums/thumbnailType.spec";
-import { test, expect } from "../../fixtures/thumbnail.spec";
-import { getLinkData } from "../../data-loaders/link.spec";
+import { ThumbnailCategory } from "../../enums/thumbnailCategory";
+import { ThumbnailType } from "../../enums/thumbnailType";
+import { test, expect } from "../../fixtures/thumbnail";
+import { getLinkData } from "../../data-loaders/link";
 import { steps } from "./steps.spec";
 
 const links_1 = getLinkData('blogs_1');

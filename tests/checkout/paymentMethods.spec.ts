@@ -1,5 +1,5 @@
-import { URLs } from "../../enums/URLs.spec";
-import { test, expect } from "../../fixtures/checkout.spec";
+import { URLs } from "../../enums/URLs";
+import { test, expect } from "../../fixtures/checkout";
 import { check, steps } from "./helpers.spec"
 
 test.describe('Payment methods',async () => {

@@ -1,5 +1,5 @@
-import { getArrayData } from "../../../data-loaders/arrayData.spec";
-import { test, expect } from "../../../fixtures/account.spec";
+import { getArrayData } from "../../../data-loaders/arrayData";
+import { test, expect } from "../../../fixtures/account";
 import { dropdownListSteps } from "./steps.spec";
 
 const stateCountyField = getArrayData('addressForm', 'stateCountyField');

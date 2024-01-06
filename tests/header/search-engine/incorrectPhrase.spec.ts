@@ -1,6 +1,6 @@
-import { test, expect } from "../../../fixtures/header.spec";
-import { getArrayData } from "../../../data-loaders/arrayData.spec";
-import { SearchResultsPage } from "../../../page-object/base/search-results/SearchResultsPage.spec";
+import { test, expect } from "../../../fixtures/header";
+import { getArrayData } from "../../../data-loaders/arrayData";
+import { SearchResultsPage } from "../../../page-object/search-results-page/searchResultsPage";
 import { steps } from "./steps.spec";
 
 const phrases = getArrayData('searchEngine', 'incorrectPhrase');

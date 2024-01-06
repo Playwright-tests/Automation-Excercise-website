@@ -1,5 +1,5 @@
-import { getQuantities } from "../../data-loaders/quantityFieldValues.spec";
-import { test, expect } from "../../fixtures/shoppingCart.spec";
+import { getQuantities } from "../../data-loaders/quantityFieldValues";
+import { test, expect } from "../../fixtures/shoppingCart";
 import { getActualTotal, getExpectedTotal, steps } from "./helpers.spec"
 
 const quantities = getQuantities();

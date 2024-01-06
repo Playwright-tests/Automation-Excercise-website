@@ -1,7 +1,7 @@
 import { Page, expect } from "@playwright/test";
-import { test } from "../../../fixtures/account.spec";
-import { AddressForm } from "../../../page-object/account/address-form/addressForm.spec";
-import { URLs } from "../../../enums/URLs.spec";
+import { test } from "../../../fixtures/account";
+import { AddressForm } from "../../../page-object/address-form/addressForm";
+import { URLs } from "../../../enums/URLs";
 
 export async function dropdownListSteps(country: string, addressForm: AddressForm) {
     

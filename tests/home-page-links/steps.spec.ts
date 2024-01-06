@@ -1,6 +1,6 @@
 import { Page, test } from "@playwright/test";
-import { ThumbnailCategory } from "../../enums/thumbnailCategory.spec";
-import { ThumbnailGenerator } from "../../providers/thumbnails/thumbnailGenerator.spec";
+import { ThumbnailCategory } from "../../enums/thumbnailCategory";
+import { ThumbnailGenerator } from "../../providers/thumbnails/thumbnailGenerator";
 
 export async function steps(page: Page, category: ThumbnailCategory, generator: ThumbnailGenerator, linkText: string) {
     

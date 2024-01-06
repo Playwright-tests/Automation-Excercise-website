@@ -1,5 +1,5 @@
 import { test } from "@playwright/test";
-import { NewsletterForm } from "../../../page-object/footer/newsletterForm.spec";
+import { NewsletterForm } from "../../../page-object/footer/newsletterForm";
 
 export async function steps(newsletterForm: NewsletterForm, credentials: any, func: any) {
     

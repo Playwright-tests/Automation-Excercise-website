@@ -1,5 +1,5 @@
 import { test } from "@playwright/test";
-import { LoginForm } from "../../../page-object/login-form/loginForm.spec";
+import { LoginForm } from "../../../page-object/login-form/loginForm";
 
 export async function steps(loginForm: LoginForm, credentials: any) {
     

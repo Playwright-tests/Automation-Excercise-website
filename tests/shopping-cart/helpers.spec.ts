@@ -1,5 +1,5 @@
 import { Page, test, expect } from "@playwright/test";
-import { ShoppingCart } from "../../page-object/shopping-cart/shoppingCart.spec";
+import { ShoppingCart } from "../../page-object/shopping-cart/shoppingCart";
 import { removeCurrencySymbol, toNumber } from "../../utils/toNumber.spec";
 
 export async function steps(shoppingCart: ShoppingCart, index: number, quantity: string) {

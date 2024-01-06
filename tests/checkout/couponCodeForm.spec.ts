@@ -1,4 +1,4 @@
-import { test, expect } from "../../fixtures/checkout.spec";
+import { test, expect } from "../../fixtures/checkout";
 import { expect as hdExpect } from "../../expect/toHaveHiddenSelector";
 
 test.describe('Coupon code form',async () => {
@@ -13,13 +13,13 @@ test.describe('Coupon code form',async () => {
         expect(await checkoutPage.getCouponForm().getFormLocator().isVisible()).toBeTruthy();
     })
 
-    test('Collapsing the coupon form',async ({couponFormExpanded, page}) => {
+    test('Collapsing the coupon form',async ({withExpandedCouponForm, page}) => {
         
         await test.step('Click the "Click here to enter you code"',async () => {
             
-            await couponFormExpanded.clickCouponCodeLink();
+            await withExpandedCouponForm.clickCouponCodeLink();
         });
 
-        await hdExpect(page).toHaveHiddenSelector(couponFormExpanded.getCouponForm().getFormSelector());
+        await hdExpect(page).toHaveHiddenSelector(withExpandedCouponForm.getCouponForm().getFormSelector());
     })    
 })
