@@ -1,9 +1,9 @@
 import { Page } from "@playwright/test";
 import { ThumbnailCategory } from "../../enums/thumbnailCategory";
-import { ThumbnailGenerator } from "./thumbnailGenerator";
+import { ThumbnailFactory } from "./thumbnailFactory";
 import { BlogThumbnail } from "../../page-object/thumbnail/blogThumbnail";
 
-export class BlogThumbnailGenerator implements ThumbnailGenerator {
+export class BlogThumbnailFactory implements ThumbnailFactory {
 
     createThumbnail(page: Page, category: ThumbnailCategory, linkText: string): BlogThumbnail {
         
