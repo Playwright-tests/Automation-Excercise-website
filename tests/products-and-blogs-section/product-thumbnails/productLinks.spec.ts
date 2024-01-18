@@ -1,7 +1,7 @@
-import { ThumbnailCategory } from "../../enums/thumbnailCategory";
-import { test, expect } from "../../fixtures/thumbnail";
-import { getLinkData } from "../../data-loaders/link";
-import { steps } from "./steps.spec";
+import { ThumbnailCategory } from "../../../enums/thumbnailCategory";
+import { test, expect } from "../../../fixtures/thumbnail";
+import { getLinkData } from "../../../data-loaders/link";
+import { steps } from "../steps.spec";
 
 const allBlackTops = getLinkData('allBlackTopsProducts');
 const highHeelShoes = getLinkData('highHeelShoesProducts');
