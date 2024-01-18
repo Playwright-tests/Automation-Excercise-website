@@ -1,17 +1,17 @@
 import { ThumbnailType } from "../../enums/thumbnailType";
-import { BlogThumbnailGenerator } from "./blogThumbnailGenerator";
-import { ProductThumbnailGenerator } from "./productThumbnailGenerator";
-import { ThumbnailGenerator } from "./thumbnailGenerator";
+import { BlogThumbnailFactory } from "./blogThumbnailFactory";
+import { ProductThumbnailFactory } from "./productThumbnailFactory";
+import { ThumbnailFactory } from "./thumbnailFactory";
 
 export class ThumbnailProvider {
 
-    static getGenerator(thumbnailType: ThumbnailType) : ThumbnailGenerator {
+    static getFactory(thumbnailType: ThumbnailType) : ThumbnailFactory {
 
         switch (thumbnailType) {
             case ThumbnailType.Product:
-                return new ProductThumbnailGenerator();
+                return new ProductThumbnailFactory();
             case ThumbnailType.Blog:
-                return new BlogThumbnailGenerator();
+                return new BlogThumbnailFactory();
             default: 
                 throw new Error('Could not find thumbnail with type: ' + thumbnailType);
         }
