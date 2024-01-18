@@ -8,6 +8,7 @@ export class ProductThumbnail extends BasePage implements Thumbnail {
     private link: Locator;
     private price: Locator;
     private addToCartButton: Locator;
+    private viewCartButton: Locator;
     readonly viewCartButtonSelector: string;
 
     constructor(page: Page) {
@@ -17,9 +18,15 @@ export class ProductThumbnail extends BasePage implements Thumbnail {
         this.viewCartButtonSelector = ".added_to_cart.wc-forward"
     }
 
+    private setViewCartButton() {
+
+        this.viewCartButton = this.parent.getByRole('link', {name: "View cart"});
+    }
+
     setParent(p: Locator) {
 
         this.parent = p;
+        this.setViewCartButton();
     }
 
     setLink(link: Locator) {
@@ -55,6 +62,11 @@ export class ProductThumbnail extends BasePage implements Thumbnail {
     async clickAddToCartButton() {
 
         await this.addToCartButton.click();
+    }
+
+    async clickViewCartButton() {
+
+        await this.viewCartButton.click();
     }
 
     getViewCartButtonSelector() {
