@@ -13,9 +13,9 @@ test.describe('Home page links to blogs from the first section',async () => {
     
     for(const link of links_1) {
 
-        test('Clicking the "' + link.linkText + '" link',async ({thumbnailGenerator, page}) => {
+        test('Clicking the "' + link.linkText + '" link',async ({thumbnailFactory, page}) => {
 
-            await steps(page, ThumbnailCategory.Recent1, thumbnailGenerator, link.linkText);
+            await steps(page, ThumbnailCategory.Recent1, thumbnailFactory, link.linkText);
             await expect(page).toHaveURL(link.url);
         })
     }
@@ -25,9 +25,9 @@ test.describe('Home page links to blogs from the second section',async () => {
     
     for(const link of links_2) {
 
-        test('Clicking the "' + link.linkText + '" link',async ({thumbnailGenerator, page}) => {
+        test('Clicking the "' + link.linkText + '" link',async ({thumbnailFactory, page}) => {
 
-            await steps(page, ThumbnailCategory.Recent2, thumbnailGenerator, link.linkText);
+            await steps(page, ThumbnailCategory.Recent2, thumbnailFactory, link.linkText);
             await expect(page).toHaveURL(link.url);
         })
     }
