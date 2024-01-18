@@ -33,6 +33,16 @@ export class NewsletterForm extends BasePage {
         await this.subscribeButton.click();
     }
 
+    async getNameFieldContent() {
+
+        return await this.nameField.inputValue();
+    }
+
+    async getEmailFieldContent() {
+
+        return await this.emailField.inputValue();
+    }
+
     getMessageLocator() {
 
         return this.message; 
