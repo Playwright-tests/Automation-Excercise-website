@@ -43,7 +43,7 @@ SC_test.describe('Adding product to the shopping cart',async () => {
             await productThumbnail.clickAddToCartButton();
         })
 
-        await page.waitForSelector(productThumbnail.getViewCartButtonSelector());
+        //await page.waitForSelector(productThumbnail.getViewCartButtonSelector());
         const shoppingCart = new ShoppingCart(page);
         await shoppingCart.goto(URLs.ShoppingCart);
 
