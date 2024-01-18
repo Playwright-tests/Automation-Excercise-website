@@ -4,26 +4,35 @@ import { Thumbnail } from "./thumbnail";
 
 export class ProductThumbnail extends BasePage implements Thumbnail {
 
+    private parent: Locator;
     private link: Locator;
     private price: Locator;
     private addToCartButton: Locator;
+    readonly viewCartButtonSelector: string;
 
     constructor(page: Page) {
 
         super(page);
+
+        this.viewCartButtonSelector = ".added_to_cart.wc-forward"
     }
 
-    setLink(link: Locator): void {
+    setParent(p: Locator) {
+
+        this.parent = p;
+    }
+
+    setLink(link: Locator) {
         
         this.link = link;
     }
 
-    setPrice(price: Locator) : void {
+    setPrice(price: Locator) {
 
         this.price = price;
     }
 
-    setAddToCartButton(button: Locator) : void {
+    setAddToCartButton(button: Locator) {
 
         this.addToCartButton = button;
     }
@@ -46,5 +55,10 @@ export class ProductThumbnail extends BasePage implements Thumbnail {
     async clickAddToCartButton() {
 
         await this.addToCartButton.click();
+    }
+
+    getViewCartButtonSelector() {
+
+        return this.viewCartButtonSelector;
     }
 }
