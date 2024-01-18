@@ -4,7 +4,7 @@ export const expect = baseExpect.extend({
 
     async toHaveHiddenSelector(page: Page, selector: string) {
 
-        const assertionName = 'toBeHidden';
+        const assertionName = 'toHaveHiddenSelector';
         let pass: boolean;
 
         try {
