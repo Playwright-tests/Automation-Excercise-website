@@ -8,6 +8,7 @@ export class ProductPage extends BasePage {
     readonly addToCartButton: Locator;
     readonly message: Locator;
     readonly producTitle: Locator;
+    readonly productPrice: Locator;
 
     constructor(page: Page) {
 
@@ -17,11 +18,17 @@ export class ProductPage extends BasePage {
         this.quantityField = QuantityField.createWithoutNth(page);
         this.message = page.locator('.woocommerce-message');
         this.producTitle = page.locator('.product_title ');
+        this.productPrice = page.locator('p').filter({hasText: "zł"});
     }
 
     async getProductTitle() {
 
         return await this.producTitle.textContent();
+    }
+
+    async getProductPrice() {
+
+        return await this.productPrice.textContent();
     }
 
     async clickAddToCartButton() {
