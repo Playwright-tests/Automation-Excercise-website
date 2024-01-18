@@ -666,6 +666,23 @@
         ] 
     },
 
+    "veryLongText": {
+
+        "phrase": [
+
+            {
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel velit eget odio ultricies bibendum. Mauris dapibus, leo eu varius condimentum, elit tellus posuere dolor, vel bibendum nisi metus id tortor. Aenean convallis, elit ac hendrerit tempor, diam leo aliquet turpis, a tincidunt elit purus a enim. Ut vitae leo sed ipsum accumsan pulvinar. Proin consectetur massa vel elit fermentum, sit amet malesuada mauris vulputate. Sed nec interdum neque. In hac habitasse platea dictumst. Vivamus ultricies nisi nec lectus malesuada, vel iaculis nisi consequat. Sed tempus quam ac nisl pharetra, vel congue tortor condimentum. Phasellus nec libero nec nulla facilisis ultrices. Suspendisse potenti."
+            }
+        ],
+        
+        "email": [
+
+            {
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel velit eget odio ultricies bibendum. Mauris dapibus, leo eu varius condimentum, elit tellus posuere dolor, vel bibendum nisi metus id tortor. Aenean convallis, elit ac hendrerit tempor, diam leo aliquet turpis, a tincidunt elit purus a enim. Ut vitae leo sed ipsum accumsan pulvinar. Proin consectetur massa vel elit fermentum, sit amet malesuada mauris vulputate. Sed nec interdum neque. In hac habitasse platea dictumst. Vivamus ultricies nisi nec lectus malesuada, vel iaculis nisi consequat. Sed tempus quam ac nisl pharetra, vel congue tortor condimentum. Phasellus nec libero nec nulla facilisis ultrices. Suspendiss@gmail.com"
+            }
+        ]
+    },
+
     "URLs": {
 
         "sliderSectionLinks": [
