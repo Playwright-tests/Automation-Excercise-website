@@ -6,7 +6,7 @@ test.describe('Filling the search engine field',async () => {
 
     test('Checking the search engine field content',async ({header}) => {
         
-        await test.step('Typing the "' + phrase + '" as the phrase',async () => {
+        await test.step('Enter the "' + phrase + '" as the phrase',async () => {
             
             await (await header.getSearchEngine()).setText(phrase);
         })
