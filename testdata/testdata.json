@@ -668,6 +668,19 @@
 
     "URLs": {
 
+        "sliderSectionLinks": [
+
+            {
+                "linkText": "Shop Now",
+                "pageURL": "https://skleptest.pl/shop/"
+            },
+
+            {
+                "linkText": "Learn More",
+                "pageURL": "https://skleptest.pl/test-contact-blablabla/"
+            }
+        ],
+
         "mainMenuLinks": [
 
             {
