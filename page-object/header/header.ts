@@ -4,6 +4,7 @@ import { SearchEngine } from "./searchEngine";
 
 export class Header extends BasePage {
 
+    readonly logo: Locator;
     readonly accountButton: Locator;
     readonly shoppingCartButton: Locator;
 
@@ -13,10 +14,16 @@ export class Header extends BasePage {
 
         super(page);
 
+        this.logo = page.getByRole('link', {name: 'Generic Shop'});
         this.accountButton = page.locator('li').filter({hasText: 'Account'});
         this.shoppingCartButton = page.locator('li').filter({hasText: 'My Cart - zł'});
 
         this.searchEngine = new SearchEngine(page);
+    }
+
+    async clickLogo() {
+
+        await this.logo.click();
     }
 
     async clickAccountButton() {
