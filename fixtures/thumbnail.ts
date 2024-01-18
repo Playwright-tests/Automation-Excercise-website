@@ -1,12 +1,14 @@
 import { test as base } from "@playwright/test";
 import { ThumbnailType } from "../enums/thumbnailType";
 import { ThumbnailProvider } from "../providers/thumbnails/thumbnailProvider";
-import { ThumbnailGenerator } from "../providers/thumbnails/thumbnailGenerator";
+import { ThumbnailFactory } from "../providers/thumbnails/thumbnailFactory";
 import { URLs } from "../enums/URLs";
+
+export { expect } from "@playwright/test";
 
 export type ProductThumbnailFixture = {
 
-    thumbnailGenerator: ThumbnailGenerator
+    thumbnailFactory: ThumbnailFactory
 }
 
 export type ThumbnailTypeFixture = {
@@ -19,13 +21,11 @@ export const test = base.extend<ProductThumbnailFixture & ThumbnailTypeFixture>(
 
     thumbnailType: [ThumbnailType.Product, {option: true}],
 
-    thumbnailGenerator:async ({thumbnailType, page}, use) => {
+    thumbnailFactory:async ({thumbnailType, page}, use) => {
         
-        const thumbnailGenerator = ThumbnailProvider.getGenerator(thumbnailType);
+        const thumbnailFactory = ThumbnailProvider.getFactory(thumbnailType);
 
         await page.goto(URLs.HomePage);
-        await use(thumbnailGenerator);
+        await use(thumbnailFactory);
     }
 })
-
-export { expect } from "@playwright/test";
