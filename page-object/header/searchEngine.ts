@@ -14,9 +14,19 @@ export class SearchEngine extends BasePage {
         this.searchButton = page.locator('#search-top-bar-submit');
     }
 
+    async clickSearchField() {
+
+        await this.searchField.click();
+    }
+
     async setText(text: string) {
 
         await this.searchField.fill(text);
+    }
+
+    async getFieldContent() {
+
+        return await this.searchField.inputValue();
     }
 
     async clickSearchButton() {
