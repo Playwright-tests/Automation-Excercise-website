@@ -3,6 +3,7 @@ import { BasePage } from "../base/BasePage";
 
 export class DropdownList extends BasePage {
 
+    readonly contents: Locator;
     readonly parent: Locator;
 
     constructor(page: Page) {
@@ -10,6 +11,7 @@ export class DropdownList extends BasePage {
         super(page);
 
         this.parent = page.locator('#menu-item-123');
+        this.contents = page.locator('.dropdown-menu');
     }
 
     async hoverParent() {
@@ -20,5 +22,10 @@ export class DropdownList extends BasePage {
     async clickLink(id: string) {
 
         await (await this.getPage()).locator('#' + id).click();
+    }
+
+    getContentsLocator() {
+
+        return this.contents;
     }
 }
