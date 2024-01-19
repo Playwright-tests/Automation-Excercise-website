@@ -1,6 +1,6 @@
 import { Locator, Page } from "@playwright/test";
 import { BasePage } from "../base/BasePage";
-import { toNumber, toNumber_2 } from "../../utils/toNumber.spec";
+import { toNumberIfNotZero, toNumberIfNotNull } from "../../utils/toNumber.spec";
 
 export class NewsletterForm extends BasePage {
 
@@ -46,12 +46,12 @@ export class NewsletterForm extends BasePage {
 
     async getNameFieldMaxLength(): Promise<number | undefined> {
 
-        return toNumber_2(await this.nameField.getAttribute('maxlength'));
+        return toNumberIfNotNull(await this.nameField.getAttribute('maxlength'));
     }
 
     async getEmailFieldMaxLength(): Promise<number | undefined> {
 
-        return toNumber_2(await this.emailField.getAttribute('maxlength'));
+        return toNumberIfNotNull(await this.emailField.getAttribute('maxlength'));
     }
 
     getMessageLocator() {
