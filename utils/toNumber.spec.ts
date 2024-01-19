@@ -11,7 +11,7 @@ export function removeCurrencySymbol(str: string | null) {
     return value;
 }
 
-export function toNumber(str: string | 0) {
+export function toNumberIfNotZero(str: string | 0) {
 
     if(str === 0) {
 
@@ -19,4 +19,16 @@ export function toNumber(str: string | 0) {
     }
 
     return parseInt(str, 10);
+}
+
+export function toNumberIfNotNull(str: string | null) {
+
+    if(str !== null) {
+
+        return parseInt(str, 10);
+
+    } else {
+
+        console.error('The string is undefined');
+    }
 }
