@@ -8,15 +8,27 @@ export class NewsletterForm extends BasePage {
     readonly emailField: Locator;
     readonly subscribeButton: Locator;
     readonly message: Locator;
+    readonly messageSelector: string;
 
     constructor(page: Page) {
         
         super(page);
 
+        this.messageSelector = '#es_msg';
         this.nameField = page.locator('#es_txt_name');
         this.emailField = page.locator('#es_txt_email');
         this.subscribeButton = page.locator('#es_txt_button');
-        this.message = page.locator('#es_msg');
+        this.message = page.locator(this.messageSelector);
+    }
+
+    async clickNameField() {
+
+        await this.nameField.click();
+    }
+
+    async clickEmailField() {
+
+        await this.emailField.click();
     }
 
     async setName(name: string) {
@@ -52,6 +64,11 @@ export class NewsletterForm extends BasePage {
     async getEmailFieldMaxLength(): Promise<number | undefined> {
 
         return toNumberIfNotNull(await this.emailField.getAttribute('maxlength'));
+    }
+
+    getMessageSelector() {
+
+        return this.messageSelector;
     }
 
     getMessageLocator() {
