@@ -1,10 +1,11 @@
-import { Page, expect } from "@playwright/test";
+import { Page } from "@playwright/test";
+import { StringContainer } from "../../../utils/stringContainer";
 
-export function handlePopup(page: Page, message: string) {
+export async function handlePopup(page: Page, receivedMessage: StringContainer) {
     
-    page.once('dialog', dialog => {
-
-        expect(dialog.message()).toEqual(message);
-        dialog.dismiss().catch(() => {});
+    page.on('dialog',async dialog => {
+        
+        receivedMessage.setValue(dialog.message());
+        await dialog.dismiss().catch(() => {});
     })
 }
