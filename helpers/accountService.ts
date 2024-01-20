@@ -13,7 +13,7 @@ export class AccountService {
         const loginForm = new LoginForm(page);
 
         await loginForm.goto(URLs.LoginPage);
-        await loginForm.setUsername(first.email);
+        await loginForm.setUsername(first.usernameOrEmail);
         await loginForm.setPassword(first.password);
         await loginForm.clickLoginButton();
     }
