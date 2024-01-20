@@ -29,15 +29,15 @@ test.describe('Login',async () => {
     test('Incorrect username or email', async ({loginForm}) => {
             
         await steps(loginForm, incorrectUsernameOrEmail);
-        hdExpect(await loginForm.getPage()).toHaveHiddenSelector(accountNavigation.getContentsSelector());
-        expect(await loginForm.getErrorMessageLocator().isVisible()).toBeTruthy();
+        await hdExpect(await loginForm.getPage()).toHaveHiddenSelector(accountNavigation.getContentsSelector());
+        await nhdExpect(await loginForm.getPage()).toHaveNotHiddenSelector(loginForm.getErrorMessageSelector());
     })
 
     test('Blank "Username or email address" field',async ({loginForm}) => {
              
         await steps(loginForm, blankUsernameOrEmailField);
-        hdExpect(await loginForm.getPage()).toHaveHiddenSelector(accountNavigation.getContentsSelector());
-        expect(await loginForm.getErrorMessageLocator().isVisible()).toBeTruthy();
+        await hdExpect(await loginForm.getPage()).toHaveHiddenSelector(accountNavigation.getContentsSelector());
+        await nhdExpect(await loginForm.getPage()).toHaveNotHiddenSelector(loginForm.getErrorMessageSelector());
     })
 
     for(const data of incorrectPassword) {
@@ -45,15 +45,15 @@ test.describe('Login',async () => {
         test('Password: ' + data.password + '"', async ({loginForm}) => {
             
             await steps(loginForm, data);
-            hdExpect(await loginForm.getPage()).toHaveHiddenSelector(accountNavigation.getContentsSelector());
-            expect(await loginForm.getErrorMessageLocator().isVisible()).toBeTruthy();
+            await hdExpect(await loginForm.getPage()).toHaveHiddenSelector(accountNavigation.getContentsSelector());
+            await nhdExpect(await loginForm.getPage()).toHaveNotHiddenSelector(loginForm.getErrorMessageSelector());
         })
     }
 
     test('Blank "Password" field',async ({loginForm}) => {
              
         await steps(loginForm, blankPasswordField);
-        hdExpect(await loginForm.getPage()).toHaveHiddenSelector(accountNavigation.getContentsSelector());
-        expect(await loginForm.getErrorMessageLocator().isVisible()).toBeTruthy();
+        await hdExpect(await loginForm.getPage()).toHaveHiddenSelector(accountNavigation.getContentsSelector());
+        await nhdExpect(await loginForm.getPage()).toHaveNotHiddenSelector(loginForm.getErrorMessageSelector());
     })
 })
