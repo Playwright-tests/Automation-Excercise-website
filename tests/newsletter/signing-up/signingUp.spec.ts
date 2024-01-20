@@ -1,58 +1,57 @@
 import { test, expect } from "../../../fixtures/footer";
+import { expect as hdExpect } from "../../../expect/tohaveNotHiddenSelector";
 import { getNewsletterData } from "../../../data-loaders/newsletterData";
 import { handlePopup } from "./handlePopup.spec";
 import { steps } from "./steps.spec";
+import { StringContainer } from "../../../utils/stringContainer";
 
-const correctCredentials = getNewsletterData('correctCredentials');
-const blankNameField = getNewsletterData('blankNameField');
+const correctCredentials = getNewsletterData('correctCredentials')[0];
+const blankNameField = getNewsletterData('blankNameField')[0];
+const blankEmailField = getNewsletterData('blankEmailField')[0];
 const incorrectEmailFormat = getNewsletterData('incorrectEmailFormat');
-const blankEmailField = getNewsletterData('blankEmailField');
 
 test.describe('Correct credentials',async () => {
+
+    let receivedMessage: StringContainer;
+
+    test.beforeEach(async () => {
+        
+        receivedMessage = new StringContainer();
+    })
     
-    for(const data of correctCredentials) {
+    test('Correct credentials',async ({newsletterForm}) => {
 
-        test('Name: "' + data.name + '", Email: "' + data.email + '"',async ({newsletterForm}) => {
+        await steps(newsletterForm, correctCredentials, handlePopup(await newsletterForm.getPage(), receivedMessage));
+
+        await hdExpect(await newsletterForm.getPage()).toHaveNotHiddenSelector(newsletterForm.getMessageSelector());
+        expect(receivedMessage.getValue()).toEqual('');
+    })
+
+    test('Blank the "Name" field',async ({newsletterForm}) => {
             
-            await steps(newsletterForm, data, () => { });
-            expect(await newsletterForm.getMessageLocator().isVisible()).toBeTruthy();
-            expect(await newsletterForm.getMessageLocator().textContent()).toEqual(data.message);
-        })
-    }
-})
+        await steps(newsletterForm, blankNameField, handlePopup(await newsletterForm.getPage(), receivedMessage));
 
-test.describe('Blank the "Name" field',async () => {
+        await hdExpect(await newsletterForm.getPage()).toHaveNotHiddenSelector(newsletterForm.getMessageSelector());
+        expect(receivedMessage.getValue()).toEqual('');
+    })
+
+    test('Blank "Email" field',async ({newsletterForm}) => {
+            
+        await steps(newsletterForm, blankEmailField, await handlePopup(await newsletterForm.getPage(), receivedMessage));
+
+        expect(receivedMessage.getValue()).toEqual(blankEmailField.message);
+    })
+
+    test.describe('Incorrect email format',async () => {
     
-    for(const data of blankNameField) {
-
-        test('Blank the "Name" field and Email: "' + data.email + '"',async ({newsletterForm}) => {
-            
-            await steps(newsletterForm, data, () => { });
-            expect(await newsletterForm.getMessageLocator().isVisible()).toBeTruthy();
-            expect(await newsletterForm.getMessageLocator().textContent()).toEqual(data.message);
-        })
-    }
-})
-
-test.describe('Incorrect email format',async () => {
+        for(const data of incorrectEmailFormat) {
     
-    for(const data of incorrectEmailFormat) {
-
-        test('Name: "' + data.name + '", Email: "' + data.email,async ({newsletterForm, page}) => {
-            
-            await steps(newsletterForm, data, () => {});
-        })
-    }
-})
-
-test.describe('Blank the "Email" field',async () => {
-    
-    for(const data of blankEmailField) {
-
-        test('Name: "' + data.name + '" and blank the "Email" field',async ({newsletterForm, page}) => {
-            
-            await steps(newsletterForm, data, handlePopup(page, data.message));
-            expect(await newsletterForm.getMessageLocator().isVisible()).toBeFalsy();
-        })
-    }
+            test('Name: "' + data.name + '", Email: "' + data.email,async ({newsletterForm}) => {
+                
+                await steps(newsletterForm, data, handlePopup(await newsletterForm.getPage(), receivedMessage));
+                
+                expect(receivedMessage.getValue()).toEqual(data.message);
+            })
+        }
+    })
 })
