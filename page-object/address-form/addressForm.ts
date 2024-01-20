@@ -19,6 +19,7 @@ export class AddressForm extends BasePage {
     readonly emaiField: Locator;
     readonly saveAddressButton: Locator;
     readonly errorMessage: Locator;
+    readonly errorMessageSelector: string;
 
     readonly dropdownList: DropdownList;
 
@@ -26,6 +27,7 @@ export class AddressForm extends BasePage {
 
         super(page);
 
+        this.errorMessageSelector = '.woocommerce-error';
         this.firstNameField = page.locator('#billing_first_name');
         this.lastNameField = page.locator('#billing_last_name');
         this.companyField = page.locator('#billing_company');
@@ -40,7 +42,7 @@ export class AddressForm extends BasePage {
         this.phoneField = page.locator('#billing_phone');
         this.emaiField = page.locator('#billing_email');
         this.saveAddressButton = page.getByRole('button', {name: 'Save address'});
-        this.errorMessage = page.locator('.woocommerce-error');
+        this.errorMessage = page.locator(this.errorMessageSelector);
 
         this.dropdownList = new DropdownList(page);
     }
@@ -179,6 +181,16 @@ export class AddressForm extends BasePage {
     getAdditionalDropdownList() {
 
         return this.additionalDropdownList;
+    }
+
+    getEmailFieldLocator() {
+
+        return this.emaiField;
+    }
+
+    getErrorMessageSelector() {
+
+        return this.errorMessageSelector;
     }
 
     getErrorMessageLocator() {
