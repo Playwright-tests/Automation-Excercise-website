@@ -63,6 +63,11 @@ export async function addressFormSteps(addressForm: AddressForm, addresFormData:
         await addressForm.setTown(addresFormData.city);
     })
 
+    await test.step('Enter "' + addresFormData.postcode + '" in the "Postcode / ZIP" field',async () => {
+        
+        await addressForm.setPostcode(addresFormData.postcode);
+    })
+
     await test.step('Enter "' + addresFormData.phone + '" in the "Phone" field',async () => {
         
         await addressForm.setPhone(addresFormData.phone);
@@ -79,7 +84,7 @@ export async function addressFormSteps(addressForm: AddressForm, addresFormData:
     })
 }
 
-export async function positiveCasesCheck(errors: string[]) {
+/*export async function positiveCasesCheck(errors: string[]) {
     
     if (errors.length === 0) {
 
@@ -98,4 +103,4 @@ export async function negativeCasesCheck(addressForm: AddressForm, data: any, pa
     expect(await addressForm.getErrorMessageLocator().isVisible()).toBeTruthy();
     expect(await addressForm.getErrorMessage()).toEqual(data.errorMessage);
 
-}
+}*/
