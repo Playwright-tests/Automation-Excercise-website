@@ -64,43 +64,28 @@
         "correctCredentials": [
 
             {
-                "email": "karen@gmail.com",
+                "usernameOrEmail": "karen@gmail.com",
                 "password": "Kvc$11324#"
             }
         ],
 
-        "incorrectEmail": [
+        "incorrectUsernameOrEmail": [
 
             {
-                "email": "Marek@",
+                "usernameOrEmail": "Marek",
                 "password": "Kvc$11324#"
             },
 
             {
-                "email": "@gmail.com",
-                "password": "Kvc$11324#"
-            },
-
-            {
-                "email": "fff34@.com",
-                "password": "Kvc$11324#"
-            },
-
-            {
-                "email": "opr.123@gmail_com_com",
-                "password": "Kvc$11324#"
-            },
-
-            {
-                "email": "BVC",
+                "usernameOrEmail": "@gmail.com",
                 "password": "Kvc$11324#"
             }
         ],
 
-        "blankEmailField": [
+        "blankUsernameOrEmailField": [
 
             {
-                "email": "",
+                "usernameOrEmail": "",
                 "password": "Kvc$11324#"
             }
         ],
@@ -108,28 +93,13 @@
         "incorrectPassword": [
 
             {
-                "email": "karen@gmail.com",
+                "usernameOrEmail": "karen@gmail.com",
+                "password": "kVC$11324#"
+            },
+
+            {
+                "usernameOrEmail": "karen@gmail.com",
                 "password": "Qpty32@34"
-            },
-
-            {
-                "email": "karen@gmail.com",
-                "password": "Rev(342)"
-            },
-
-            {
-                "email": "karen@gmail.com",
-                "password": "Rwda32462+"
-            },
-
-            {
-                "email": "karen@gmail.com",
-                "password": "98MyAccount!"
-            },
-
-            {
-                "email": "karen@gmail.com",
-                "password": "{fdw78}"
             }
 
         ],
@@ -137,7 +107,7 @@
         "blankPasswordField": [
 
             {
-                "email": "karen@gmail.com",
+                "usernameOrEmail": "karen@gmail.com",
                 "password": ""
             }
         ]
