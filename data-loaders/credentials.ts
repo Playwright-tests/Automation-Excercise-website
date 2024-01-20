@@ -3,12 +3,12 @@ import { getJSONArray } from "./JSONArray";
 export function getCredentials(node: string) {
 
     let JSONArray = getJSONArray('login');
-    let credentials: { email: string, password: string }[] = [];
+    let credentials: { usernameOrEmail: string, password: string }[] = [];
 
     for(const data of JSONArray[node]) {
 
         let temp = {
-            email: data.email,
+            usernameOrEmail: data.usernameOrEmail,
             password: data.password,
         }
 
