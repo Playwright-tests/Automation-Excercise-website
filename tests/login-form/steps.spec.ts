@@ -1,11 +1,11 @@
 import { test } from "@playwright/test";
-import { LoginForm } from "../../../page-object/login-form/loginForm";
+import { LoginForm } from "../../page-object/login-form/loginForm";
 
 export async function steps(loginForm: LoginForm, credentials: any) {
     
     await test.step('Enter the username',async () => {
         
-        await loginForm.setUsername(credentials.email);
+        await loginForm.setUsername(credentials.usernameOrEmail);
     })
 
     await test.step('Enter the password',async () => {
