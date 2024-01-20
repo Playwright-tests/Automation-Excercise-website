@@ -9,17 +9,24 @@ export class LoginForm extends BasePage {
     readonly passwordField: Locator;
     readonly loginButton: Locator;
     readonly errorMessage: Locator;
+    readonly errorMessageSelector: string;
 
     constructor(page: Page) {
 
         super(page);
 
+        this.errorMessageSelector = '.woocommerce-error';
         this.formSelector = '.woocommerce-form.woocommerce-form-login.login';
         this.form = page.locator(this.formSelector);
         this.usernameField = page.locator('#username');
         this.passwordField = page.locator('#password');
         this.loginButton = page.getByRole('button', {name: 'login'});
-        this.errorMessage = page.locator('.woocommerce-error');
+        this.errorMessage = page.locator(this.errorMessageSelector);
+    }
+
+    async clickPasswordField() {
+
+        await this.passwordField.click();
     }
 
     async setUsername(username: string) {
@@ -47,9 +54,9 @@ export class LoginForm extends BasePage {
         return await this.passwordField.inputValue();
     }
 
-    getErrorMessageLocator() {
+    getErrorMessageSelector() {
 
-        return this.errorMessage;
+        return this.errorMessageSelector;
     }
 
     async getErrorMessageContent() {
