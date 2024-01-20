@@ -37,7 +37,12 @@ export class LoginForm extends BasePage {
         await this.loginButton.click();
     }
 
-    async getError() {
+    getErrorMessageLocator() {
+
+        return this.errorMessage;
+    }
+
+    async getErrorMessageContent() {
 
         await this.errorMessage.textContent();
     }
