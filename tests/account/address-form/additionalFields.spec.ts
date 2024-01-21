@@ -1,5 +1,6 @@
 import { getArrayData } from "../../../data-loaders/arrayData";
 import { test, expect } from "../../../fixtures/account";
+import { checkLabel } from "./assertions.spec";
 import { dropdownListSteps } from "./steps.spec";
 
 const stateCountyField = getArrayData('addressForm', 'stateCountyField');
@@ -21,7 +22,9 @@ test.describe('Additional "State / County" field',async () => {
         test('Setting "' + country + '"',async ({addressForm}) => {
             
             await dropdownListSteps(country, addressForm);
-            expect(await addressForm.getStateCountyField().isVisible()).toBeTruthy();
+            
+            expect(await addressForm.getAdditionalFieldLocator().isVisible()).toBeTruthy();
+            await checkLabel(addressForm, "State / County");
         })
     }
 })
@@ -33,7 +36,8 @@ test.describe('Additional "State / County dropdown list"',async () => {
         test('Setting "' + country + '"',async ({addressForm}) => {
             
             await dropdownListSteps(country, addressForm);
-            expect(await addressForm.getAdditionalDropdownList().isVisible()).toBeTruthy();
+            expect(await addressForm.getAdditionalDropdownListLocator().isVisible()).toBeTruthy();
+            await checkLabel(addressForm, "State / County *");
         })
     }
 })
@@ -45,7 +49,8 @@ test.describe('Additional "County" dropdown list',async () => {
         test('Setting "' + country + '"',async ({addressForm}) => {
             
             await dropdownListSteps(country, addressForm);
-            expect(await addressForm.getAdditionalDropdownList().isVisible()).toBeTruthy();
+            expect(await addressForm.getAdditionalDropdownListLocator().isVisible()).toBeTruthy();
+            await checkLabel(addressForm, 'County *');
         })
     }
 })
@@ -57,7 +62,8 @@ test.describe('Additional "State dropdown list"',async () => {
         test('Setting "' + country + '"',async ({addressForm}) => {
             
             await dropdownListSteps(country, addressForm);
-            expect(await addressForm.getAdditionalDropdownList().isVisible()).toBeTruthy();
+            expect(await addressForm.getAdditionalDropdownListLocator().isVisible()).toBeTruthy();
+            await checkLabel(addressForm, "State *");
         })
     }
 })
@@ -69,7 +75,8 @@ test.describe('Additional "District dropdown list"',async () => {
         test('Setting "' + country + '"',async ({addressForm}) => {
             
             await dropdownListSteps(country, addressForm);
-            expect(await addressForm.getAdditionalDropdownList().isVisible()).toBeTruthy();
+            expect(await addressForm.getAdditionalDropdownListLocator().isVisible()).toBeTruthy();
+            await checkLabel(addressForm, 'District *');
         })
     }
 })
@@ -81,7 +88,8 @@ test.describe('Additional "Province dropdown list"',async () => {
         test('Setting "' + country + '"',async ({addressForm}) => {
             
             await dropdownListSteps(country, addressForm);
-            expect(await addressForm.getAdditionalDropdownList().isVisible()).toBeTruthy();
+            expect(await addressForm.getAdditionalDropdownListLocator().isVisible()).toBeTruthy();
+            await checkLabel(addressForm, 'Province *');
         })
     }
 })
@@ -93,7 +101,8 @@ test.describe('Additional "Region" field',async () => {
         test('Setting "' + country + '"',async ({addressForm}) => {
             
             await dropdownListSteps(country, addressForm);
-            expect(await addressForm.getRegionField().isVisible()).toBeTruthy();
+            expect(await addressForm.getAdditionalFieldLocator().isVisible()).toBeTruthy();
+            await checkLabel(addressForm, 'Region *');
         })
     }
 })
@@ -105,7 +114,8 @@ test.describe('Additional "Region" dropdown list',async () => {
         test('Setting "' + country + '"',async ({addressForm}) => {
             
             await dropdownListSteps(country, addressForm);
-            expect(await addressForm.getAdditionalDropdownList().isVisible()).toBeTruthy();
+            expect(await addressForm.getAdditionalDropdownListLocator().isVisible()).toBeTruthy();
+            await checkLabel(addressForm, 'Region')
         })
     }
 })
@@ -117,7 +127,8 @@ test.describe('Additional "Prefecture" dropdown list',async () => {
         test('Setting "' + country + '"',async ({addressForm}) => {
             
             await dropdownListSteps(country, addressForm);
-            expect(await addressForm.getAdditionalDropdownList().isVisible()).toBeTruthy();
+            expect(await addressForm.getAdditionalDropdownListLocator().isVisible()).toBeTruthy();
+            await checkLabel(addressForm, 'Prefecture *');
         })
     }
 })
@@ -129,7 +140,8 @@ test.describe('Additional "Municipality" field',async () => {
         test('Setting "' + country + '"',async ({addressForm}) => {
             
             await dropdownListSteps(country, addressForm);
-            expect(await addressForm.getMunicipalityField().isVisible()).toBeTruthy();
+            expect(await addressForm.getAdditionalFieldLocator().isVisible()).toBeTruthy();
+            await checkLabel(addressForm, 'Municipality');
         })
     }
 })
@@ -141,7 +153,8 @@ test.describe('Additional "State / Zone" dropdown list',async () => {
         test('Setting "' + country + '"',async ({addressForm}) => {
             
             await dropdownListSteps(country, addressForm);
-            expect(await addressForm.getAdditionalDropdownList().isVisible()).toBeTruthy();
+            expect(await addressForm.getAdditionalDropdownListLocator().isVisible()).toBeTruthy();
+            await checkLabel(addressForm, 'State / Zone *');
         })
     }
 })
