@@ -33,3 +33,9 @@ export async function checkValidationMessage(locator: Locator, expectedMessage: 
 
     expect(validationMessage).toContain(expectedMessage);
 }
+
+export async function checkLabel(addressForm: AddressForm, labelTitle: string) {
+    
+    expect(await addressForm.getAdditionailLabelLocator().isVisible()).toBeTruthy();
+    expect(await addressForm.getAdditionailLabelLocator().textContent()).toEqual(labelTitle);
+}
