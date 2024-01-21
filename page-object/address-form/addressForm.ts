@@ -10,16 +10,15 @@ export class AddressForm extends BasePage {
     readonly addressField_1: Locator;
     readonly addressField_2: Locator;
     readonly townCityField: Locator;
-    readonly stateCountyField: Locator;
-    readonly regionField: Locator;
-    readonly municipalityField: Locator;
-    readonly additionalDropdownList: Locator;
     readonly postcodeField: Locator;
     readonly phoneField: Locator;
     readonly emaiField: Locator;
     readonly saveAddressButton: Locator;
     readonly errorMessage: Locator;
     readonly errorMessageSelector: string;
+    readonly additionalLabel: Locator;
+    readonly additionalField: Locator;
+    readonly additionalDropdownList: Locator;
 
     readonly dropdownList: DropdownList;
 
@@ -34,15 +33,14 @@ export class AddressForm extends BasePage {
         this.addressField_1 = page.locator('#billing_address_1');
         this.addressField_2 = page.locator("#billing_address_2");
         this.townCityField = page.locator('#billing_city');
-        this.stateCountyField = page.getByLabel('State / County *');
-        this.regionField = page.getByLabel('Region *');
-        this.municipalityField = page.getByLabel('Municipality');
-        this.additionalDropdownList = page.locator('#billing_state_field').getByLabel('', {exact: true});
         this.postcodeField = page.locator('#billing_postcode');
         this.phoneField = page.locator('#billing_phone');
         this.emaiField = page.locator('#billing_email');
         this.saveAddressButton = page.getByRole('button', {name: 'Save address'});
         this.errorMessage = page.locator(this.errorMessageSelector);
+        this.additionalLabel = page.locator('label[for="billing_state"]');
+        this.additionalField = page.locator('input[id="billing_state"]');
+        this.additionalDropdownList = page.locator('select[id="billing_state"]');
 
         this.dropdownList = new DropdownList(page);
     }
@@ -81,21 +79,6 @@ export class AddressForm extends BasePage {
     async setTown(town: string) {
 
         await this.clearAndFill(this.townCityField, town);
-    }
-
-    async setState(state: string) {
-
-        await this.clearAndFill(this.stateCountyField, state);
-    }
-
-    async setRegion(region: string) {
-
-        await this.clearAndFill(this.regionField, region);
-    }
-
-    async setMunicipality(municipality: string) {
-
-        await this.clearAndFill(this.municipalityField, municipality);
     }
 
     async setPostcode(postcode: string) {
@@ -163,26 +146,6 @@ export class AddressForm extends BasePage {
         return await this.emaiField.inputValue();
     }
 
-    getStateCountyField() {
-
-        return this.stateCountyField;
-    }
-
-    getRegionField() {
-
-        return this.regionField;
-    }
-
-    getMunicipalityField() {
-
-        return this.municipalityField;
-    }
-
-    getAdditionalDropdownList() {
-
-        return this.additionalDropdownList;
-    }
-
     getEmailFieldLocator() {
 
         return this.emaiField;
@@ -206,5 +169,20 @@ export class AddressForm extends BasePage {
     getDropdownList() {
 
         return this.dropdownList;
+    }
+
+    getAdditionailLabelLocator() {
+
+        return this.additionalLabel;
+    }
+
+    getAdditionalFieldLocator() {
+
+        return this.additionalField;
+    }
+
+    getAdditionalDropdownListLocator() {
+
+        return this.additionalDropdownList;
     }
 }
