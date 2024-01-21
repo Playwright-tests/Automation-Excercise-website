@@ -14,6 +14,11 @@ export async function dropdownListSteps(country: string, addressForm: AddressFor
         
         await addressForm.getDropdownList().setCountry(country);
     })
+
+    await test.step('Press ENTER',async () => {
+        
+        await (await addressForm.getPage()).keyboard.press('Enter');
+    })
 }
 
 export async function addressFormSteps(addressForm: AddressForm, addresFormData: any) {
