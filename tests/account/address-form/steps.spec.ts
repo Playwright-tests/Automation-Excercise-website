@@ -2,7 +2,7 @@ import { Locator } from "@playwright/test";
 import { test } from "../../../fixtures/account";
 import { AddressForm } from "../../../page-object/address-form/addressForm";
 
-export async function dropdownListFillingSteps(country: string, addressForm: AddressForm) {
+export async function fillDropdownList(country: string, addressForm: AddressForm) {
     
     await test.step('Click the arrow',async () => {
             
@@ -13,6 +13,11 @@ export async function dropdownListFillingSteps(country: string, addressForm: Add
         
         await addressForm.getDropdownList().setCountry(country);
     })
+}
+
+export async function fillDropdownListAndAcceptChanges(country: string, addressForm: AddressForm) {
+    
+    await fillDropdownList(country, addressForm);
 
     await test.step('Press ENTER',async () => {
         
@@ -20,7 +25,20 @@ export async function dropdownListFillingSteps(country: string, addressForm: Add
     })
 }
 
-export async function addressFormFillingSteps(addressForm: AddressForm, addresFormData: any) {
+export async function typeCountry(country: string, addressForm: AddressForm) {
+    
+    await test.step('Click the arrow',async () => {
+        
+        await addressForm.getDropdownList().clickArrow();
+    })
+
+    await test.step('Type "' + country + '"',async () => {
+        
+        await addressForm.getDropdownList().typeCoutry(country);
+    })
+}
+
+export async function fillAddressForm(addressForm: AddressForm, addresFormData: any) {
     
     await test.step('Click the arrow',async () => {
         
@@ -83,9 +101,9 @@ export async function addressFormFillingSteps(addressForm: AddressForm, addresFo
     })
 }
 
-export async function buttonClickingSteps(addressForm: AddressForm, addresFormData: any) {
+export async function fillAddressFormAndAcceptChanges(addressForm: AddressForm, addresFormData: any) {
     
-    await addressFormFillingSteps(addressForm, addresFormData);
+    await fillAddressForm(addressForm, addresFormData);
 
     await test.step('Click the "Save address" button',async () => {
         
