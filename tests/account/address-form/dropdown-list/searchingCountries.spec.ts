@@ -1,13 +1,11 @@
 import { getArrayData } from "../../../../data-loaders/arrayData";
 import { test, expect } from "../../../../fixtures/account";
-import { expect as hdExpect } from "../../../../expect/toHaveHiddenSelector";
-import { expect as nhdExpect } from "../../../../expect/tohaveNotHiddenSelector";
-import { fillDropdownList, fillDropdownListAndAcceptChanges, typeCountry } from "../steps.spec";
+import { typeCountry } from "../steps.spec";
 
 const correctCountryNames = getArrayData('countries', 'correctCountryName');
 const incorrectCountryNames = getArrayData('countries', 'incorrectCountryName');
 
-test.describe('Searching country',async () => {
+test.describe('Searching countries',async () => {
     
     const expectedAlertMessage = 'No matches found';
 
