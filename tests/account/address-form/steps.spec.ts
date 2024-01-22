@@ -81,6 +81,11 @@ export async function addressFormFillingSteps(addressForm: AddressForm, addresFo
         
         await addressForm.setEmail(addresFormData.email);
     })
+}
+
+export async function buttonClickingSteps(addressForm: AddressForm, addresFormData: any) {
+    
+    await addressFormFillingSteps(addressForm, addresFormData);
 
     await test.step('Click the "Save address" button',async () => {
         
