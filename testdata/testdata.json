@@ -128,6 +128,13 @@
             "this is not a country!",
             "do you (know) my country?",
             "???country???"
+        ],
+
+        "incompleteCountryNames": [
+
+            "Po",
+            "Re",
+            "isl"
         ]
     },
 
