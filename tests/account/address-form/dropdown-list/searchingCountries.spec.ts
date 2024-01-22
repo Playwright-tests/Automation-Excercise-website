@@ -1,6 +1,6 @@
 import { getArrayData } from "../../../../data-loaders/arrayData";
 import { test, expect } from "../../../../fixtures/account";
-import { typeCountry } from "../steps.spec";
+import { typeCountry } from "../commons/steps.spec";
 
 const correctCountryNames = getArrayData('countries', 'correctCountryName');
 const incorrectCountryNames = getArrayData('countries', 'incorrectCountryName');

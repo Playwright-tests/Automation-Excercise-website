@@ -1,6 +1,6 @@
 import { Locator } from "@playwright/test";
-import { test } from "../../../fixtures/account";
-import { AddressForm } from "../../../page-object/address-form/addressForm";
+import { test } from "../../../../fixtures/account";
+import { AddressForm } from "../../../../page-object/address-form/addressForm";
 
 export async function fillDropdownList(country: string, addressForm: AddressForm) {
     
