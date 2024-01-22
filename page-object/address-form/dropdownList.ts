@@ -7,6 +7,8 @@ export class DropdownList extends BasePage {
     readonly arrow: Locator;
     readonly field: Locator;
     readonly alert: Locator;
+    readonly results: Locator;
+    readonly optionResultSelector: string;
 
     constructor(page: Page) {
 
@@ -16,6 +18,8 @@ export class DropdownList extends BasePage {
         this.arrow = page.locator('.select2-selection__arrow');
         this.field = page.getByRole('combobox').nth(1);
         this.alert = page.locator('li[role="alert"]');
+        this.results = page.locator('.select2-results');
+        this.optionResultSelector = 'li.select2-results__option';
     }
 
     async clickParent() {
@@ -41,6 +45,16 @@ export class DropdownList extends BasePage {
     async getFieldContent() {
 
         return await this.field.inputValue();
+    }
+
+    getResultsLocator() {
+
+        return this.results;
+    }
+
+    getOptionResultSelector() {
+
+        return this.optionResultSelector;
     }
 
     getAlertLocator() {
