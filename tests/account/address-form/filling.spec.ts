@@ -1,6 +1,6 @@
 import { test, expect } from "../../../fixtures/account";
 import { getAddressFormData } from "../../../data-loaders/addressFormData";
-import { addressFormSteps } from "./steps.spec";
+import { addressFormFillingSteps } from "./steps.spec";
 import { positive, negative, checkValidationMessage } from "./assertions.spec";
 import { URLs } from "../../../enums/URLs";
 
@@ -24,7 +24,7 @@ test.describe('Filling the billing address form', async () => {
 
     test('Correct data', async ({ addressForm, page }) => {
 
-        await addressFormSteps(addressForm, correct);
+        await addressFormFillingSteps(addressForm, correct);
         await expect(page).toHaveURL(URLs.AddressFormNavigation);
         await page.goto(URLs.BillingAddressForm);
         await positive(addressForm, correct);
@@ -32,7 +32,7 @@ test.describe('Filling the billing address form', async () => {
 
     test('Blank "Company" field',async ({addressForm}) => {
         
-        await addressFormSteps(addressForm, blankCompanyField);
+        await addressFormFillingSteps(addressForm, blankCompanyField);
         await expect(await addressForm.getPage()).toHaveURL(URLs.AddressFormNavigation);
         await (await addressForm.getPage()).goto(URLs.BillingAddressForm);
         await positive(addressForm, correct);
@@ -40,7 +40,7 @@ test.describe('Filling the billing address form', async () => {
 
     test('Blank optional "Street address" field',async ({addressForm}) => {
         
-        await addressFormSteps(addressForm, blankOptionalAddressField);
+        await addressFormFillingSteps(addressForm, blankOptionalAddressField);
         await expect(await addressForm.getPage()).toHaveURL(URLs.AddressFormNavigation);
         await (await addressForm.getPage()).goto(URLs.BillingAddressForm);
         await positive(addressForm, correct);
@@ -48,82 +48,82 @@ test.describe('Filling the billing address form', async () => {
 
     test('Incorrect first name',async ({addressForm}) => {
         
-        await addressFormSteps(addressForm, incorrectFirstName);
+        await addressFormFillingSteps(addressForm, incorrectFirstName);
         await negative(addressForm, incorrectFirstName);
     })
 
     test('Incorrect last name',async ({addressForm}) => {
         
-        await addressFormSteps(addressForm, incorrectLastName);
+        await addressFormFillingSteps(addressForm, incorrectLastName);
         await negative(addressForm, incorrectLastName);
     })
 
     test('Incorrect postcode',async ({addressForm}) => {
         
-        await addressFormSteps(addressForm, incorrectPostcode);
+        await addressFormFillingSteps(addressForm, incorrectPostcode);
         await negative(addressForm, incorrectPostcode);
     })
 
     test('Incorrect phone number',async ({addressForm}) => {
         
-        await addressFormSteps(addressForm, incorrectPhoneNumber);
+        await addressFormFillingSteps(addressForm, incorrectPhoneNumber);
         await negative(addressForm, incorrectPhoneNumber);
     })
 
     for(const data of incorrectEmail) {
 
-        test('Entering "' + data.email + '" as the incorrect email format',async ({addressForm, page}) => {
+        test('Entering "' + data.email + '" as the incorrect email format',async ({addressForm}) => {
             
-            await addressFormSteps(addressForm, data);
+            await addressFormFillingSteps(addressForm, data);
             await checkValidationMessage(addressForm.getEmailFieldLocator(), 'data.errorMessage');
         })
     }
 
     test('Blank "First name" field', async ({ addressForm}) => {
 
-        await addressFormSteps(addressForm, blankFirstNameField);
+        await addressFormFillingSteps(addressForm, blankFirstNameField);
         await negative(addressForm, blankFirstNameField);
     })
 
 
     test('Blank "Last name" field', async ({ addressForm, page }) => {
 
-        await addressFormSteps(addressForm, blankLastNameField);
+        await addressFormFillingSteps(addressForm, blankLastNameField);
         await negative(addressForm, blankLastNameField);
     })
 
 
     test('Blank required "Street address" field', async ({ addressForm, page }) => {
 
-        await addressFormSteps(addressForm, blankAddressField);
+        await addressFormFillingSteps(addressForm, blankAddressField);
         await negative(addressForm, blankAddressField);
     })
 
 
     test('Blank "City" field', async ({ addressForm, page }) => {
 
-        await addressFormSteps(addressForm, blankCityField);
+        await addressFormFillingSteps(addressForm, blankCityField);
         await negative(addressForm, blankCityField);
     })
 
 
     test('Blank "Postcode" field', async ({ addressForm, page }) => {
 
-        await addressFormSteps(addressForm, blankPostcodeField);
+        await addressFormFillingSteps(addressForm, blankPostcodeField);
         await negative(addressForm, blankPostcodeField);
     })
 
 
     test('Blank "Phone" field', async ({ addressForm, page }) => {
 
-        await addressFormSteps(addressForm, blankPhoneField);
+        await addressFormFillingSteps(addressForm, blankPhoneField);
         await negative(addressForm, blankPhoneField);
     })
 
 
     test('Blank "Email" field', async ({ addressForm, page }) => {
 
-        await addressFormSteps(addressForm, blankEmailField);
+        await addressFormFillingSteps(addressForm, blankEmailField);
         await negative(addressForm, blankEmailField);
     })
 })
