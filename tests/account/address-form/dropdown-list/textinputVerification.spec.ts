@@ -1,4 +1,5 @@
 import { test, expect } from "../../../../fixtures/account";
+import { fillDropdownList } from "../steps.spec";
 
 test.describe('Text input verification',async () => {
     
@@ -6,16 +7,7 @@ test.describe('Text input verification',async () => {
 
     test('Filling the country field',async ({addressForm}) => {
         
-        await test.step('Click the arrow',async () => {
-            
-            await addressForm.getDropdownList().clickArrow();
-        })
-
-        await test.step('Enter "' + text + '" in the field',async () => {
-            
-            await addressForm.getDropdownList().setCountry(text);
-        })
-
+        await fillDropdownList(text, addressForm);
         expect(await addressForm.getDropdownList().getFieldContent()).toEqual(text);
     })
 })
