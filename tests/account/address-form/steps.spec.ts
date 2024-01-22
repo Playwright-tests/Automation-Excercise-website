@@ -1,9 +1,8 @@
-import { Page, expect } from "@playwright/test";
+import { Locator } from "@playwright/test";
 import { test } from "../../../fixtures/account";
 import { AddressForm } from "../../../page-object/address-form/addressForm";
-import { URLs } from "../../../enums/URLs";
 
-export async function dropdownListSteps(country: string, addressForm: AddressForm) {
+export async function dropdownListFillingSteps(country: string, addressForm: AddressForm) {
     
     await test.step('Click the arrow',async () => {
             
@@ -21,7 +20,7 @@ export async function dropdownListSteps(country: string, addressForm: AddressFor
     })
 }
 
-export async function addressFormSteps(addressForm: AddressForm, addresFormData: any) {
+export async function addressFormFillingSteps(addressForm: AddressForm, addresFormData: any) {
     
     await test.step('Click the arrow',async () => {
         
@@ -65,7 +64,7 @@ export async function addressFormSteps(addressForm: AddressForm, addresFormData:
 
     await test.step('Enter "' + addresFormData.city + '" in the "Town / City" field',async () => {
         
-        await addressForm.setTown(addresFormData.city);
+        await addressForm.setCity(addresFormData.city);
     })
 
     await test.step('Enter "' + addresFormData.postcode + '" in the "Postcode / ZIP" field',async () => {
@@ -89,23 +88,10 @@ export async function addressFormSteps(addressForm: AddressForm, addresFormData:
     })
 }
 
-/*export async function positiveCasesCheck(errors: string[]) {
+export async function textInputVerificationSteps(func: any, fieldName: string, text: string) {
     
-    if (errors.length === 0) {
+    await test.step('Enter "' + text + '" in the "' + fieldName + '" field',async () => {
 
-        expect(true).toBeTruthy();
-
-    } else {
-
-        console.error('Validation errors:', errors);
-        expect(false).toBeTruthy();
-    }
+        await func();
+    })
 }
-
-export async function negativeCasesCheck(addressForm: AddressForm, data: any, page: Page) {
-    
-    await expect(page).toHaveURL(URLs.BillingAddressForm);
-    expect(await addressForm.getErrorMessageLocator().isVisible()).toBeTruthy();
-    expect(await addressForm.getErrorMessage()).toEqual(data.errorMessage);
-
-}*/
