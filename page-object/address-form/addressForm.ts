@@ -76,9 +76,9 @@ export class AddressForm extends BasePage {
         await this.clearAndFill(this.addressField_2, address);
     }
 
-    async setTown(town: string) {
+    async setCity(city: string) {
 
-        await this.clearAndFill(this.townCityField, town);
+        await this.clearAndFill(this.townCityField, city);
     }
 
     async setPostcode(postcode: string) {
