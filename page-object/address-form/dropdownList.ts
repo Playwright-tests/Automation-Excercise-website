@@ -7,18 +7,15 @@ export class DropdownList extends BasePage {
     readonly arrow: Locator;
     readonly field: Locator;
     readonly alert: Locator;
-    readonly alertSelector: string;
-
 
     constructor(page: Page) {
 
         super(page);
 
-        this.alertSelector = 'li[role="alert"]';
         this.parent = page.locator('#select2-billing_country-container');
         this.arrow = page.locator('.select2-selection__arrow');
         this.field = page.getByRole('combobox').nth(1);
-        this.alert = page.locator(this.alertSelector);
+        this.alert = page.locator('li[role="alert"]');
     }
 
     async clickParent() {
@@ -33,12 +30,22 @@ export class DropdownList extends BasePage {
 
     async setCountry(country: string) {
 
-        await this.field.fill(country)
+        await this.field.fill(country);
+    }
+
+    async typeCoutry(country: string) {
+
+        await this.field.pressSequentially(country);
     }
 
     async getFieldContent() {
 
         return await this.field.inputValue();
+    }
+
+    getAlertLocator() {
+
+        return this.alert;
     }
 
     async pressEnter() {
