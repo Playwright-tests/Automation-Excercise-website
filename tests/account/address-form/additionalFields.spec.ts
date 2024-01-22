@@ -1,7 +1,7 @@
 import { getArrayData } from "../../../data-loaders/arrayData";
 import { test, expect } from "../../../fixtures/account";
 import { checkLabel } from "./assertions.spec";
-import { dropdownListFillingSteps } from "./steps.spec";
+import { fillDropdownListAndAcceptChanges } from "./steps.spec";
 
 const stateCountyField = getArrayData('addressForm', 'stateCountyField');
 const stateCountyDropdownList = getArrayData('addressForm', 'stateCountyDropdownList');
@@ -21,7 +21,7 @@ test.describe('Additional "State / County" field',async () => {
 
         test('Setting "' + country + '"',async ({addressForm}) => {
             
-            await dropdownListFillingSteps(country, addressForm);
+            await fillDropdownListAndAcceptChanges(country, addressForm);
             
             expect(await addressForm.getAdditionalFieldLocator().isVisible()).toBeTruthy();
             await checkLabel(addressForm, "State / County");
@@ -35,7 +35,7 @@ test.describe('Additional "State / County dropdown list"',async () => {
 
         test('Setting "' + country + '"',async ({addressForm}) => {
             
-            await dropdownListFillingSteps(country, addressForm);
+            await fillDropdownListAndAcceptChanges(country, addressForm);
             expect(await addressForm.getAdditionalDropdownListLocator().isVisible()).toBeTruthy();
             await checkLabel(addressForm, "State / County *");
         })
@@ -48,7 +48,7 @@ test.describe('Additional "County" dropdown list',async () => {
 
         test('Setting "' + country + '"',async ({addressForm}) => {
             
-            await dropdownListFillingSteps(country, addressForm);
+            await fillDropdownListAndAcceptChanges(country, addressForm);
             expect(await addressForm.getAdditionalDropdownListLocator().isVisible()).toBeTruthy();
             await checkLabel(addressForm, 'County *');
         })
@@ -61,7 +61,7 @@ test.describe('Additional "State dropdown list"',async () => {
 
         test('Setting "' + country + '"',async ({addressForm}) => {
             
-            await dropdownListFillingSteps(country, addressForm);
+            await fillDropdownListAndAcceptChanges(country, addressForm);
             expect(await addressForm.getAdditionalDropdownListLocator().isVisible()).toBeTruthy();
             await checkLabel(addressForm, "State *");
         })
@@ -74,7 +74,7 @@ test.describe('Additional "District dropdown list"',async () => {
 
         test('Setting "' + country + '"',async ({addressForm}) => {
             
-            await dropdownListFillingSteps(country, addressForm);
+            await fillDropdownListAndAcceptChanges(country, addressForm);
             expect(await addressForm.getAdditionalDropdownListLocator().isVisible()).toBeTruthy();
             await checkLabel(addressForm, 'District *');
         })
@@ -87,7 +87,7 @@ test.describe('Additional "Province dropdown list"',async () => {
 
         test('Setting "' + country + '"',async ({addressForm}) => {
             
-            await dropdownListFillingSteps(country, addressForm);
+            await fillDropdownListAndAcceptChanges(country, addressForm);
             expect(await addressForm.getAdditionalDropdownListLocator().isVisible()).toBeTruthy();
             await checkLabel(addressForm, 'Province *');
         })
@@ -100,7 +100,7 @@ test.describe('Additional "Region" field',async () => {
 
         test('Setting "' + country + '"',async ({addressForm}) => {
             
-            await dropdownListFillingSteps(country, addressForm);
+            await fillDropdownListAndAcceptChanges(country, addressForm);
             expect(await addressForm.getAdditionalFieldLocator().isVisible()).toBeTruthy();
             await checkLabel(addressForm, 'Region *');
         })
@@ -113,7 +113,7 @@ test.describe('Additional "Region" dropdown list',async () => {
 
         test('Setting "' + country + '"',async ({addressForm}) => {
             
-            await dropdownListFillingSteps(country, addressForm);
+            await fillDropdownListAndAcceptChanges(country, addressForm);
             expect(await addressForm.getAdditionalDropdownListLocator().isVisible()).toBeTruthy();
             await checkLabel(addressForm, 'Region')
         })
@@ -126,7 +126,7 @@ test.describe('Additional "Prefecture" dropdown list',async () => {
 
         test('Setting "' + country + '"',async ({addressForm}) => {
             
-            await dropdownListFillingSteps(country, addressForm);
+            await fillDropdownListAndAcceptChanges(country, addressForm);
             expect(await addressForm.getAdditionalDropdownListLocator().isVisible()).toBeTruthy();
             await checkLabel(addressForm, 'Prefecture *');
         })
@@ -139,7 +139,7 @@ test.describe('Additional "Municipality" field',async () => {
 
         test('Setting "' + country + '"',async ({addressForm}) => {
             
-            await dropdownListFillingSteps(country, addressForm);
+            await fillDropdownListAndAcceptChanges(country, addressForm);
             expect(await addressForm.getAdditionalFieldLocator().isVisible()).toBeTruthy();
             await checkLabel(addressForm, 'Municipality');
         })
@@ -152,7 +152,7 @@ test.describe('Additional "State / Zone" dropdown list',async () => {
 
         test('Setting "' + country + '"',async ({addressForm}) => {
             
-            await dropdownListFillingSteps(country, addressForm);
+            await fillDropdownListAndAcceptChanges(country, addressForm);
             expect(await addressForm.getAdditionalDropdownListLocator().isVisible()).toBeTruthy();
             await checkLabel(addressForm, 'State / Zone *');
         })
