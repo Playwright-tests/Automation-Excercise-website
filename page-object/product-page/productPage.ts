@@ -9,14 +9,16 @@ export class ProductPage extends BasePage {
     readonly message: Locator;
     readonly producTitle: Locator;
     readonly productPrice: Locator;
+    readonly messageSelector: string;
 
     constructor(page: Page) {
 
         super(page);
 
+        this.messageSelector = '.woocommerce-message';
         this.addToCartButton = page.getByRole('button', {name: 'Add to cart'});
         this.quantityField = QuantityField.createWithoutNth(page);
-        this.message = page.locator('.woocommerce-message');
+        this.message = page.locator(this.messageSelector);
         this.producTitle = page.locator('.product_title ');
         this.productPrice = page.locator('p').filter({hasText: "zł"});
     }
@@ -41,12 +43,12 @@ export class ProductPage extends BasePage {
         return this.quantityField;
     }
 
-    getMessageLocator() {
+    getMessageSelector() {
 
-        return this.message;
+        return this.messageSelector;
     }
 
-    async getMessage() {
+    async getMessageContent() {
 
         return await this.message.textContent();
     }
