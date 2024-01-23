@@ -5,7 +5,7 @@ import { Row } from "./row";
 export class ShoppingCart extends BasePage {
 
     readonly messageSelector: string;
-
+    readonly tableSelector = '.shop_table.shop_table_responsive.cart.woocommerce-cart-form__contents'
     readonly cartEmpty: Locator;
     readonly updateButton: Locator;
     readonly message: Locator;
@@ -55,6 +55,11 @@ export class ShoppingCart extends BasePage {
     getMessageSelector() {
 
         return this.messageSelector;
+    }
+
+    getTableSelector() {
+
+        return this.tableSelector;
     }
 
     getRow(nth: number) {
