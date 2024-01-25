@@ -3,19 +3,17 @@ import { emailFieldStep, nameFieldStep } from "./steps.spec";
 
 test.describe('Text input Verification ',async () => {
     
-    test('Filling the "Name" field',async ({newsletterForm}) => {
-        
-        const name = 'John Doe';
+    const text: string = 'This is the text';
 
-        await nameFieldStep(newsletterForm, name);
-        expect(await newsletterForm.getNameFieldContent()).toEqual(name);
+    test('Filling the "Name" field',async ({newsletterForm}) => {
+
+        await nameFieldStep(newsletterForm, text);
+        expect(await newsletterForm.getNameFieldContent()).toEqual(text);
     })
 
     test('Filling the "Email" field',async ({newsletterForm}) => {
-        
-        const email = 'myEmail@gmail.com';
 
-        await emailFieldStep(newsletterForm, email);
-        expect(await newsletterForm.getEmailFieldContent()).toEqual(email);
+        await emailFieldStep(newsletterForm, text);
+        expect(await newsletterForm.getEmailFieldContent()).toEqual(text);
     })
 })
