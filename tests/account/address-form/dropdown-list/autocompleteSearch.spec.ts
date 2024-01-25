@@ -1,7 +1,7 @@
 import { getArrayData } from "../../../../data-loaders/arrayData";
 import { test, expect } from "../../../../fixtures/account";
-import { toLowerCase } from "../../../../utils/toLowerCase";
-import { fillDropdownList } from "../commons/steps.spec";
+import { toLowerCase } from "../../../../support/functions";
+import { fillDropdownList } from "../steps.spec";
 
 const incompleteCountryNames = getArrayData('countries', 'incompleteCountryNames');
 

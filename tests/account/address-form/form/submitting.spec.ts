@@ -1,7 +1,7 @@
 import { getAddressFormData } from "../../../../data-loaders/addressFormData";
 import { URLs } from "../../../../enums/URLs";
 import { test, expect } from "../../../../fixtures/account";
-import { fillAddressForm, fillAddressFormAndAcceptChanges } from "../commons/steps.spec";
+import { fillAddressForm, fillAddressFormAndAcceptChanges } from "../steps.spec";
 
 const correct = getAddressFormData('correct')[0];
 

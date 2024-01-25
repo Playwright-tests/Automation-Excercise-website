@@ -1,7 +1,7 @@
 import { getArrayData } from "../../../../data-loaders/arrayData";
 import { test, expect } from "../../../../fixtures/account";
 import { checkLabel } from "./assertions.spec";
-import { fillDropdownListAndAcceptChanges } from "../commons/steps.spec";
+import { fillDropdownListAndAcceptChanges } from "../steps.spec";
 
 const stateCountyField = getArrayData('addressForm', 'stateCountyField');
 const stateCountyDropdownList = getArrayData('addressForm', 'stateCountyDropdownList');
