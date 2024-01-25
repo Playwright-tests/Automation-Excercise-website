@@ -4,7 +4,7 @@ import { ProductPage } from "../page-object/product-page/productPage";
 import { URLs } from "../enums/URLs";
 import { ThumbnailCategory } from "../enums/thumbnailCategory";
 import { ProductThumbnail } from "../page-object/thumbnail/productThumbnail";
-import { Product } from "../helpers/product";
+import { Product } from "../support/product";
 
 export { expect } from "@playwright/test";
 
