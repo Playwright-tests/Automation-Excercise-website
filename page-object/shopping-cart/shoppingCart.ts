@@ -1,6 +1,7 @@
 import { Locator, Page } from "@playwright/test";
 import { BasePage } from "../base/BasePage";
 import { Row } from "./row";
+import { ShoppingCartProcessing } from "./shoppingCartProcessing";
 
 export class ShoppingCart extends BasePage {
 
@@ -12,6 +13,7 @@ export class ShoppingCart extends BasePage {
     readonly checkoutButton: Locator;
 
     private row: Row;
+    private shoppingCartProcessing: ShoppingCartProcessing;
 
     constructor(page: Page) {
 
@@ -25,6 +27,7 @@ export class ShoppingCart extends BasePage {
         this.checkoutButton = page.getByRole('link', {name: 'Proceed to checkout'});
 
         this.row = new Row(page);
+        this.shoppingCartProcessing = new ShoppingCartProcessing(page);
     }
 
     getCartEmptyLocator() {
@@ -67,5 +70,10 @@ export class ShoppingCart extends BasePage {
         this.row.setNth(nth);
 
         return this.row;
+    }
+
+    getShoppingCartProcessing() {
+
+        return this.shoppingCartProcessing;
     }
 }
