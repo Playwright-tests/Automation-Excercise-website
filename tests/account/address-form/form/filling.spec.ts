@@ -1,6 +1,6 @@
 import { test, expect } from "../../../../fixtures/account";
 import { getAddressFormData } from "../../../../data-loaders/addressFormData";
-import { fillDropdownListAndAcceptChanges, fillAddressFormAndAcceptChanges } from "../commons/steps.spec";
+import { fillDropdownListAndAcceptChanges, fillAddressFormAndAcceptChanges } from "../steps.spec";
 import { positive, negative, checkValidationMessage } from "./assertions.spec";
 import { URLs } from "../../../../enums/URLs";
 
@@ -35,7 +35,7 @@ test.describe('Filling the billing address form', async () => {
         await fillAddressFormAndAcceptChanges(addressForm, blankCompanyField);
         await expect(await addressForm.getPage()).toHaveURL(URLs.AddressFormNavigation);
         await (await addressForm.getPage()).goto(URLs.BillingAddressForm);
-        await positive(addressForm, correct);
+        await positive(addressForm, blankCompanyField);
     })
 
     test('Blank optional "Street address" field',async ({addressForm}) => {
@@ -43,7 +43,7 @@ test.describe('Filling the billing address form', async () => {
         await fillAddressFormAndAcceptChanges(addressForm, blankOptionalAddressField);
         await expect(await addressForm.getPage()).toHaveURL(URLs.AddressFormNavigation);
         await (await addressForm.getPage()).goto(URLs.BillingAddressForm);
-        await positive(addressForm, correct);
+        await positive(addressForm, blankOptionalAddressField);
     })
 
     test('Incorrect first name',async ({addressForm}) => {
