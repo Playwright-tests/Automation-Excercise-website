@@ -1,5 +1,5 @@
 import { test, expect } from "../../../../fixtures/account";
-import { textInputVerificationSteps } from "../commons/steps.spec";
+import { textInputVerificationSteps } from "../steps.spec";
 
 test.describe('Text input verification',async () => {
     
