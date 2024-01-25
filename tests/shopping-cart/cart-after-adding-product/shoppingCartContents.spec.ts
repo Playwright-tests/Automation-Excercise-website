@@ -1,6 +1,6 @@
 import { test } from "../../../fixtures/shoppingCart";
 import { expect } from "../../../expect/tohaveNotHiddenSelector";
-import { Product } from "../../../helpers/product";
+import { Product } from "../../../support/product";
 
 test.describe('Shopping cart contents',async () => {
     
