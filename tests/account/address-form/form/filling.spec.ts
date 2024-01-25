@@ -3,6 +3,7 @@ import { getAddressFormData } from "../../../../data-loaders/addressFormData";
 import { fillDropdownListAndAcceptChanges, fillAddressFormAndAcceptChanges } from "../steps.spec";
 import { positive, negative, checkValidationMessage } from "./assertions.spec";
 import { URLs } from "../../../../enums/URLs";
+import { AddressForm } from "../../../../page-object/address-form/addressForm";
 
 const correct = getAddressFormData('correct')[0];
 const blankCompanyField = getAddressFormData('blankCompanyField')[0];
@@ -22,52 +23,53 @@ const blankEmailField = getAddressFormData('withoutEmail')[0];
 
 test.describe('Filling the billing address form', async () => {
 
-    test('Correct data', async ({ addressForm, page }) => {
+    async function actionsForPositiveTests(addressForm: AddressForm, data: any) {
+        
+        await fillAddressFormAndAcceptChanges(addressForm, data);
+        await expect(await addressForm.getPage()).toHaveURL(URLs.AddressFormNavigation);
+        await (await addressForm.getPage()).goto(URLs.BillingAddressForm);
+        await positive(addressForm, data);
+    }
 
-        await fillAddressFormAndAcceptChanges(addressForm, correct);
-        await expect(page).toHaveURL(URLs.AddressFormNavigation);
-        await page.goto(URLs.BillingAddressForm);
-        await positive(addressForm, correct);
+    async function actionsForNegativeTests(addressForm: AddressForm, data: any) {
+        
+        await fillAddressFormAndAcceptChanges(addressForm, data);
+        await negative(addressForm, data);
+    }
+
+    test('Correct data', async ({addressForm}) => {
+
+        await actionsForPositiveTests(addressForm, correct);
     })
 
     test('Blank "Company" field',async ({addressForm}) => {
         
-        await fillAddressFormAndAcceptChanges(addressForm, blankCompanyField);
-        await expect(await addressForm.getPage()).toHaveURL(URLs.AddressFormNavigation);
-        await (await addressForm.getPage()).goto(URLs.BillingAddressForm);
-        await positive(addressForm, blankCompanyField);
+        await actionsForPositiveTests(addressForm, blankCompanyField)
     })
 
     test('Blank optional "Street address" field',async ({addressForm}) => {
         
-        await fillAddressFormAndAcceptChanges(addressForm, blankOptionalAddressField);
-        await expect(await addressForm.getPage()).toHaveURL(URLs.AddressFormNavigation);
-        await (await addressForm.getPage()).goto(URLs.BillingAddressForm);
-        await positive(addressForm, blankOptionalAddressField);
+        await actionsForPositiveTests(addressForm, blankOptionalAddressField);
     })
 
     test('Incorrect first name',async ({addressForm}) => {
         
-        await fillAddressFormAndAcceptChanges(addressForm, incorrectFirstName);
-        await negative(addressForm, incorrectFirstName);
+        await actionsForNegativeTests(addressForm, incorrectFirstName);
     })
 
     test('Incorrect last name',async ({addressForm}) => {
         
-        await fillAddressFormAndAcceptChanges(addressForm, incorrectLastName);
-        await negative(addressForm, incorrectLastName);
+        await actionsForNegativeTests(addressForm, incorrectLastName);
     })
 
     test('Incorrect postcode',async ({addressForm}) => {
         
-        await fillAddressFormAndAcceptChanges(addressForm, incorrectPostcode);
-        await negative(addressForm, incorrectPostcode);
+        await actionsForNegativeTests(addressForm, incorrectPostcode);
     })
 
     test('Incorrect phone number',async ({addressForm}) => {
         
-        await fillAddressFormAndAcceptChanges(addressForm, incorrectPhoneNumber);
-        await negative(addressForm, incorrectPhoneNumber);
+        await actionsForNegativeTests(addressForm, incorrectPhoneNumber);
     })
 
     for(const data of incorrectEmail) {
@@ -79,51 +81,44 @@ test.describe('Filling the billing address form', async () => {
         })
     }
 
-    test('Blank "First name" field', async ({ addressForm}) => {
+    test('Blank "First name" field', async ({addressForm}) => {
 
-        await fillAddressFormAndAcceptChanges(addressForm, blankFirstNameField);
-        await negative(addressForm, blankFirstNameField);
+        await actionsForNegativeTests(addressForm, blankFirstNameField);
     })
 
 
-    test('Blank "Last name" field', async ({ addressForm, page }) => {
+    test('Blank "Last name" field', async ({addressForm}) => {
 
-        await fillAddressFormAndAcceptChanges(addressForm, blankLastNameField);
-        await negative(addressForm, blankLastNameField);
+        await actionsForNegativeTests(addressForm, blankLastNameField);
     })
 
 
-    test('Blank required "Street address" field', async ({ addressForm, page }) => {
+    test('Blank required "Street address" field', async ({addressForm}) => {
 
-        await fillAddressFormAndAcceptChanges(addressForm, blankAddressField);
-        await negative(addressForm, blankAddressField);
+        await actionsForNegativeTests(addressForm, blankAddressField);
     })
 
 
-    test('Blank "City" field', async ({ addressForm, page }) => {
+    test('Blank "City" field', async ({addressForm}) => {
 
-        await fillAddressFormAndAcceptChanges(addressForm, blankCityField);
-        await negative(addressForm, blankCityField);
+        await actionsForNegativeTests(addressForm, blankCityField);
     })
 
 
-    test('Blank "Postcode" field', async ({ addressForm, page }) => {
+    test('Blank "Postcode" field', async ({addressForm}) => {
 
-        await fillAddressFormAndAcceptChanges(addressForm, blankPostcodeField);
-        await negative(addressForm, blankPostcodeField);
+        await actionsForNegativeTests(addressForm, blankPostcodeField);
     })
 
 
-    test('Blank "Phone" field', async ({ addressForm, page }) => {
+    test('Blank "Phone" field', async ({addressForm}) => {
 
-        await fillAddressFormAndAcceptChanges(addressForm, blankPhoneField);
-        await negative(addressForm, blankPhoneField);
+        await actionsForNegativeTests(addressForm, blankPhoneField);
     })
 
 
-    test('Blank "Email" field', async ({ addressForm, page }) => {
+    test('Blank "Email" field', async ({addressForm}) => {
 
-        await fillAddressFormAndAcceptChanges(addressForm, blankEmailField);
-        await negative(addressForm, blankEmailField);
+        await actionsForNegativeTests(addressForm, blankEmailField);
     })
 })
