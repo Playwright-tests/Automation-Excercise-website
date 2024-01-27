@@ -1,5 +1,7 @@
-import { AddressFormTestdata, DropdownListAdditionalFieldsTestdata, DropdownListCountryNameTestdata, LoginTestdata } from "../enums/mockarooTestData";
+import { Products } from "../enums/localTestdata";
+import { AddressFormTestdata, AddressFormAdditionalFieldsTestdata, DropdownListCountryNameTestdata, LoginTestdata } from "../enums/mockarooTestData";
 import { getTestdata } from "../services/dataService";
+import { JSONReader, LocalTestdataProvider } from "../testdata-providers/localTestdataProvider";
 
 export class LoginTestdataLoader {
 
@@ -16,6 +18,36 @@ export class LoginTestdataLoader {
         this.incorrectPassword = await getTestdata(LoginTestdata.IncorrectPassword);
         this.blankUsernameField = await getTestdata(LoginTestdata.BlankUsernameField);
         this.blankPasswordField = await getTestdata(LoginTestdata.BlankPasswordField);
+    }
+}
+
+export class AddressFormAdditionalFieldsTestdataLoader {
+
+    static countyDropdownList: any;
+    static districtDropdownList: any;
+    static municipalityField: any;
+    static prefectureDropdownList: any;
+    static provinceDropdownList: any;
+    static regionDropdownList: any;
+    static regionField: any;
+    static stateCountyDropdownList: any;
+    static stateCountyField: any;
+    static stateDropdownList: any;
+    static stateZoneDropdownList: any;
+
+    static async init() {
+
+        this.countyDropdownList = await getTestdata(AddressFormAdditionalFieldsTestdata.CountyDropdownList);
+        this.districtDropdownList = await getTestdata(AddressFormAdditionalFieldsTestdata.DistrictDropdownList);
+        this.municipalityField = await getTestdata(AddressFormAdditionalFieldsTestdata.MunicipalityField);
+        this.prefectureDropdownList = await getTestdata(AddressFormAdditionalFieldsTestdata.PrefectureDropdownList);
+        this.provinceDropdownList = await getTestdata(AddressFormAdditionalFieldsTestdata.ProvinceDropdownList);
+        this.regionDropdownList = await getTestdata(AddressFormAdditionalFieldsTestdata.RegionDropdownList);
+        this.regionField = await getTestdata(AddressFormAdditionalFieldsTestdata.RegionField);
+        this.stateCountyDropdownList = await getTestdata(AddressFormAdditionalFieldsTestdata.StateCountyDropdownList);
+        this.stateCountyField = await getTestdata(AddressFormAdditionalFieldsTestdata.StateCountyField);
+        this.stateDropdownList = await getTestdata(AddressFormAdditionalFieldsTestdata.StateDropdownList);
+        this.stateZoneDropdownList = await getTestdata(AddressFormAdditionalFieldsTestdata.StateZoneDropdownList);
     }
 }
 
@@ -69,32 +101,24 @@ export class DropdownListCountryNameTestdataLoader {
     }
 }
 
-export class DropdownListAdditionalFieldsTestdataLoader {
+export class ProductsLinksTestdataLoader {
 
-    static countyDropdownList: any;
-    static districtDropdownList: any;
-    static municipalityField: any;
-    static prefectureDropdownList: any;
-    static provinceDropdownList: any;
-    static regionDropdownList: any;
-    static regionField: any;
-    static stateCountyDropdownList: any;
-    static stateCountyField: any;
-    static stateDropdownList: any;
-    static stateZoneDropdownList: any;
+    static allBlackTops: any[];
+    static featured: any[];
+    static highHeelShoes: any[];
+    static mostWanted: any[];
+    static onSale: any[];
+    static scarfs: any[];
+    static trends: any[];
 
-    static async init() {
+    static init() {
 
-        this.countyDropdownList = await getTestdata(DropdownListAdditionalFieldsTestdata.CountyDropdownList);
-        this.districtDropdownList = await getTestdata(DropdownListAdditionalFieldsTestdata.DistrictDropdownList);
-        this.municipalityField = await getTestdata(DropdownListAdditionalFieldsTestdata.MunicipalityField);
-        this.prefectureDropdownList = await getTestdata(DropdownListAdditionalFieldsTestdata.PrefectureDropdownList);
-        this.provinceDropdownList = await getTestdata(DropdownListAdditionalFieldsTestdata.ProvinceDropdownList);
-        this.regionDropdownList = await getTestdata(DropdownListAdditionalFieldsTestdata.RegionDropdownList);
-        this.regionField = await getTestdata(DropdownListAdditionalFieldsTestdata.RegionField);
-        this.stateCountyDropdownList = await getTestdata(DropdownListAdditionalFieldsTestdata.StateCountyDropdownList);
-        this.stateCountyField = await getTestdata(DropdownListAdditionalFieldsTestdata.StateCountyField);
-        this.stateDropdownList = await getTestdata(DropdownListAdditionalFieldsTestdata.StateDropdownList);
-        this.stateZoneDropdownList = await getTestdata(DropdownListAdditionalFieldsTestdata.StateZoneDropdownList);
+        this.allBlackTops = JSONReader.get(Products.AllBlackTops);
+        this.featured = JSONReader.get(Products.Featured);
+        this.highHeelShoes = JSONReader.get(Products.HighHeelShoes);
+        this.mostWanted = JSONReader.get(Products.MostWanted);
+        this.onSale = JSONReader.get(Products.OnSale);
+        this.scarfs = JSONReader.get(Products.Scarfs);
+        this.trends = JSONReader.get(Products.Trends);
     }
 }
