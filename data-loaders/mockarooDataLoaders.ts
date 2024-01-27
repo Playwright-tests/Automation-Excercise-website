@@ -1,17 +1,21 @@
 import { AddressFormTestdata, LoginTestdata } from "../enums/mockarooTestData";
 import { MockaroTesdataProvider } from "../mockaroo-testdata-provider/mockarooTestDataProvider";
 
-export class CredentialsTestdataLoader {
+export class LoginTestdataLoader {
 
     static correct: any;
     static incorrectUsername: any;
     static incorrectPassword: any;
+    static blankUsernameField: any;
+    static blankPasswordField: any;
 
     static async init() {
 
         this.correct = MockaroTesdataProvider.fetchData(LoginTestdata.Correct);
         this.incorrectUsername = MockaroTesdataProvider.fetchData(LoginTestdata.IncorrectUsername);
         this.incorrectPassword = MockaroTesdataProvider.fetchData(LoginTestdata.IncorrectPassword);
+        this.blankUsernameField = MockaroTesdataProvider.fetchData(LoginTestdata.BlankUsernameField);
+        this.blankPasswordField = MockaroTesdataProvider.fetchData(LoginTestdata.BlankPasswordField);
     }
 }
 
