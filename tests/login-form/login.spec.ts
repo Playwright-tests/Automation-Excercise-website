@@ -3,7 +3,7 @@ import { expect as hdExpect } from "../../expect/toHaveHiddenSelector";
 import { expect as nhdExpect } from "../../expect/tohaveNotHiddenSelector";
 import { steps } from "./steps.spec";
 import { AccountNavigation } from "../../page-object/account/accountNavigation";
-import { LoginTestdataLoader } from "../../data-loaders/mockarooDataLoaders";
+import { LoginTestdataLoader } from "../../data-loaders/dataLoaders";
 
 
 test.describe('Login',async () => {
@@ -35,7 +35,7 @@ test.describe('Login',async () => {
 
     test('Blank "Username or email address" field',async ({loginForm}) => {
              
-        await steps(loginForm, await LoginTestdataLoader.incorrectUsername);
+        await steps(loginForm, await LoginTestdataLoader.blankUsernameField);
         await hdExpect(await loginForm.getPage()).toHaveHiddenSelector(accountNavigation.getContentsSelector());
         await nhdExpect(await loginForm.getPage()).toHaveNotHiddenSelector(loginForm.getErrorMessageSelector());
     })
@@ -43,13 +43,6 @@ test.describe('Login',async () => {
     test('Incorrect password',async ({loginForm}) => {
         
         await steps(loginForm, await LoginTestdataLoader.incorrectPassword);
-            await hdExpect(await loginForm.getPage()).toHaveHiddenSelector(accountNavigation.getContentsSelector());
-            await nhdExpect(await loginForm.getPage()).toHaveNotHiddenSelector(loginForm.getErrorMessageSelector());
-    })
-
-    test('Blank "Username or email" field',async ({loginForm}) => {
-             
-        await steps(loginForm, await LoginTestdataLoader.blankUsernameField);
         await hdExpect(await loginForm.getPage()).toHaveHiddenSelector(accountNavigation.getContentsSelector());
         await nhdExpect(await loginForm.getPage()).toHaveNotHiddenSelector(loginForm.getErrorMessageSelector());
     })
