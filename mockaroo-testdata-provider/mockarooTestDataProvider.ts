@@ -14,8 +14,6 @@ export class MockaroTesdataProvider {
 
     static async fetchData(mockarooTestdata: MockarooTestdata) {
 
-        console.log('API: ' + this.getUrl(mockarooTestdata));
-
         try {
             const response = await axios.get(this.getUrl(mockarooTestdata));
             return response.data;
