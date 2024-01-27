@@ -1,32 +1,28 @@
-import { getArrayData } from "../../../../data-loaders/arrayData";
+import { DropdownListCountryNameTestdataLoader } from "../../../../data-loaders/dataLoaders";
 import { test, expect } from "../../../../fixtures/account";
 import { typeCountry } from "../steps.spec";
-
-const correctCountryNames = getArrayData('countries', 'correctCountryName');
-const incorrectCountryNames = getArrayData('countries', 'incorrectCountryName');
 
 test.describe('Searching countries',async () => {
     
     const expectedAlertMessage = 'No matches found';
 
-    for(const country of correctCountryNames) {
+    test.beforeAll(async () => {
+        
+        await DropdownListCountryNameTestdataLoader.init();
+    })
 
-        test('Typiyng "' + country + '" as the correct country name',async ({addressForm}) => {
+    test('Correct country name',async ({addressForm}) => {
             
-            await typeCountry(country, addressForm);
-            expect(await addressForm.getDropdownList().getAlertLocator().isVisible()).toBeFalsy();
-        })
-    }
+        await typeCountry(await DropdownListCountryNameTestdataLoader.correct.country, addressForm);
+        expect(await addressForm.getDropdownList().getAlertLocator().isVisible()).toBeFalsy();
+    })
 
-    for(const country of incorrectCountryNames) {
-
-        test('Typiyng "' + country + '" as the incorrect country name',async ({addressForm}) => {
+    test('Incorrect country name',async ({addressForm}) => {
             
-            await typeCountry(country, addressForm);
-            expect(await addressForm.getDropdownList().getAlertLocator().isVisible()).toBeTruthy();
-            expect(await addressForm.getDropdownList().getAlertLocator().textContent()).toEqual(expectedAlertMessage);
-        })
-    }
+        await typeCountry(await DropdownListCountryNameTestdataLoader.incorrect.country, addressForm);
+        expect(await addressForm.getDropdownList().getAlertLocator().isVisible()).toBeTruthy();
+        expect(await addressForm.getDropdownList().getAlertLocator().textContent()).toEqual(expectedAlertMessage);
+    })
 })
 
 
