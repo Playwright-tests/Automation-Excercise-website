@@ -1,0 +1,21 @@
+export enum MockarooTestdata {
+
+    LoginCorrect = 'login_correct',
+    LoginIncorrectUsername = 'login_incorrect_username',
+    LoginIncorrectPassword = 'login_incorrect_password',
+    AddressFormCorrectData = 'address_form_correct_data',
+    AddressFormIncorrectFirstName = 'address_form_incorrect_first_name',
+    AddressFormIncorrectLastName = 'address_form_incorrect_last_name',
+    AddressFormIncorrectPostcode = 'address_form_incorrect_postcode',
+    AddressFormIncorrectPhone = 'address_form_incorrect_phone',
+    AddressFormIncorrectEmailFormat = 'address_form_incorrect_email_format',
+    AddressFormBlankCompanyField = 'address_form_blank_company_field',
+    AddressFormBlankSecondAddressLineField = 'address_form_blank_second_address_line_field',
+    AddressFormBlankFirstNameField = 'address_form_blank_first_name_field',
+    AddressFormBlankLastNameField = 'address_form_blank_last_name_field',
+    AddressFormBlankAddressField = 'address_form_blank_address_field',
+    AddressFormBlankPostcodeField = 'address_form_blank_postcode_field',
+    AddressFormBlankCityField = 'address_form_blank_city_field',
+    AddressFormBlankPhoneField = 'address_form_blank_phone_field',
+    AddressFormBlankEmailField = 'address_form_blank_email_field',
+}
