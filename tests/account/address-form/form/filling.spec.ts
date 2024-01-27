@@ -1,27 +1,17 @@
 import { test, expect } from "../../../../fixtures/account";
-import { getAddressFormData } from "../../../../data-loaders/addressFormData";
-import { fillDropdownListAndAcceptChanges, fillAddressFormAndAcceptChanges } from "../steps.spec";
+import { fillAddressFormAndAcceptChanges } from "../steps.spec";
 import { positive, negative, checkValidationMessage } from "./assertions.spec";
 import { URLs } from "../../../../enums/URLs";
 import { AddressForm } from "../../../../page-object/address-form/addressForm";
+import { AddressFormTestdataLoader } from "../../../../data-loaders/mockarooDataLoaders";
 
-const correct = getAddressFormData('correct')[0];
-const blankCompanyField = getAddressFormData('blankCompanyField')[0];
-const blankOptionalAddressField = getAddressFormData('blankOptionalAddressField')[0];
-const incorrectFirstName = getAddressFormData('incorrectFirstName')[0];
-const incorrectLastName = getAddressFormData('incorrectLastName')[0];
-const incorrectPostcode = getAddressFormData('incorrectPostcode')[0];
-const incorrectPhoneNumber = getAddressFormData('incorrectPhoneNumber')[0];
-const incorrectEmail = getAddressFormData('incorrectEmail');
-const blankFirstNameField = getAddressFormData('withoutFirstName')[0];
-const blankLastNameField = getAddressFormData('withoutLastName')[0];
-const blankAddressField = getAddressFormData('withoutAddress')[0];
-const blankCityField = getAddressFormData('withoutCity')[0];
-const blankPostcodeField = getAddressFormData('withoutPostcode')[0];
-const blankPhoneField = getAddressFormData('withoutPhone')[0];
-const blankEmailField = getAddressFormData('withoutEmail')[0];
 
 test.describe('Filling the billing address form', async () => {
+
+    test.beforeAll(async () => {
+        
+        AddressFormTestdataLoader.init();
+    })
 
     async function actionsForPositiveTests(addressForm: AddressForm, data: any) {
         
@@ -39,86 +29,83 @@ test.describe('Filling the billing address form', async () => {
 
     test('Correct data', async ({addressForm}) => {
 
-        await actionsForPositiveTests(addressForm, correct);
+        await actionsForPositiveTests(addressForm, AddressFormTestdataLoader.correct);
     })
 
     test('Blank "Company" field',async ({addressForm}) => {
         
-        await actionsForPositiveTests(addressForm, blankCompanyField)
+        await actionsForPositiveTests(addressForm, AddressFormTestdataLoader.blankCompanyField);
     })
 
     test('Blank optional "Street address" field',async ({addressForm}) => {
         
-        await actionsForPositiveTests(addressForm, blankOptionalAddressField);
+        await actionsForPositiveTests(addressForm, AddressFormTestdataLoader.blankSecondAddressLineField);
     })
 
     test('Incorrect first name',async ({addressForm}) => {
         
-        await actionsForNegativeTests(addressForm, incorrectFirstName);
+        await actionsForNegativeTests(addressForm, AddressFormTestdataLoader.incorrectFirstName);
     })
 
     test('Incorrect last name',async ({addressForm}) => {
         
-        await actionsForNegativeTests(addressForm, incorrectLastName);
+        await actionsForNegativeTests(addressForm, AddressFormTestdataLoader.incorrectLastName);
     })
 
     test('Incorrect postcode',async ({addressForm}) => {
         
-        await actionsForNegativeTests(addressForm, incorrectPostcode);
+        await actionsForNegativeTests(addressForm, AddressFormTestdataLoader.incorrectPostcode);
     })
 
     test('Incorrect phone number',async ({addressForm}) => {
         
-        await actionsForNegativeTests(addressForm, incorrectPhoneNumber);
+        await actionsForNegativeTests(addressForm, AddressFormTestdataLoader.incorrectPhone);
     })
 
-    for(const data of incorrectEmail) {
-
-        test('Entering "' + data.email + '" as the incorrect email format',async ({addressForm}) => {
-            
-            await fillAddressFormAndAcceptChanges(addressForm, data);
-            await checkValidationMessage(addressForm.getEmailFieldLocator(), 'data.errorMessage');
-        })
-    }
+    test('Incorrect email format',async ({addressForm}) => {
+        
+        await fillAddressFormAndAcceptChanges(addressForm, AddressFormTestdataLoader.incorrectEmailFormat);
+        await checkValidationMessage(addressForm.getEmailFieldLocator(), 'data.errorMessage');
+    })
 
     test('Blank "First name" field', async ({addressForm}) => {
 
-        await actionsForNegativeTests(addressForm, blankFirstNameField);
+        await actionsForNegativeTests(addressForm, AddressFormTestdataLoader.blankFirstNameField);
     })
 
 
     test('Blank "Last name" field', async ({addressForm}) => {
 
-        await actionsForNegativeTests(addressForm, blankLastNameField);
+        await actionsForNegativeTests(addressForm, AddressFormTestdataLoader.blankLastNameField);
     })
 
 
     test('Blank required "Street address" field', async ({addressForm}) => {
 
-        await actionsForNegativeTests(addressForm, blankAddressField);
+        await actionsForNegativeTests(addressForm, AddressFormTestdataLoader.blankAddressField);
     })
 
 
     test('Blank "City" field', async ({addressForm}) => {
 
-        await actionsForNegativeTests(addressForm, blankCityField);
+        await actionsForNegativeTests(addressForm, AddressFormTestdataLoader.blankCityField);
     })
 
 
     test('Blank "Postcode" field', async ({addressForm}) => {
 
-        await actionsForNegativeTests(addressForm, blankPostcodeField);
+        await actionsForNegativeTests(addressForm, AddressFormTestdataLoader.blankPostcodeField);
     })
 
 
     test('Blank "Phone" field', async ({addressForm}) => {
 
-        await actionsForNegativeTests(addressForm, blankPhoneField);
+        await actionsForNegativeTests(addressForm, AddressFormTestdataLoader.blankPhoneField);
     })
 
 
     test('Blank "Email" field', async ({addressForm}) => {
 
-        await actionsForNegativeTests(addressForm, blankEmailField);
+        await actionsForNegativeTests(addressForm, AddressFormTestdataLoader.blankEmailField);
     })
 })
