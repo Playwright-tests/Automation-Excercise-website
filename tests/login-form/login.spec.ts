@@ -12,7 +12,7 @@ test.describe('Login',async () => {
 
     test.beforeAll(async () => {
         
-        LoginTestdataLoader.init();
+        await LoginTestdataLoader.init();
     })
 
     test.beforeEach(async ({page}) => {
