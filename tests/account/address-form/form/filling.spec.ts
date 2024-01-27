@@ -3,7 +3,7 @@ import { fillAddressFormAndAcceptChanges } from "../steps.spec";
 import { positive, negative, checkValidationMessage } from "./assertions.spec";
 import { URLs } from "../../../../enums/URLs";
 import { AddressForm } from "../../../../page-object/address-form/addressForm";
-import { AddressFormTestdataLoader } from "../../../../data-loaders/mockarooDataLoaders";
+import { AddressFormTestdataLoader } from "../../../../data-loaders/dataLoaders";
 
 
 test.describe('Filling the billing address form', async () => {
