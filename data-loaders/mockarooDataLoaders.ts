@@ -1,4 +1,4 @@
-import { MockarooTestdata } from "../enums/mockarooTestData";
+import { AddressFormTestdata, LoginTestdata } from "../enums/mockarooTestData";
 import { MockaroTesdataProvider } from "../mockaroo-testdata-provider/mockarooTestDataProvider";
 
 export class CredentialsTestdataLoader {
@@ -9,9 +9,9 @@ export class CredentialsTestdataLoader {
 
     static async init() {
 
-        this.correct = MockaroTesdataProvider.fetchData(MockarooTestdata.LoginCorrect);
-        this.incorrectUsername = MockaroTesdataProvider.fetchData(MockarooTestdata.LoginIncorrectUsername);
-        this.incorrectPassword = MockaroTesdataProvider.fetchData(MockarooTestdata.LoginIncorrectPassword);
+        this.correct = MockaroTesdataProvider.fetchData(LoginTestdata.Correct);
+        this.incorrectUsername = MockaroTesdataProvider.fetchData(LoginTestdata.IncorrectUsername);
+        this.incorrectPassword = MockaroTesdataProvider.fetchData(LoginTestdata.IncorrectPassword);
     }
 }
 
@@ -35,20 +35,20 @@ export class AddressFormTestdataLoader {
 
     static async init() {
 
-        this.correct = MockaroTesdataProvider.fetchData(MockarooTestdata.AddressFormCorrectData);
-        this.incorrectFirstName = MockaroTesdataProvider.fetchData(MockarooTestdata.AddressFormIncorrectFirstName);
-        this.incorrectLastName = MockaroTesdataProvider.fetchData(MockarooTestdata.AddressFormIncorrectLastName);
-        this.incorrectPostcode = MockaroTesdataProvider.fetchData(MockarooTestdata.AddressFormIncorrectPostcode);
-        this.incorrectPhone = MockaroTesdataProvider.fetchData(MockarooTestdata.AddressFormIncorrectPhone);
-        this.incorrectEmailFormat = MockaroTesdataProvider.fetchData(MockarooTestdata.AddressFormIncorrectEmailFormat);
-        this.blankCompanyField = MockaroTesdataProvider.fetchData(MockarooTestdata.AddressFormBlankCompanyField);
-        this.blankSecondAddressLineField = MockaroTesdataProvider.fetchData(MockarooTestdata.AddressFormBlankSecondAddressLineField);
-        this.blankFirstNameField = MockaroTesdataProvider.fetchData(MockarooTestdata.AddressFormBlankFirstNameField);
-        this.blankLastNameField = MockaroTesdataProvider.fetchData(MockarooTestdata.AddressFormBlankLastNameField);
-        this.blankAddressField = MockaroTesdataProvider.fetchData(MockarooTestdata.AddressFormBlankAddressField);
-        this.blankPostcodeField = MockaroTesdataProvider.fetchData(MockarooTestdata.AddressFormBlankPostcodeField);
-        this.blankCityField = MockaroTesdataProvider.fetchData(MockarooTestdata.AddressFormBlankCityField);
-        this.blankPhoneField = MockaroTesdataProvider.fetchData(MockarooTestdata.AddressFormBlankPhoneField);
-        this.blankEmailField = MockaroTesdataProvider.fetchData(MockarooTestdata.AddressFormBlankEmailField);
+        this.correct = MockaroTesdataProvider.fetchData(AddressFormTestdata.Correct);
+        this.incorrectFirstName = MockaroTesdataProvider.fetchData(AddressFormTestdata.IncorrectFirstName);
+        this.incorrectLastName = MockaroTesdataProvider.fetchData(AddressFormTestdata.IncorrectLastName);
+        this.incorrectPostcode = MockaroTesdataProvider.fetchData(AddressFormTestdata.IncorrectPostcode);
+        this.incorrectPhone = MockaroTesdataProvider.fetchData(AddressFormTestdata.IncorrectPhone);
+        this.incorrectEmailFormat = MockaroTesdataProvider.fetchData(AddressFormTestdata.IncorrectEmailFormat);
+        this.blankCompanyField = MockaroTesdataProvider.fetchData(AddressFormTestdata.BlankCompanyField);
+        this.blankSecondAddressLineField = MockaroTesdataProvider.fetchData(AddressFormTestdata.BlankSecondAddressLineField);
+        this.blankFirstNameField = MockaroTesdataProvider.fetchData(AddressFormTestdata.BlankFirstNameField);
+        this.blankLastNameField = MockaroTesdataProvider.fetchData(AddressFormTestdata.BlankLastNameField);
+        this.blankAddressField = MockaroTesdataProvider.fetchData(AddressFormTestdata.BlankAddressField);
+        this.blankPostcodeField = MockaroTesdataProvider.fetchData(AddressFormTestdata.BlankPostcodeField);
+        this.blankCityField = MockaroTesdataProvider.fetchData(AddressFormTestdata.BlankCityField);
+        this.blankPhoneField = MockaroTesdataProvider.fetchData(AddressFormTestdata.BlankPhoneField);
+        this.blankEmailField = MockaroTesdataProvider.fetchData(AddressFormTestdata.BlankEmailField);
     }
 }
