@@ -1,7 +1,7 @@
 import { Page } from "@playwright/test";
 import { LoginForm } from "../page-object/login-form/loginForm";
 import { URLs } from "../enums/URLs";
-import { LoginTestdataLoader } from "../data-loaders/mockarooDataLoaders";
+import { LoginTestdataLoader } from "../data-loaders/dataLoaders";
 
 export class AccountService {
 
