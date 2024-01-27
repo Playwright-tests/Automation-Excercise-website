@@ -10,7 +10,7 @@ test.describe('Filling the billing address form', async () => {
 
     test.beforeAll(async () => {
         
-        AddressFormTestdataLoader.init();
+        await AddressFormTestdataLoader.init();
     })
 
     async function actionsForPositiveTests(addressForm: AddressForm, data: any) {
