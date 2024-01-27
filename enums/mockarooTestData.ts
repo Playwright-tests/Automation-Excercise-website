@@ -7,6 +7,21 @@ export enum LoginTestdata {
     BlankPasswordField = 'LoginBlankPasswordField'
 }
 
+export enum AddressFormAdditionalFieldsTestdata {
+
+    CountyDropdownList = 'CountyDropdownList',
+    DistrictDropdownList = 'DistrictDropdownList',
+    MunicipalityField = 'MunicipalityField',
+    PrefectureDropdownList = 'PrefectureDropdownList',
+    ProvinceDropdownList = 'ProvinceDropdownList',
+    RegionDropdownList = 'RegionDropdownList',
+    RegionField = 'RegionField',
+    StateCountyDropdownList = 'StateCountyDropdownList',
+    StateCountyField = 'StateCountyField',
+    StateDropdownList = 'StateDropdownList',
+    StateZoneDropdownList = 'StateZoneDropdownList'
+}
+
 export enum AddressFormTestdata {
 
     Correct = 'AddressFormCorrectData',
@@ -30,19 +45,4 @@ export enum DropdownListCountryNameTestdata {
 
     Correct = 'DropdownListCorrectCountryName',
     Incorrect = 'DropdownListIncorrectCountryName',
-}
-
-export enum DropdownListAdditionalFieldsTestdata {
-
-    CountyDropdownList = 'CountyDropdownList',
-    DistrictDropdownList = 'DistrictDropdownList',
-    MunicipalityField = 'MunicipalityField',
-    PrefectureDropdownList = 'PrefectureDropdownList',
-    ProvinceDropdownList = 'ProvinceDropdownList',
-    RegionDropdownList = 'RegionDropdownList',
-    RegionField = 'RegionField',
-    StateCountyDropdownList = 'StateCountyDropdownList',
-    StateCountyField = 'StateCountyField',
-    StateDropdownList = 'StateDropdownList',
-    StateZoneDropdownList = 'StateZoneDropdownList'
 }
