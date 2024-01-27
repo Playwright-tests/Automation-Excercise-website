@@ -1,20 +1,14 @@
 import { ThumbnailCategory } from "../../../enums/thumbnailCategory";
 import { test, expect } from "../../../fixtures/thumbnail";
-import { getLinkData } from "../../../data-loaders/link";
 import { steps } from "../steps.spec";
+import { ProductsLinksTestdataLoader } from "../../../data-loaders/dataLoaders";
 
-const allBlackTops = getLinkData('allBlackTopsProducts');
-const highHeelShoes = getLinkData('highHeelShoesProducts');
-const mostWanted = getLinkData('mostWantedProducts');
-const scarfs = getLinkData('scarfsProducts');
-const onSale = getLinkData('onSaleProducts');
-const featured = getLinkData('featuredProducts');
-const trends = getLinkData('trendsProducts');
+ProductsLinksTestdataLoader.init();
 
 
 test.describe('Home page links to products from  the "ALL BLACK TOPS" category',async () => {
     
-    for(const link of allBlackTops) {
+    for(const link of ProductsLinksTestdataLoader.allBlackTops) {
 
         test('Clicking the "' + link.linkText + '" link',async ({thumbnailFactory, page}) => {
             
@@ -26,7 +20,7 @@ test.describe('Home page links to products from  the "ALL BLACK TOPS" category',
 
 test.describe('Home page links to products from the "HIGH HEEL SHOES" category',async () => {
     
-    for(const link of highHeelShoes) {
+    for(const link of ProductsLinksTestdataLoader.highHeelShoes) {
 
         test('Clicking the "' + link.linkText + '" link',async ({thumbnailFactory, page}) => {
             
@@ -38,7 +32,7 @@ test.describe('Home page links to products from the "HIGH HEEL SHOES" category',
 
 test.describe('Home page links to products from the "MOST WANTED" category',async () => {
     
-    for(const link of mostWanted) {
+    for(const link of ProductsLinksTestdataLoader.mostWanted) {
 
         test('Clicking the "' + link.linkText + '" link',async ({thumbnailFactory, page}) => {
             
@@ -50,7 +44,7 @@ test.describe('Home page links to products from the "MOST WANTED" category',asyn
 
 test.describe('Home page links to products from the "SCARFS" category',async () => {
     
-    for(const link of scarfs) {
+    for(const link of ProductsLinksTestdataLoader.scarfs) {
 
         test('Clicking the "' + link.linkText + '" link',async ({thumbnailFactory, page}) => {
             
@@ -62,7 +56,7 @@ test.describe('Home page links to products from the "SCARFS" category',async () 
 
 test.describe('Home page links to products from the "ON SALE" category',async () => {
     
-    for(const link of onSale) {
+    for(const link of ProductsLinksTestdataLoader.onSale) {
 
         test('Clicking the "' + link.linkText + '" link',async ({thumbnailFactory, page}) => {
             
@@ -74,7 +68,7 @@ test.describe('Home page links to products from the "ON SALE" category',async ()
 
 test.describe('Home page links to products from the "FEATURED" category',async () => {
     
-    for(const link of featured) {
+    for(const link of ProductsLinksTestdataLoader.featured) {
 
         test('Clicking the "' + link.linkText + '" link',async ({thumbnailFactory, page}) => {
             
@@ -86,7 +80,7 @@ test.describe('Home page links to products from the "FEATURED" category',async (
 
 test.describe('Home page links to products from the "TRENDS" category',async () => {
     
-    for(const link of trends) {
+    for(const link of ProductsLinksTestdataLoader.trends) {
 
         test('Clicking the "' + link.linkText + '" link',async ({thumbnailFactory, page}) => {
             
