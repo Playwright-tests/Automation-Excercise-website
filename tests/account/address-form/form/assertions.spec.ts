@@ -20,7 +20,7 @@ export async function negative(addressForm: AddressForm, data: any) {
     
     await expect(await addressForm.getPage()).toHaveURL(URLs.BillingAddressForm);
     await nhdExpect(await addressForm.getPage()).toHaveNotHiddenSelector(addressForm.getErrorMessageSelector());
-    expect(await addressForm.getErrorMessage()).toEqual(data.errorMessage);
+    expect(await addressForm.getErrorMessage()).toEqual(data.expectedErrorMessage);
 }
 
 export async function checkValidationMessage(locator: Locator, expectedMessage: string) {
