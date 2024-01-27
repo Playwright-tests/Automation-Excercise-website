@@ -5,7 +5,7 @@ export async function steps(loginForm: LoginForm, credentials: any) {
     
     await test.step('Enter the username',async () => {
         
-        await loginForm.setUsername(credentials.usernameOrEmail);
+        await loginForm.setUsername(credentials.username);
     })
 
     await test.step('Enter the password',async () => {
