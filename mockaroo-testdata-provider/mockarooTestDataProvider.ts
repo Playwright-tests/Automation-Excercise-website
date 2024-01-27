@@ -1,5 +1,4 @@
 import axios from "axios";
-import { MockarooTestdata } from "../enums/mockarooTestData";
 
 export class MockaroTesdataProvider {
 
@@ -7,18 +6,18 @@ export class MockaroTesdataProvider {
     static readonly format = '.json';
     static readonly apiKey = '?key=df87e700'; 
 
-    private static getUrl(mockarooTestData: MockarooTestdata) {
+    private static getUrl(name: string) {
 
-        return this.url + mockarooTestData + this.format + this.apiKey;
+        return this.url + name + this.format + this.apiKey;
     }
 
-    static async fetchData(mockarooTestdata: MockarooTestdata) {
+    static async fetchData(name: string) {
 
         try {
-            const response = await axios.get(this.getUrl(mockarooTestdata));
+            const response = await axios.get(this.getUrl(name));
             return response.data;
         } catch {
-            console.error('Could not fetch data from url: ' + this.getUrl(mockarooTestdata));    
+            console.error('Could not fetch data from url: ' + this.getUrl(name));    
         }
     }
 }
