@@ -18,3 +18,15 @@ export class LocalTestdataProvider {
         }
     }
 }
+
+export class JSONReader {
+
+    private static testdata: any;
+
+    public static get(fileName: string) {
+
+        this.testdata = JSON.parse(JSON.stringify(require('../testdata/' + fileName)));
+
+        return this.testdata;
+    }
+}
