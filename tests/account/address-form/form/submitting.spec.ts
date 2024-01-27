@@ -1,4 +1,4 @@
-import { AddressFormTestdataLoader } from "../../../../data-loaders/mockarooDataLoaders";
+import { AddressFormTestdataLoader } from "../../../../data-loaders/dataLoaders";
 import { URLs } from "../../../../enums/URLs";
 import { test, expect } from "../../../../fixtures/account";
 import { fillAddressForm, fillAddressFormAndAcceptChanges } from "../steps.spec";
