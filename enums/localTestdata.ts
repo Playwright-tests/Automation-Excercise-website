@@ -1,4 +1,4 @@
-export enum Products {
+export enum ProductsTestdata {
 
     AllBlackTops = 'LinksAllBlackTops',
     Featured = 'LinksFeatured',
@@ -9,8 +9,18 @@ export enum Products {
     Trends = 'LinksTrends'
 }
 
-export enum Blogs {
+export enum BlogsTestdata {
 
     Blogs_1 = 'LinksBlogs_1',
     Blogs_2 = 'LinksBlogs_2'
+}
+
+export enum MainMenuLinksTestdata {
+
+    Links = 'LinksMainMenu'
+}
+
+export enum MainMenuDropdownListLinksTestdata {
+
+    Links = 'LinksMainMenuDropdownList'
 }
