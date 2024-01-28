@@ -1,4 +1,4 @@
-import { Blogs, Products } from "../enums/localTestdata";
+import { BlogsTestdata, MainMenuDropdownListLinksTestdata, MainMenuLinksTestdata, ProductsTestdata } from "../enums/localTestdata";
 import { AddressFormTestdata, AddressFormAdditionalFieldsTestdata, DropdownListCountryNameTestdata, LoginTestdata } from "../enums/mockarooTestData";
 import { getTestdata } from "../services/dataService";
 import { JSONReader, LocalTestdataProvider } from "../testdata-providers/localTestdataProvider";
@@ -113,24 +113,44 @@ export class ProductsLinksTestdataLoader {
 
     static init() {
 
-        this.allBlackTops = JSONReader.get(Products.AllBlackTops);
-        this.featured = JSONReader.get(Products.Featured);
-        this.highHeelShoes = JSONReader.get(Products.HighHeelShoes);
-        this.mostWanted = JSONReader.get(Products.MostWanted);
-        this.onSale = JSONReader.get(Products.OnSale);
-        this.scarfs = JSONReader.get(Products.Scarfs);
-        this.trends = JSONReader.get(Products.Trends);
+        this.allBlackTops = JSONReader.get(ProductsTestdata.AllBlackTops);
+        this.featured = JSONReader.get(ProductsTestdata.Featured);
+        this.highHeelShoes = JSONReader.get(ProductsTestdata.HighHeelShoes);
+        this.mostWanted = JSONReader.get(ProductsTestdata.MostWanted);
+        this.onSale = JSONReader.get(ProductsTestdata.OnSale);
+        this.scarfs = JSONReader.get(ProductsTestdata.Scarfs);
+        this.trends = JSONReader.get(ProductsTestdata.Trends);
     }
 }
 
-export class BlogsLinksTestdataProvider {
+export class BlogsLinksTestdataLoader {
 
     static blogs_1: any[];
     static blogs_2: any[];
 
     static init() {
 
-        this.blogs_1 = JSONReader.get(Blogs.Blogs_1);
-        this.blogs_2 = JSONReader.get(Blogs.Blogs_2);
+        this.blogs_1 = JSONReader.get(BlogsTestdata.Blogs_1);
+        this.blogs_2 = JSONReader.get(BlogsTestdata.Blogs_2);
+    }
+}
+
+export class MainMenuLinksTestdataLoader {
+
+    static links: any[];
+
+    static init() {
+
+        this.links = JSONReader.get(MainMenuLinksTestdata.Links);
+    }
+}
+
+export class MainMenuDropdownListLinksTestdataLoader {
+
+    static links: any[];
+
+    static init() {
+
+        this.links = JSONReader.get(MainMenuDropdownListLinksTestdata.Links);
     }
 }
