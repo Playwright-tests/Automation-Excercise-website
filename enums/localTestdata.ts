@@ -34,3 +34,8 @@ export enum AccountPageLinkTestdata {
 
     Link = 'LinksAccountPage'
 }
+
+export enum AccountNavigationLinksTestdata {
+
+    Links = 'LinksAccountNavigation'
+}
