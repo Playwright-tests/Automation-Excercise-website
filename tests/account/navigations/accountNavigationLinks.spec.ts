@@ -1,11 +1,11 @@
 import { test, expect } from "../../../fixtures/account";
-import { getLinkData } from "../../../data-loaders/link";
+import { AccountNavigationLinksTestdataLoader } from "../../../data-loaders/dataLoaders";
 
-const links = getLinkData('accountNavigation')
+AccountNavigationLinksTestdataLoader.init();
 
 test.describe('Account navigation links',async () => {
     
-    for(const link of links) {
+    for(const link of AccountNavigationLinksTestdataLoader.links) {
 
         test('Clicking the "' + link.linkText + '" link',async ({accountNavigation, page}) => {
             
