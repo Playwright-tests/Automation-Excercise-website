@@ -1,12 +1,11 @@
-import { getLinkData } from "../../data-loaders/link";
+import { SliderSectionLinksTestdataLoader } from "../../data-loaders/dataLoaders";
 import { test, expect } from "../../fixtures/sliderSection";
 
-const links = getLinkData('sliderSectionLinks');
-
+SliderSectionLinksTestdataLoader.init();
 
 test.describe('Slider section links',async () => {
     
-    for(const link of links) {
+    for(const link of SliderSectionLinksTestdataLoader.links) {
 
         test('Clicking the "' + link.linkText + '" link',async ({sliderSection}) => {
             
