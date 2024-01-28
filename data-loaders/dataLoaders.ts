@@ -1,4 +1,4 @@
-import { Products } from "../enums/localTestdata";
+import { Blogs, Products } from "../enums/localTestdata";
 import { AddressFormTestdata, AddressFormAdditionalFieldsTestdata, DropdownListCountryNameTestdata, LoginTestdata } from "../enums/mockarooTestData";
 import { getTestdata } from "../services/dataService";
 import { JSONReader, LocalTestdataProvider } from "../testdata-providers/localTestdataProvider";
@@ -120,5 +120,17 @@ export class ProductsLinksTestdataLoader {
         this.onSale = JSONReader.get(Products.OnSale);
         this.scarfs = JSONReader.get(Products.Scarfs);
         this.trends = JSONReader.get(Products.Trends);
+    }
+}
+
+export class BlogsLinksTestdataProvider {
+
+    static blogs_1: any[];
+    static blogs_2: any[];
+
+    static init() {
+
+        this.blogs_1 = JSONReader.get(Blogs.Blogs_1);
+        this.blogs_2 = JSONReader.get(Blogs.Blogs_2);
     }
 }
