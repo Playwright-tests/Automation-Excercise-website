@@ -1,4 +1,4 @@
-import { BlogsTestdata, MainMenuDropdownListLinksTestdata, MainMenuLinksTestdata, ProductsTestdata } from "../enums/localTestdata";
+import { BlogsTestdata, MainMenuDropdownListLinksTestdata, MainMenuLinksTestdata, ProductsTestdata, SliderSectionLinksTestdata } from "../enums/localTestdata";
 import { AddressFormTestdata, AddressFormAdditionalFieldsTestdata, DropdownListCountryNameTestdata, LoginTestdata } from "../enums/mockarooTestData";
 import { getTestdata } from "../services/dataService";
 import { JSONReader, LocalTestdataProvider } from "../testdata-providers/localTestdataProvider";
@@ -152,5 +152,15 @@ export class MainMenuDropdownListLinksTestdataLoader {
     static init() {
 
         this.links = JSONReader.get(MainMenuDropdownListLinksTestdata.Links);
+    }
+}
+
+export class SliderSectionLinksTestdataLoader {
+
+    static links: any[];
+
+    static init() {
+
+        this.links = JSONReader.get(SliderSectionLinksTestdata.Links);
     }
 }
