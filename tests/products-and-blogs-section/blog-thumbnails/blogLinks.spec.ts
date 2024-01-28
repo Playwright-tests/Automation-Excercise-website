@@ -1,17 +1,15 @@
 import { ThumbnailCategory } from "../../../enums/thumbnailCategory";
 import { ThumbnailType } from "../../../enums/thumbnailType";
 import { test, expect } from "../../../fixtures/thumbnail";
-import { getLinkData } from "../../../data-loaders/link";
 import { steps } from "../steps.spec";
-
-const links_1 = getLinkData('blogs_1');
-const links_2 = getLinkData('blogs_2');
+import { BlogsLinksTestdataLoader } from "../../../data-loaders/dataLoaders";
 
 test.use({thumbnailType: ThumbnailType.Blog});
+BlogsLinksTestdataLoader.init();
 
 test.describe('Home page links to blogs from the first section',async () => {
     
-    for(const link of links_1) {
+    for(const link of BlogsLinksTestdataLoader.blogs_1) {
 
         test('Clicking the "' + link.linkText + '" link',async ({thumbnailFactory, page}) => {
 
@@ -23,7 +21,7 @@ test.describe('Home page links to blogs from the first section',async () => {
 
 test.describe('Home page links to blogs from the second section',async () => {
     
-    for(const link of links_2) {
+    for(const link of BlogsLinksTestdataLoader.blogs_2) {
 
         test('Clicking the "' + link.linkText + '" link',async ({thumbnailFactory, page}) => {
 
