@@ -29,3 +29,8 @@ export enum SliderSectionLinksTestdata {
 
     Links = 'LinksSliderSection'
 }
+
+export enum AccountPageLinkTestdata {
+
+    Link = 'LinksAccountPage'
+}
