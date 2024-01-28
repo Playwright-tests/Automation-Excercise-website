@@ -8,3 +8,9 @@ export enum Products {
     Scarfs = 'LinksScarfs',
     Trends = 'LinksTrends'
 }
+
+export enum Blogs {
+
+    Blogs_1 = 'LinksBlogs_1',
+    Blogs_2 = 'LinksBlogs_2'
+}
