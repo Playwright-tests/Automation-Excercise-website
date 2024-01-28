@@ -24,3 +24,8 @@ export enum MainMenuDropdownListLinksTestdata {
 
     Links = 'LinksMainMenuDropdownList'
 }
+
+export enum SliderSectionLinksTestdata {
+
+    Links = 'LinksSliderSection'
+}
