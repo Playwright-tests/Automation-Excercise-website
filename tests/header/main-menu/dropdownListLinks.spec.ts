@@ -1,8 +1,6 @@
 import { test, expect } from "../../../fixtures/mainMenu";
-import { getLinkData } from "../../../data-loaders/link";
 import { MainMenuDropdownListLinksTestdataLoader } from "../../../data-loaders/dataLoaders";
 
-const links = getLinkData('mainMenuDropdownList');
 MainMenuDropdownListLinksTestdataLoader.init();
 
 test.describe('Main menu drop-down list links',async () => {
