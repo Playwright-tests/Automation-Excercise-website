@@ -1,13 +1,14 @@
+import { LinkDataProvider } from "../../../data-loaders/dataProviders";
+import { TestScenarios } from "../../../enums/testScenarios";
 import { test, expect } from "../../../fixtures/mainMenu";
-import { MainMenuDropdownListLinksTestdataLoader } from "../../../data-loaders/dataLoaders";
 
-MainMenuDropdownListLinksTestdataLoader.init();
+const linkData = LinkDataProvider.get(TestScenarios.MAIN_MENU_DROPDOWN_LIST);
 
 test.describe('Main menu drop-down list links',async () => {
     
-    for(const link of MainMenuDropdownListLinksTestdataLoader.links) {
+    for(const data of linkData) {
 
-        test('Clicking the drop-down list link with id: "' + link.linkText,async ({mainMenu, page}) => {
+        test('Clicking the drop-down list link with id: "' + data.link,async ({mainMenu, page}) => {
             
             await test.step('Hover over the main menu drop-down list parent',async () => {
                 
@@ -16,10 +17,10 @@ test.describe('Main menu drop-down list links',async () => {
 
             await test.step('Click the link',async () => {
                 
-                await (await mainMenu.getDropdownList()).clickLink(link.linkText);
+                await (await mainMenu.getDropdownList()).clickLink(data.link);
             })
 
-            await expect(page).toHaveURL(link.url);
+            await expect(page).toHaveURL(data.url);
         })
     }
 })
