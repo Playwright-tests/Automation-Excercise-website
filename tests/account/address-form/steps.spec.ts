@@ -71,7 +71,7 @@ export async function fillAddressForm(addressForm: AddressForm, addresFormData: 
 
     await test.step('Enter "' + addresFormData.address1 + '" in the "Street addres" field',async () => {
         
-        await addressForm.setAddress_1(addresFormData.address1);
+        await addressForm.setAddress_1(addresFormData.address);
     })
 
     await test.step('Enter "' + addresFormData.addressLine2 + '" in the second "Street address" field',async () => {
