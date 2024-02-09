@@ -1,8 +1,9 @@
-import { getLinkData } from "../../../data-loaders/link";
+import { LinkDataProvider } from "../../../data-loaders/dataProviders";
+import { TestScenarios } from "../../../enums/testScenarios";
 import { test, expect } from "../../../fixtures/account";
 
-const billingAddressFormLink = getLinkData('billingAddressFormLink')[0];
-const shippingAddressFormLink = getLinkData('shippingAddressFormLink')[0]; 
+const billingLinkData = LinkDataProvider.get(TestScenarios.BILLING_ADDRESS_FORM);
+const shippingLinkData = LinkDataProvider.get(TestScenarios.SHIPPING_ADDRESS_FORM);
 
 test.describe('Address forms navigation links',async () => {
     
@@ -13,7 +14,7 @@ test.describe('Address forms navigation links',async () => {
             await addressFormNavigation.clickBillingAddressFormEditLink();
         })
 
-        await expect(page).toHaveURL(billingAddressFormLink.url);
+        await expect(page).toHaveURL(billingLinkData[0].url);
     })
 
     test('Clicking the "Edit" link in the "Shipping address" section',async ({addressFormNavigation, page}) => {
@@ -23,7 +24,7 @@ test.describe('Address forms navigation links',async () => {
             await addressFormNavigation.clickShippingAddressFormEditLink();
         })
 
-        await expect(page).toHaveURL(shippingAddressFormLink.url);
+        await expect(page).toHaveURL(shippingLinkData[0].url);
     })
     
 })
