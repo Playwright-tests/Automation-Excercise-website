@@ -1,20 +1,21 @@
+import { LinkDataProvider } from "../../../data-loaders/dataProviders";
+import { TestScenarios } from "../../../enums/testScenarios";
 import { test, expect } from "../../../fixtures/mainMenu";
-import { MainMenuLinksTestdataLoader } from "../../../data-loaders/dataLoaders";
 
-MainMenuLinksTestdataLoader.init();
+const linkData = LinkDataProvider.get(TestScenarios.MAIN_MENU);
 
 test.describe('Main menu links',async () => {
     
-    for(const link of MainMenuLinksTestdataLoader.links) {
+    for(const data of linkData) {
 
-        test('Clicking the link with id: "' + link.linkText + '"',async ({mainMenu, page}) => {
+        test('Clicking the link with id: "' + data.link + '"',async ({mainMenu, page}) => {
             
             await test.step('Click the link',async () => {
                 
-                await mainMenu.clickLink(link.linkText);
+                await mainMenu.clickLink(data.link);
             })
 
-            await expect(page).toHaveURL(link.url);
+            await expect(page).toHaveURL(data.url);
         })
     }
 })
