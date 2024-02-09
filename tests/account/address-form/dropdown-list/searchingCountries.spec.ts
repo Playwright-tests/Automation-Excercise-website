@@ -1,28 +1,51 @@
-import { DropdownListCountryNameTestdataLoader } from "../../../../data-loaders/dataLoaders";
+import { ArraysDataProvider } from "../../../../data-loaders/dataProviders";
+import { TestScenarios } from "../../../../enums/testScenarios";
+import { TestdataFiles } from "../../../../enums/testdataFiles";
 import { test, expect } from "../../../../fixtures/account";
-import { typeCountry } from "../steps.spec";
+import { toLowerCase } from "../../../../support/functions";
+import { fillDropdownList, typeCountry } from "../steps.spec";
+
+const countries = ArraysDataProvider.get(TestdataFiles.COUNTRIES);
 
 test.describe('Searching countries',async () => {
     
     const expectedAlertMessage = 'No matches found';
 
-    test.beforeAll(async () => {
-        
-        await DropdownListCountryNameTestdataLoader.init();
-    })
+    for(const country of countries[TestScenarios.CORRECT]) {
 
-    test('Correct country name',async ({addressForm}) => {
+        test('Correct country name: ' + country,async ({addressForm}) => {
             
-        await typeCountry(await DropdownListCountryNameTestdataLoader.correct.country, addressForm);
-        expect(await addressForm.getDropdownList().getAlertLocator().isVisible()).toBeFalsy();
-    })
+            await typeCountry(country, addressForm);
+            expect(await addressForm.getDropdownList().getAlertLocator().isVisible()).toBeFalsy();
+        })
+    }
 
-    test('Incorrect country name',async ({addressForm}) => {
+    for(const country of countries[TestScenarios.PARTIAL]) {
+
+        test('Partial country name: ' + country,async ({addressForm}) => {
             
-        await typeCountry(await DropdownListCountryNameTestdataLoader.incorrect.country, addressForm);
-        expect(await addressForm.getDropdownList().getAlertLocator().isVisible()).toBeTruthy();
-        expect(await addressForm.getDropdownList().getAlertLocator().textContent()).toEqual(expectedAlertMessage);
-    })
+            await fillDropdownList(country, addressForm);
+            
+            const resultsLocator = addressForm.getDropdownList().getResultsLocator();
+            const results = resultsLocator.locator(addressForm.getDropdownList().getOptionResultSelector()).all();
+
+            for(const result of await results) {
+    
+                const received = await toLowerCase(await result.textContent());
+                expect.soft(received).toContain(country.toLowerCase());
+            }
+        })
+    }
+
+    for(const country of countries[TestScenarios.INCORRECT]) {
+
+        test('Incorrect country name: ' + country,async ({addressForm}) => {
+            
+            await typeCountry(country, addressForm);
+            expect(await addressForm.getDropdownList().getAlertLocator().isVisible()).toBeTruthy();
+            expect(await addressForm.getDropdownList().getAlertLocator().textContent()).toEqual(expectedAlertMessage);
+        })
+    }
 })
 
 
