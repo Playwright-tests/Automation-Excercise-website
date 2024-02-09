@@ -1,6 +1,6 @@
 import { test as base } from "@playwright/test";
 import { AccountNavigation } from "../page-object/account/accountNavigation";
-import { AccountService } from "../helpers/accountService";
+import { login } from "../helpers/accountService";
 import { AddressFormNavigation } from "../page-object/account/addressFormNavigation";
 import { AddressForm } from "../page-object/address-form/addressForm";
 import { URLs } from "../enums/URLs";
@@ -20,7 +20,7 @@ export const test = base.extend<AccountFixture>({
         
         const accountNavigation = new AccountNavigation(page);
         
-        await AccountService.login(page);
+        await login(page);
         await use(accountNavigation);
     },
 
@@ -29,7 +29,7 @@ export const test = base.extend<AccountFixture>({
         const accountNavigation = new AccountNavigation(page);
         const addressFormNavigation = new AddressFormNavigation(page);
 
-        await AccountService.login(page);
+        await login(page);
         await accountNavigation.goto(URLs.AddressFormNavigation);
         await use(addressFormNavigation);
     },
@@ -38,7 +38,7 @@ export const test = base.extend<AccountFixture>({
         
         const addressForm = new AddressForm(page);
 
-        await AccountService.login(page);
+        await login(page);
         await addressForm.goto(URLs.BillingAddressForm);
         await use(addressForm);
     }
