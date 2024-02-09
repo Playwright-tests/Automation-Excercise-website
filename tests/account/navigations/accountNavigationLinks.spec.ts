@@ -1,20 +1,21 @@
+import { LinkDataProvider } from "../../../data-loaders/dataProviders";
+import { TestScenarios } from "../../../enums/testScenarios";
 import { test, expect } from "../../../fixtures/account";
-import { AccountNavigationLinksTestdataLoader } from "../../../data-loaders/dataLoaders";
 
-AccountNavigationLinksTestdataLoader.init();
+const linkData = LinkDataProvider.get(TestScenarios.ACCOUNT_NAVIGATION);
 
 test.describe('Account navigation links',async () => {
     
-    for(const link of AccountNavigationLinksTestdataLoader.links) {
+    for(const data of linkData) {
 
-        test('Clicking the "' + link.linkText + '" link',async ({accountNavigation, page}) => {
+        test('Clicking the "' + data.link + '" link',async ({accountNavigation, page}) => {
             
-            await test.step('Click the "' + link.linkText + '" link', async () => {
+            await test.step('Click the "' + data.link + '" link', async () => {
                 
-                await accountNavigation.clickLink(link.linkText);
+                await accountNavigation.clickLink(data.link);
             })
 
-            await expect(page).toHaveURL(link.url);
+            await expect(page).toHaveURL(data.url);
         })
     }
 })
