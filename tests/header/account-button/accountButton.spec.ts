@@ -1,10 +1,11 @@
 import { test, expect } from "../../../fixtures/header";
-import { AccountPageLinkTestdataLoader } from "../../../data-loaders/dataLoaders";
+import { LinkDataProvider } from "../../../data-loaders/dataProviders";
+import { TestScenarios } from "../../../enums/testScenarios";
 
-AccountPageLinkTestdataLoader.init();
+const linkData = LinkDataProvider.get(TestScenarios.ACCOUNT_PAGE);
 
 test.describe('Opening the "Account" page',async () => {
-    
+
     test('Clicking the "Account" button',async ({header, page}) => {
             
         await test.step('Click the "Account" button',async () => {
@@ -12,6 +13,6 @@ test.describe('Opening the "Account" page',async () => {
             await header.clickAccountButton();
         })
 
-        await expect(page).toHaveURL(AccountPageLinkTestdataLoader.link.url);
+        await expect(page).toHaveURL(linkData[0].url);
     })
 })
