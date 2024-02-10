@@ -5,5 +5,6 @@ export enum TestdataFiles {
     COUNTRIES = 'GSP_Countries.json',
     CREDENTIALS = 'GSP_Credentials.json',
     ADDRESS = 'GSP_Address.json',
-    DYNAMIC_FIELDS = "GSP_DynamicFields.json"
+    DYNAMIC_FIELDS = "GSP_DynamicFields.json",
+    NEWSLETTER = 'GSP_Newsletter.json'
 }
