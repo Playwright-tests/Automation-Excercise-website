@@ -1,6 +1,6 @@
 import { Locator, Page } from "@playwright/test";
 import { BasePage } from "../base/BasePage";
-import { toNumberIfNotZero, toNumberIfNotNull } from "../../utils/toNumber.spec";
+import { toNumberIfNotNull } from "../../support/functions";
 
 export class NewsletterForm extends BasePage {
 
