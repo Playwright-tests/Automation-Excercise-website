@@ -1,90 +1,52 @@
+import { ArraysDataProvider } from "../../../data-loaders/dataProviders";
+import { TestScenarios } from "../../../enums/testScenarios";
+import { TestdataFiles } from "../../../enums/testdataFiles";
 import { test, expect } from "../../../fixtures/header";
-import { getArrayData } from "../../../data-loaders/arrayData";
+import { SearchEngine } from "../../../page-object/header/searchEngine";
 import { SearchResultsPage } from "../../../page-object/search-results-page/searchResultsPage";
 import { steps } from "./steps.spec";
 
-const correctPhrases = getArrayData('searchEngine', 'correctPhrase');
-const upperLowerCases = getArrayData('searchEngine', 'upperAndLowerCases');
-const incompleteCorrectPhrases = getArrayData('searchEngine', 'partOfCorrectPhrase');
-const incorrectPhrases = getArrayData('searchEngine', 'incorrectPhrase');
-const strangePhrases = getArrayData('searchEngine', 'strangePhrase');
+const phrases = ArraysDataProvider.get(TestdataFiles.PHRASES);
 
 test.describe('Search product using a correct phrase',async () => {
-    
-    for(const phrase of correctPhrases) {
 
-        test('Typing the "' + phrase + '" as the correct phrase',async ({header, page}) => {
-            
-            await steps(await header.getSearchEngine(), phrase);
-
-            const searchResultsPage = new SearchResultsPage(page);
-
-            expect(await (await searchResultsPage.getFoundMessageLocator()).isVisible()).toBeTruthy();
-            expect(await (await searchResultsPage.getNothingFoundLocator()).isVisible()).toBeFalsy();
-        })
-    }
-})
-
-test.describe('Searching products using phrases that contain upper and lower cases',async () => {
-
-    for(const phrase of upperLowerCases) {
-
-        test('Typing the "' + phrase + '" as the correct phrase',async ({header, page}) => {
-            
-            await steps(await header.getSearchEngine(), phrase);
-
-            const searchResultsPage = new SearchResultsPage(page);
-
-            expect(await (await searchResultsPage.getFoundMessageLocator()).isVisible()).toBeTruthy();
-            expect(await (await searchResultsPage.getNothingFoundLocator()).isVisible()).toBeFalsy();
-        })
-    }
-})
-
-test.describe('Searching products using incomplete, correct phrases',async () => {
-    
-    for(const phrase of incompleteCorrectPhrases) {
-
-        test('Typing the "' + phrase + '" as the part of the correct phrase',async ({header, page}) => {
+    async function actions(phrase: string, searchEngine: SearchEngine, func: any) {
         
-            await steps(await header.getSearchEngine(), phrase);
+        await steps(searchEngine, phrase);
+        const searchResultsPage = new SearchResultsPage(await searchEngine.getPage());
+        await func(searchResultsPage);
+    }
 
-            const searchResultsPage = new SearchResultsPage(page);
+    for(const phrase of phrases[TestScenarios.CORRECT]) {
 
-            expect(await (await searchResultsPage.getFoundMessageLocator()).isVisible()).toBeTruthy();
-            expect(await (await searchResultsPage.getNothingFoundLocator()).isVisible()).toBeFalsy();
+        test('Typing the "' + phrase + '" as the correct phrase',async ({header}) => {
+            
+            await actions(phrase, await header.getSearchEngine(), async (searchResultsPage: SearchResultsPage) => {
+                expect(await (await searchResultsPage.getFoundMessageLocator()).isVisible()).toBeTruthy();  
+                expect(await (await searchResultsPage.getNothingFoundLocator()).isVisible()).toBeFalsy();
+            })
         })
     }
-})
 
-test.describe('Search product using an incorrect phrase',async () => {
-    
-    for(const phrase of incorrectPhrases) {
+    for(const phrase of phrases[TestScenarios.PARTIAL]) {
 
-        test('Typing the "' + phrase + '" as the correct phrase',async ({header, page}) => {
+        test('Typing the "' + phrase + '" as the partial phrase',async ({header}) => {
             
-            await steps(await header.getSearchEngine(), phrase);
-
-            const searchResultsPage = new SearchResultsPage(page);
-
-            expect(await (await searchResultsPage.getFoundMessageLocator()).isVisible()).toBeFalsy();
-            expect(await (await searchResultsPage.getNothingFoundLocator()).isVisible()).toBeTruthy();
+            await actions(phrase, await header.getSearchEngine(), async (searchResultsPage: SearchResultsPage) => {
+                expect(await (await searchResultsPage.getFoundMessageLocator()).isVisible()).toBeTruthy();
+                expect(await (await searchResultsPage.getNothingFoundLocator()).isVisible()).toBeFalsy();    
+            })
         })
     }
-})
 
-test.describe('Searching products using part of strange phrases',async () => {
-    
-    for(const phrase of strangePhrases) {
+    for(const phrase of phrases[TestScenarios.INCORRECT]) {
 
-        test('Typing the "' + phrase + '" as the strange phrase',async ({header, page}) => {
+        test('Typing the "' + phrase + '" as the incorrect phrase',async ({header, page}) => {
             
-            await steps(await header.getSearchEngine(), phrase);
-
-            const searchResultsPage = new SearchResultsPage(page);
-
-            expect(await (await searchResultsPage.getFoundMessageLocator()).isVisible()).toBeFalsy();
-            expect(await (await searchResultsPage.getNothingFoundLocator()).isVisible()).toBeTruthy();
+            await actions(phrase, await header.getSearchEngine(), async (searchResultsPage: SearchResultsPage) => {
+                expect(await (await searchResultsPage.getFoundMessageLocator()).isVisible()).toBeFalsy();
+                expect(await (await searchResultsPage.getNothingFoundLocator()).isVisible()).toBeTruthy();    
+            })
         })
     }
 })
