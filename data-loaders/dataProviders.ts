@@ -1,6 +1,6 @@
 import { TestdataFiles } from "../enums/testdataFiles";
 import { TestdataLoader } from "../testdata-loaders/testdataLoader";
-import { AddressData, Credentials, LinkData } from "../models/models";
+import { AddressData, Credentials, LinkData, NewsletterData } from "../models/models";
 
 export class ArraysDataProvider {
 
@@ -40,5 +40,15 @@ export class AddressDataProvider {
         let addressData: AddressData[];
         addressData = TestdataLoader.get(TestdataFiles.ADDRESS);
         return addressData;
+    }
+}
+
+export class NewsletterDataProvider {
+
+    public static get() {
+
+        let newsletterData: NewsletterData;
+        newsletterData = TestdataLoader.get(TestdataFiles.NEWSLETTER);
+        return newsletterData;
     }
 }
