@@ -1,1 +1,42 @@
-{"correct":["SHOES","belts","top","T-shirt","JeAnS","BLACK","DrESs","Marina","FITT","red"],"partial":["Mari","T-sh","DrE","swe","sty","sca","SHO","bel"],"incorrect":["Porsche","Chevrolet","Chevrolet","Nissan","Chevrolet","Mercedes-Benz","GMC","Ford","Hyundai","Aston Martin"],"naughtyStrings":["-1","ﾟ･✿ヾ╲(｡◕‿◕｡)╱✿･ﾟ","Ω≈ç√∫˜µ≤≥÷","​","1/0"," "]}
+{
+    "correct": [
+        "SHOES",
+        "belts",
+        "top",
+        "T-shirt",
+        "JeAnS",
+        "BLACK",
+        "DrESs",
+        "Marina",
+        "FITT",
+        "red"
+    ],
+    "partial": [
+        "Mari",
+        "T-sh",
+        "DrE",
+        "swe",
+        "sty",
+        "sca",
+        "SHO",
+        "bel"
+    ],
+    "incorrect": [
+        "Porsche",
+        "Chevrolet",
+        "Nissan",
+        "Mercedes-Benz",
+        "GMC",
+        "Ford",
+        "Hyundai",
+        "Aston Martin"
+    ],
+    "naughtyStrings": [
+        "-1",
+        "ﾟ･✿ヾ╲(｡◕‿◕｡)╱✿･ﾟ",
+        "Ω≈ç√∫˜µ≤≥÷",
+        "​",
+        "1/0",
+        " "
+    ]
+}
