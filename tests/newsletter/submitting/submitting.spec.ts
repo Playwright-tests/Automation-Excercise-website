@@ -1,9 +1,10 @@
-import { getNewsletterData } from "../../../data-loaders/newsletterData";
+import { NewsletterDataProvider } from "../../../data-loaders/dataProviders";
+import { TestScenarios } from "../../../enums/testScenarios";
 import { test, expect } from "../../../fixtures/footer";
-import { StringContainer } from "../../../utils/stringContainer";
+import { StringContainer } from "../../../support/stringContainer";
 import { handlePopup } from "../signing-up/handlePopup.spec";
 
-const blankEmailField = getNewsletterData('blankEmailField')[0];
+const newsletterData = NewsletterDataProvider.get();
 
 
 test.describe('Submitting',async () => {
@@ -24,7 +25,7 @@ test.describe('Submitting',async () => {
             await newsletterForm.clickSubscribeButton();
         })
 
-        expect(receivedMessage.getValue()).toEqual(blankEmailField.message);
+        expect(receivedMessage.getValue()).toEqual(newsletterData[TestScenarios.BLANK_EMAIL_FIELD].message);
     })
 
     test('Pressing ENTER',async ({newsletterForm}) => {
@@ -41,6 +42,6 @@ test.describe('Submitting',async () => {
             await (await newsletterForm.getPage()).keyboard.press('Enter');
         })
 
-        expect(receivedMessage.getValue()).toEqual(blankEmailField.message);
+        expect(receivedMessage.getValue()).toEqual(newsletterData[TestScenarios.BLANK_EMAIL_FIELD].message);
     })
 })
