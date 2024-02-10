@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { StringContainer } from "../../../utils/stringContainer";
+import { StringContainer } from "../../../support/stringContainer";
 
 export async function handlePopup(page: Page, receivedMessage: StringContainer) {
     
