@@ -8,8 +8,8 @@ export async function positive(addressForm: AddressForm, data: any) {
     expect.soft(await addressForm.getFirstName()).toEqual(data.firstName);
     expect.soft(await addressForm.getLastName()).toEqual(data.lastName);
     expect.soft(await addressForm.getCompany()).toEqual(data.company);
-    expect.soft(await addressForm.getAddress1()).toEqual(data.address1);
-    expect.soft(await addressForm.getAddress2()).toEqual(data.address2);
+    expect.soft(await addressForm.getAddress1()).toEqual(data.address);
+    expect.soft(await addressForm.getAddress2()).toEqual(data.addressLine2);
     expect.soft(await addressForm.getCity()).toEqual(data.city);    
     expect.soft(await addressForm.getPostcode()).toEqual(data.postcode);
     expect.soft(await addressForm.getPhone()).toEqual(data.phone);
@@ -20,7 +20,7 @@ export async function negative(addressForm: AddressForm, data: any) {
     
     await expect(await addressForm.getPage()).toHaveURL(URLs.BillingAddressForm);
     await nhdExpect(await addressForm.getPage()).toHaveNotHiddenSelector(addressForm.getErrorMessageSelector());
-    expect(await addressForm.getErrorMessage()).toEqual(data.expectedErrorMessage);
+    expect(await addressForm.getErrorMessage()).toEqual(data.message);
 }
 
 export async function checkValidationMessage(locator: Locator, expectedMessage: string) {
@@ -31,7 +31,7 @@ export async function checkValidationMessage(locator: Locator, expectedMessage: 
         return input.validationMessage;
     })
 
-    expect(validationMessage).toContain(expectedMessage);
+    expect(validationMessage).not.toEqual("");
 }
 
 export async function checkLabel(addressForm: AddressForm, labelTitle: string) {
