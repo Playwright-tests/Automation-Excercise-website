@@ -2,6 +2,16 @@ import { TestdataFiles } from "../enums/testdataFiles";
 import { TestdataLoader } from "../testdata-loaders/testdataLoader";
 import { AddressData, Credentials, LinkData } from "../models/models";
 
+export class ArraysDataProvider {
+
+    public static get(fileName: string) {
+
+        let data: any;
+        data = TestdataLoader.get(fileName);
+        return data;
+    }
+}
+
 export class LinkDataProvider {
 
     public static get(scenario: string) {
