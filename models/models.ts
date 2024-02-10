@@ -23,3 +23,9 @@ export type AddressData = {
     phone: string,
     email: string
 }
+
+export type NewsletterData = {
+
+    name: string,
+    email: string
+}
