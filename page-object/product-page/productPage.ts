@@ -9,6 +9,7 @@ export class ProductPage extends BasePage {
     readonly message: Locator;
     readonly producTitle: Locator;
     readonly productPrice: Locator;
+    readonly quantityLocator: Locator;
     readonly messageSelector: string;
 
     constructor(page: Page) {
@@ -21,6 +22,7 @@ export class ProductPage extends BasePage {
         this.message = page.locator(this.messageSelector);
         this.producTitle = page.locator('.product_title ');
         this.productPrice = page.locator('p').filter({hasText: "zł"});
+        this.quantityLocator = page.locator('div.quantity');
     }
 
     async getProductTitle() {
@@ -38,9 +40,9 @@ export class ProductPage extends BasePage {
         await this.addToCartButton.click();
     }
 
-    getQuantityField() {
+    async getQuantityField() {
 
-        return this.quantityField;
+        return new QuantityField(await this.getPage(), this.quantityLocator);
     }
 
     getMessageSelector() {
