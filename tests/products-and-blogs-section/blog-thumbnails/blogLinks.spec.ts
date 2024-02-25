@@ -1,32 +1,29 @@
+import { LinkDataProvider } from "../../../data-loaders/dataProviders";
+import { TestScenarios } from "../../../enums/testScenarios";
 import { ThumbnailCategory } from "../../../enums/thumbnailCategory";
-import { ThumbnailType } from "../../../enums/thumbnailType";
 import { test, expect } from "../../../fixtures/thumbnail";
-import { steps } from "../steps.spec";
-import { BlogsLinksTestdataLoader } from "../../../data-loaders/dataLoaders";
+import { blogsSteps } from "../steps.spec";
 
-test.use({thumbnailType: ThumbnailType.Blog});
-BlogsLinksTestdataLoader.init();
+const blogs_1 = LinkDataProvider.get(TestScenarios.BLOGS_1);
+const blogs_2 = LinkDataProvider.get(TestScenarios.BLOGS_2);
 
-test.describe('Home page links to blogs from the first section',async () => {
+test.describe('Links to blogs',async () => {
     
-    for(const link of BlogsLinksTestdataLoader.blogs_1) {
+    for(const blog of blogs_1) {
 
-        test('Clicking the "' + link.linkText + '" link',async ({thumbnailFactory, page}) => {
+        test('Clicking the "' + blog.link + '" link',async ({blogThumbnail}) => {
 
-            await steps(page, ThumbnailCategory.Recent1, thumbnailFactory, link.linkText);
-            await expect(page).toHaveURL(link.url);
+            await blogsSteps(await blogThumbnail.getPage(), ThumbnailCategory.Recent1, blog.link);
+            await expect(await blogThumbnail.getPage()).toHaveURL(blog.url);
         })
     }
-})
 
-test.describe('Home page links to blogs from the second section',async () => {
-    
-    for(const link of BlogsLinksTestdataLoader.blogs_2) {
+    for(const blog of blogs_2) {
 
-        test('Clicking the "' + link.linkText + '" link',async ({thumbnailFactory, page}) => {
+        test('Clicking the "' + blog.link + '" link',async ({blogThumbnail}) => {
 
-            await steps(page, ThumbnailCategory.Recent2, thumbnailFactory, link.linkText);
-            await expect(page).toHaveURL(link.url);
+            await blogsSteps(await blogThumbnail.getPage(), ThumbnailCategory.Recent2, blog.link);
+            await expect(await blogThumbnail.getPage()).toHaveURL(blog.url);
         })
     }
 })
