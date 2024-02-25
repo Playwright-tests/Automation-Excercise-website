@@ -1,0 +1,20 @@
+{
+    "products": [
+        {
+            "url": "manago-shirt/",
+            "quantity": "3"
+        },
+        {
+            "url": "blue-sweater/",
+            "quantity": "3"
+        },
+        {
+            "url": "asabi-jeans/",
+            "quantity": "6"
+        },
+        {
+            "url": "marcara-sleeveless-dress/",
+            "quantity": "1"
+        }
+    ]
+}
