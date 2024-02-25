@@ -4,7 +4,7 @@ import { BlogThumbnail } from "../page-object/thumbnail/blogThumbnail";
 
 export class BlogThumbnailProvider {
 
-    createThumbnail(page: Page, category: ThumbnailCategory, linkText: string): BlogThumbnail {
+    static create(page: Page, category: ThumbnailCategory, linkText: string): BlogThumbnail {
         
         const parent = page.locator('#tyche_recent-' + category);
         const link = parent.getByRole('link', {name: linkText});
