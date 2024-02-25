@@ -3,13 +3,15 @@ import { BasePage } from "../base/BasePage";
 
 export class QuantityField extends BasePage {
 
-    readonly field: Locator;
+    readonly inputFieldSelector: string;
+    readonly parent: Locator;
 
-    constructor(page: Page, field: Locator) {
+    constructor(page: Page, parent: Locator) {
 
         super(page);
         
-        this.field = field;
+        this.inputFieldSelector = 'input[type="number"]';
+        this.parent = parent;
     }
 
     static createWithoutNth(page: Page) {
@@ -24,17 +26,18 @@ export class QuantityField extends BasePage {
     
     async setQuantity(quantity: string) {
 
-        await this.field.clear();
-        await this.field.fill(quantity);
+        let field = this.parent.locator(this.inputFieldSelector);
+        await field.clear();
+        await field.fill(quantity);
     }
 
     async getQuantity() {
 
-        return await this.field.inputValue();
+        return await this.parent.locator(this.inputFieldSelector).inputValue();
     }
 
     getFieldLocator() {
 
-        return this.field;
+        return this.parent.locator(this.inputFieldSelector);
     }
 }
