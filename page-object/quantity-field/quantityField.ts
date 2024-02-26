@@ -31,6 +31,11 @@ export class QuantityField extends BasePage {
         await field.fill(quantity);
     }
 
+    async getMin() {
+
+        return this.parent.locator(this.inputFieldSelector).getAttribute('min');
+    }
+
     async getQuantity() {
 
         return await this.parent.locator(this.inputFieldSelector).inputValue();
