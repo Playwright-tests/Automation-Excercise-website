@@ -8,9 +8,9 @@ test.describe('Text input verification',async () => {
         
         await test.step('Enter the "' + quantity + '"',async () => {
             
-            await productPage.getQuantityField().setQuantity(quantity);
+            await (await productPage.getQuantityField()).setQuantity(quantity);
         })
 
-        expect(await productPage.getQuantityField().getQuantity()).toEqual(quantity);
+        expect(await (await productPage.getQuantityField()).getQuantity()).toEqual(quantity);
     })
 })
