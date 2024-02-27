@@ -5,7 +5,8 @@ export async function steps(shoppingCart: ShoppingCart, index: number, quantity:
 
     await test.step('Enter "' + quantity + '"in the quantity field',async () => {
         
-        await (await shoppingCart.getRow(index).getQuantityField()).setQuantity(quantity);
+        await (await shoppingCart.getTable().getQuantityField(index)).setQuantity(quantity);
+        //await (await shoppingCart.getRow(index).getQuantityField()).setQuantity(quantity);
     })
 
     await test.step('Click the "Update cart" button',async () => {
