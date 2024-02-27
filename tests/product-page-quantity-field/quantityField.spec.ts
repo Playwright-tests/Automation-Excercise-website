@@ -2,7 +2,7 @@ import { expect, test } from "../../fixtures/productPage";
 import { expect as nhdExpect } from "../../expect/tohaveNotHiddenSelector";
 import { steps } from "./steps.spec";
 import { ProductPage } from "../../page-object/product-page/productPage";
-import { Numbers } from "../../enums/numbers";
+import { getMax, getMaxMinusOne, getMaxPlusOne, getMin, getMinMinusOne, getMinPlusOne } from "../../support/quantityFieldUtils";
 
 
 test.describe('Quantity field tests',async () => {
@@ -15,10 +15,10 @@ test.describe('Quantity field tests',async () => {
     }
 
     test('Min - 1', async ({productPage}) => {
-        
-        let value: number | null = parseInt(await (await productPage.getQuantityField())?.getMin() ?? '') + (-1);
     
-        await steps(productPage, value?.toString());
+        const value = await getMinMinusOne(await productPage.getQuantityField());
+
+        await steps(productPage, value);
 
         const validationMessage = await (await productPage.getQuantityField()).getFieldLocator().evaluate((element) => {
             const input = element as HTMLInputElement;
@@ -30,32 +30,31 @@ test.describe('Quantity field tests',async () => {
     
     test('Min',async ({productPage}) => {
         
-        let value: number | null = parseInt(await (await productPage.getQuantityField())?.getMin() ?? '');
+        const value = await getMin(await productPage.getQuantityField());
 
-        await actions(productPage, value?.toString(), 'Please enter valid quantity');
+        await actions(productPage, value, 'Please enter valid quantity');
     })
 
     test('Min + 1',async ({productPage}) => {
         
-        let value: number | null = parseInt(await (await productPage.getQuantityField())?.getMin() ?? '');
-        value += 1;
-        
-        await actions(productPage, value?.toString(), 'have been added to your cart.');
+        const value = await getMinPlusOne(await productPage.getQuantityField());
+
+        await actions(productPage, value, 'have been added to your cart.');
     })
 
     test('Max - 1',async ({productPage}) => {
         
-        await actions(productPage, (Numbers.MAX_INT_32_BIT - 1).toString(), 'have been added to your cart.');
+        await actions(productPage, getMaxMinusOne(), 'have been added to your cart.');
     })
 
     test('Max',async ({productPage}) => {
         
-        await actions(productPage, Numbers.MAX_INT_32_BIT.toString(), 'have been added to your cart.');
+        await actions(productPage, getMax(), 'have been added to your cart.');
     })
 
     test('Max + 1',async ({productPage}) => {
                 
-        await actions(productPage, (Numbers.MAX_INT_32_BIT + 1).toString(), 'Please enter valid quantity');
+        await actions(productPage, getMaxPlusOne(), 'Please enter valid quantity');
     })
 
     test('Blank field',async ({productPage}) => {
