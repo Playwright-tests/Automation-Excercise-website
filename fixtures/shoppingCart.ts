@@ -9,9 +9,7 @@ export { expect } from "@playwright/test";
 
 export type ShoppingCartFixture = {
 
-    shoppingCart: ShoppingCart,
-    afterAddingThroughProductPage: ShoppingCart,
-    afterAddingThroughThumbnailOnHomepage: ShoppingCart
+    shoppingCart: ShoppingCart
 }
 
 export type ProductPageUrlFixture = {
@@ -24,28 +22,27 @@ export type ThumbnailCategoryFixture = {
     thumbnailCategory: ThumbnailCategory;
 }
 
-export type ProductNameFixture = {
+export type ShoppingCartOptionsFixture = {
 
-    productName: string
+    shoppingCartOptions: string
 }
 
-export const test = base.extend<ShoppingCartFixture & ProductPageUrlFixture & ThumbnailCategoryFixture & ProductNameFixture>({
+export const test = base.extend<ShoppingCartFixture & ShoppingCartOptionsFixture>({
 
-    productPageUrl: [URLs.AmariShirtProduct, {option: true}],
-    thumbnailCategory: [ThumbnailCategory.AllBlackTops, {option: true}],
-    productName: ['none', {option: true}],
+    shoppingCartOptions: ['byCode', {option: true}],
 
-    shoppingCart:async ({page, productName}, use) => {
+    shoppingCart:async ({page, shoppingCartOptions}, use) => {
         
         const productPage = new ProductPage(page);
         const shoppingCart = new ShoppingCart(page);
 
-        if(productName !== "none") {
+        if(shoppingCartOptions !== "byCode") {
 
             await productPage.goto(URLs.AmariShirtProduct);
             await (await productPage.getQuantityField()).setQuantity('1');
             await productPage.clickAddToCartButton();
             await shoppingCart.goto(URLs.ShoppingCart);
+            await shoppingCart.getTable().findRows();
         }
 
         await use(shoppingCart);
