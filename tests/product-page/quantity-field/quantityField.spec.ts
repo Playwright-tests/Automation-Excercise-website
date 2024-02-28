@@ -1,8 +1,8 @@
-import { expect, test } from "../../fixtures/productPage";
-import { expect as nhdExpect } from "../../expect/tohaveNotHiddenSelector";
+import { expect, test } from "../../../fixtures/productPage";
+import { expect as nhdExpect } from "../../../expect/tohaveNotHiddenSelector";
 import { steps } from "./steps.spec";
-import { ProductPage } from "../../page-object/product-page/productPage";
-import { getMax, getMaxMinusOne, getMaxPlusOne, getMin, getMinMinusOne, getMinPlusOne } from "../../support/quantityFieldUtils";
+import { ProductPage } from "../../../page-object/product-page/productPage";
+import { getMax, getMaxMinusOne, getMaxPlusOne, getMin, getMinMinusOne, getMinPlusOne } from "../../../support/quantityFieldUtils";
 
 
 test.describe('Quantity field tests',async () => {

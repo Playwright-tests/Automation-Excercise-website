@@ -1,4 +1,4 @@
-import { test, expect } from "../../fixtures/productPage";
+import { test, expect } from "../../../fixtures/productPage";
 
 test.describe('Text input verification',async () => {
     
