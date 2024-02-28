@@ -11,8 +11,8 @@ export async function fillAddressForm(page: Page, data: any) {
     await addressForm.setFirstName(data.firstName);
     await addressForm.setLastName(data.lastName);
     await addressForm.setCompany(data.company);
-    await addressForm.setAddress_1(data.address1);
-    await addressForm.setAddress_2(data.address2);
+    await addressForm.setAddress_1(data.address);
+    await addressForm.setAddress_2(data.addressLine2);
     await addressForm.setPostcode(data.postcode);
     await addressForm.setCity(data.city);
     await addressForm.setPhone(data.phone);
