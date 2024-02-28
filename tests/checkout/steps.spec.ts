@@ -1,17 +1,16 @@
 import { Page, expect, test } from "@playwright/test";
 import { CheckoutPage } from "../../page-object/checkout-page/checkoutPage";
-import { fillAddressForm } from "../../helpers/addressFormFiller";
-import { getAddressFormData } from "../../data-loaders/addressFormData";
-import { OrderReceivedPage } from "../../page-object/order-received-page/orderReceivedPage";
-import { URLs } from "../../enums/URLs";
+import { fillAddressForm } from "../../support/addressFormFiller";
+import { AddressDataProvider } from "../../data-loaders/dataProviders";
+import { TestScenarios } from "../../enums/testScenarios";
 
-const addressFormData = getAddressFormData('correct')[0];
+const addressData = AddressDataProvider.get();
 
 export async function steps(page: Page, checkoutPage: CheckoutPage, radioButtonName: string, placeOrderButtonName: string) {
     
     await test.step('Fill the billing address form',async () => {
         
-        await fillAddressForm(page, addressFormData);
+        await fillAddressForm(page, addressData[TestScenarios.CORRECT]);
     })
 
     await test.step('Click the "' + radioButtonName + '" radio button',async () => {
