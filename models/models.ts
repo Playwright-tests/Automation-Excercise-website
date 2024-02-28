@@ -48,3 +48,10 @@ export type ThumbnailData = {
     tycheProduct: string,
     link: string;
 }
+
+export type NewsletterFieldsData = {
+
+    maxMinusOne: NewsletterData,
+    max: NewsletterData,
+    maxPlusOne: NewsletterData
+}
