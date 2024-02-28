@@ -1,6 +1,6 @@
 import { TestdataFiles } from "../enums/testdataFiles";
 import { TestdataLoader } from "../testdata-loaders/testdataLoader";
-import { AddressData, Credentials, LinkData, NewsletterData, ProductToCart, ThumbnailData } from "../models/models";
+import { AddressData, Credentials, LinkData, NewsletterData, NewsletterFieldsData, ProductToCart, ThumbnailData } from "../models/models";
 
 export class ArraysDataProvider {
 
@@ -72,5 +72,16 @@ export class ThumbnailDataProvider {
         const temp = TestdataLoader.get(TestdataFiles.THUMBNAIL_DATA);
         thumbnailData = temp.thumbnails;
         return thumbnailData;
+    }
+}
+
+export class NewsletterFieldsDataProvider {
+
+    public static get(field: string) {
+
+        let newsletterFieldsData: NewsletterFieldsData;
+        const temp = TestdataLoader.get(TestdataFiles.NEWSLETTER_FIELDS);
+        newsletterFieldsData = temp[field];
+        return newsletterFieldsData;
     }
 }
