@@ -2,7 +2,6 @@ import { ArraysDataProvider } from "../../../../data-loaders/dataProviders";
 import { TestScenarios } from "../../../../enums/testScenarios";
 import { TestdataFiles } from "../../../../enums/testdataFiles";
 import { test, expect } from "../../../../fixtures/account";
-import { toLowerCase } from "../../../../support/functions";
 import { fillDropdownList, typeCountry } from "../steps.spec";
 
 const countries = ArraysDataProvider.get(TestdataFiles.COUNTRIES);
@@ -31,8 +30,9 @@ test.describe('Searching countries',async () => {
 
             for(const result of await results) {
     
-                const received = await toLowerCase(await result.textContent());
-                expect.soft(received).toContain(country.toLowerCase());
+                const text = await result.textContent();
+                const lowerCases = text?.toLowerCase()
+                expect.soft(lowerCases).toContain(country.toLowerCase());
             }
         })
     }
