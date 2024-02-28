@@ -20,7 +20,7 @@ export const test = base.extend<CheckoutFixture>({
         const productPage = new ProductPage(page);
 
         await productPage.goto(URLs.AmariShirtProduct);
-        await productPage.getQuantityField().setQuantity('1');
+        await (await productPage.getQuantityField()).setQuantity('1');
         await productPage.clickAddToCartButton();
 
         const checkoutPage = new CheckoutPage(page);
