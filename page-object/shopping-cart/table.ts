@@ -26,6 +26,11 @@ export class Table extends BasePage {
         return this.rows.length;
     }
 
+    async clickRemoveButton(row: number) {
+
+        await this.rows[row].locator('.remove').click();
+    }
+
     async getProductName(row: number) {
 
         return (await this.rows[row].locator('.product-name').textContent())?.trim();
