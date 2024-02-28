@@ -52,5 +52,7 @@ export enum TestScenarios {
     BLANK_CITY_FIELD = 'blankCityField',
     BLANK_POSTCODE_FIELD = 'blankPostcodeField',
     BLANK_PHONE_FIELD = 'blankPhoneField',
-    BLANK_EMAIL_FIELD = 'blankEmailField'
+    BLANK_EMAIL_FIELD = 'blankEmailField',
+    NAME_FIELD = 'nameField',
+    EMAIL_FIELD = 'emailField'
 }
