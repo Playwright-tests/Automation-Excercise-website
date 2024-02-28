@@ -3,7 +3,7 @@ import { expect } from "../../../expect/tohaveNotHiddenSelector";
 import { expect as nhdExpect} from "../../../expect/tohaveNotHiddenSelector"; 
 import { ShoppingCart } from "../../../page-object/shopping-cart/shoppingCart";
 import { steps } from "../steps.spec";
-import { getActualTotal, getExpectedTotal } from "../../../support/functions";
+import { getActualTotal, getExpectedTotal } from "../../../support/shoppingCartUtils";
 import { getMax, getMaxMinusOne, getMaxPlusOne, getMin, getMinMinusOne, getMinPlusOne } from "../../../support/quantityFieldUtils";
 
 test.use({shoppingCartOptions: 'byFixture'});
