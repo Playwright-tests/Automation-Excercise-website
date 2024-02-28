@@ -1,16 +1,16 @@
 import { ThumbnailCategory } from "../../../enums/thumbnailCategory";
 import { test, expect } from "../../../fixtures/thumbnail";
 import { expect as nhd_expect } from "../../../expect/tohaveNotHiddenSelector";
-import { ProductThumbnail } from "../../../page-object/thumbnail/productThumbnail";
 import { URLs } from "../../../enums/URLs";
+import { ProductThumbnailProvider } from "../../../support/productThumbnailProvider";
 
 test.describe('"View cart" button',async () => {
 
     let productThumbnail;
 
-    test.beforeEach(async ({thumbnailFactory, page}) => {
+    test.beforeEach(async ({page}) => {
         
-        productThumbnail = thumbnailFactory.createThumbnail(page, ThumbnailCategory.AllBlackTops, "Black Top") as ProductThumbnail;
+        productThumbnail = ProductThumbnailProvider.create(page, ThumbnailCategory.AllBlackTops, 'Blank Top');
     })
 
     test('"View cart" button visibility',async ({page}) => {
