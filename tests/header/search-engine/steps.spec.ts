@@ -1,5 +1,5 @@
 import { test } from "@playwright/test";
-import { SearchEngine } from "../../../page-object/header/SearchEngine";
+import { SearchEngine } from "../../../page-object/header/searchEngine";
 
 export async function steps(searchEngine: SearchEngine, phrase: string) {
     
