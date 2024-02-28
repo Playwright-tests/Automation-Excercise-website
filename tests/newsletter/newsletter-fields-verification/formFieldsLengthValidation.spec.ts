@@ -1,54 +1,77 @@
+import { NewsletterFieldsDataProvider } from "../../../data-loaders/dataProviders";
+import { TestScenarios } from "../../../enums/testScenarios";
 import { test, expect } from "../../../fixtures/footer";
-import { getVeryLongText } from "../../../data-loaders/veryLongText";
-import { emailFieldStep, nameFieldStep } from "./steps.spec";
+import { expect as hdExpect } from "../../../expect/toHaveHiddenSelector";
+import { expect as nhdExpect } from "../../../expect/tohaveNotHiddenSelector";
+import { StringContainer } from "../../../support/stringContainer";
+import { handlePopup } from "../signing-up/handlePopup.spec";
+import { steps } from "../signing-up/steps.spec";
+import { NewsletterForm } from "../../../page-object/footer/newsletterForm";
+import { NewsletterData, NewsletterFieldsData } from "../../../models/models";
 
-const veryLongPhrase = getVeryLongText('phrase')[0];
-const veryLongEmail = getVeryLongText('email')[0];
+const nameFieldData = NewsletterFieldsDataProvider.get(TestScenarios.NAME_FIELD);
+const emailFieldData = NewsletterFieldsDataProvider.get(TestScenarios.EMAIL_FIELD);
 
 test.describe('Form fields length validation',async () => {
-    
-    let nameFieldMaxLength: number | undefined;
-    let emailFieldMaxLength: number | undefined;
 
-    test.beforeEach(async ({newsletterForm}) => {
+    let receivedMessage: StringContainer;
+
+    test.beforeEach(async () => {
         
-        nameFieldMaxLength = await newsletterForm.getNameFieldMaxLength();
-        emailFieldMaxLength = await newsletterForm.getEmailFieldMaxLength();
+        receivedMessage = new StringContainer();
     })
 
-    test('Filling the "Name" field with text having ' + nameFieldMaxLength + '-1 characters',async ({newsletterForm}) => {
+    async function actions(newsletterForm: NewsletterForm, data: NewsletterData, expectedMessage: string, exp: any) {
+        
+        await steps(newsletterForm, nameFieldData.maxMinusOne, handlePopup(await newsletterForm.getPage(), receivedMessage));
+        expect(receivedMessage.getValue()).toEqual(expectedMessage);
+    }
+
+    test('Name field text length = {max - 1}',async ({newsletterForm}) => {
       
-        await nameFieldStep(newsletterForm, veryLongPhrase.text.slice(1));
-        expect((await newsletterForm.getNameFieldContent()).length).toEqual(veryLongPhrase.text.slice(1).length);
+        await actions(newsletterForm, nameFieldData.maxMinusOne, '', async () => {
+            
+            await nhdExpect(await newsletterForm.getPage()).toHaveNotHiddenSelector(newsletterForm.getMessageSelector());
+        })
     })
 
-    test('Filling the "Name" field with text having ' + nameFieldMaxLength + ' characters',async ({newsletterForm}) => {
+    test('Name field text length = {max}',async ({newsletterForm}) => {
         
-        await nameFieldStep(newsletterForm, veryLongPhrase.text);
-        expect((await newsletterForm.getNameFieldContent()).length).toEqual(nameFieldMaxLength);
+        await actions(newsletterForm, nameFieldData.max, '', async () => {
+            
+            await nhdExpect(await newsletterForm.getPage()).toHaveNotHiddenSelector(newsletterForm.getMessageSelector());
+        })
     })
 
-    test('Filling the "Name" field with text having ' + nameFieldMaxLength + '+1 characters',async ({newsletterForm}) => {
+    test('Name field text length = {max + 1}',async ({newsletterForm}) => {
         
-        await nameFieldStep(newsletterForm, veryLongPhrase.text + '.');
-        expect((await newsletterForm.getNameFieldContent()).length).toEqual(nameFieldMaxLength);
+        await actions(newsletterForm, nameFieldData.maxPlusOne, 'The number of characters cannot exceed 225', async () => {
+            
+            await hdExpect(await newsletterForm.getPage()).toHaveHiddenSelector(newsletterForm.getMessageSelector());
+        })
     })
 
-    test('Filling the "Email" field with text having ' + emailFieldMaxLength + '-1 characters',async ({newsletterForm}) => {
+    test('Email field text length = {max - 1}',async ({newsletterForm}) => {
         
-        await emailFieldStep(newsletterForm, veryLongEmail.text.slice(1));
-        expect((await newsletterForm.getEmailFieldContent()).length).toEqual(veryLongEmail.text.slice(1).length);
+        await actions(newsletterForm, emailFieldData.maxMinusOne, '', async () => {
+            
+            await nhdExpect(await newsletterForm.getPage()).toHaveNotHiddenSelector(newsletterForm.getMessageSelector());
+        })
     })
 
-    test('Filling the "Email" field with text having ' + emailFieldMaxLength + ' characters',async ({newsletterForm}) => {
+    test('Email field text length = {max}',async ({newsletterForm}) => {
         
-        await emailFieldStep(newsletterForm, veryLongEmail.text);
-        expect((await newsletterForm.getEmailFieldContent()).length).toEqual(emailFieldMaxLength);
+        await actions(newsletterForm, emailFieldData.max, '', async () => {
+            
+            await nhdExpect(await newsletterForm.getPage()).toHaveNotHiddenSelector(newsletterForm.getMessageSelector());
+        })
     })
 
-    test('Filling the "Email" field with text having ' + emailFieldMaxLength + '+1 characters',async ({newsletterForm}) => {
-        
-        await emailFieldStep(newsletterForm, 'L' + veryLongEmail.text);
-        expect((await newsletterForm.getEmailFieldContent()).length).toEqual(emailFieldMaxLength);
+    test('Email field text length = {max + 1}',async ({newsletterForm}) => {
+  
+        await actions(newsletterForm, emailFieldData.maxPlusOne, 'The number of characters cannot exceed 225', async () => {
+            
+            await hdExpect(await newsletterForm.getPage()).toHaveHiddenSelector(newsletterForm.getMessageSelector());
+        })
     })
 })
