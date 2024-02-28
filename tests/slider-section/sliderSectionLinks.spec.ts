@@ -1,17 +1,18 @@
-import { SliderSectionLinksTestdataLoader } from "../../data-loaders/dataLoaders";
+import { LinkDataProvider } from "../../data-loaders/dataProviders";
+import { TestScenarios } from "../../enums/testScenarios";
 import { test, expect } from "../../fixtures/sliderSection";
 
-SliderSectionLinksTestdataLoader.init();
+const links = LinkDataProvider.get(TestScenarios.SLIDER_SECTION);
 
 test.describe('Slider section links',async () => {
     
-    for(const link of SliderSectionLinksTestdataLoader.links) {
+    for(const link of links) {
 
-        test('Clicking the "' + link.linkText + '" link',async ({sliderSection}) => {
+        test('Clicking the "' + link.link + '" link',async ({sliderSection}) => {
             
-            await test.step('Click the "' + link.linkText + '" link',async () => {
+            await test.step('Click the "' + link.link + '" link',async () => {
                 
-                await sliderSection.clickLink(link.linkText);
+                await sliderSection.clickLink(link.link);
             })
 
             await expect(await sliderSection.getPage()).toHaveURL(link.url);
