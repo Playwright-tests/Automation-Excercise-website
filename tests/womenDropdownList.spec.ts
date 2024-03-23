@@ -1,5 +1,5 @@
 import { URLs } from "../enums/URLs";
-import { test, expect } from "../fixtures/sideMenu";
+import { test } from "../fixtures/sideMenu";
 import { dropdownListAction } from "../support/dropdownList";
 
 test.describe('The "Women" dropdown list links',async () => {
