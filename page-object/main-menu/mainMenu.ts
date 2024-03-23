@@ -43,7 +43,7 @@ export class MainMenu extends BasePage {
         await (await this.getPage()).getByRole('link', {name: 'Video Tutorials'}).click();
     }
 
-    async clickContactUs() {
+    async clickContactUsLink() {
 
         await (await this.getPage()).getByRole('link', {name: 'Contact us'}).click();
     }
