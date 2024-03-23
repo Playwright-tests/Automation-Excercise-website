@@ -1,27 +1,25 @@
 import { Page } from "@playwright/test";
-import { BasePage } from "../base/BasePage";
+import { BaseDropdownList } from "../base/baseDropdownList";
 
-export class WomenDropdownList extends BasePage {
-
-    readonly SELECTOR = '#Women';
+export class WomenDropdownList extends BaseDropdownList {
 
     constructor(page: Page) {
 
-        super(page);
+        super(page, '#Women');
     }
 
     async clickDressLink() {
 
-        await (await this.getPage()).locator(this.SELECTOR).getByRole('link', {name: 'Dress'}).click();
+        await this.clickLink('Dress');
     }
 
     async clickTopsLink() {
 
-        await (await this.getPage()).locator(this.SELECTOR).getByRole('link', {name: 'Tops'}).click();
+        await this.clickLink('Tops');
     }
 
     async clickSareeLink() {
 
-        await (await this.getPage()).locator(this.SELECTOR).getByRole('link', {name: 'Saree'}).click();
+        await this.clickLink('Saree');
     }
 }
