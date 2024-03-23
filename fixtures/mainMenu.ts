@@ -4,14 +4,12 @@ import { URLs } from "../enums/URLs";
 
 export { expect } from "@playwright/test";
 
-
 export const test = base.extend<{mainMenu: MainMenu}>({
 
     mainMenu:async ({page}, use) => {
         
         const mainMenu = new MainMenu(page);
-
-        await mainMenu.goto(URLs.HomePage);
+        await mainMenu.goto(URLs.HOME_PAGE);
         await use(mainMenu);
     }
 })
