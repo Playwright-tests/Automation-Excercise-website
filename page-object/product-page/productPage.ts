@@ -1,57 +1,51 @@
 import { Locator, Page } from "@playwright/test";
 import { BasePage } from "../base/BasePage";
-import { QuantityField } from "../quantity-field/quantityField";
 
 export class ProductPage extends BasePage {
 
-    readonly quantityField: QuantityField;
-    readonly addToCartButton: Locator;
-    readonly message: Locator;
-    readonly producTitle: Locator;
-    readonly productPrice: Locator;
-    readonly quantityLocator: Locator;
-    readonly messageSelector: string;
+    private readonly PRODUCT_INFORMATION_SELECTOR = '.product-information';
+    private readonly PRODUCT_NAME: Locator;
+    private readonly PRODUCT_PRICE: Locator;
+    private readonly QUANTITY_FIELD: Locator;
+    private readonly ADD_TO_CART_BUTTON: Locator;
 
     constructor(page: Page) {
 
         super(page);
 
-        this.messageSelector = '.woocommerce-message';
-        this.addToCartButton = page.getByRole('button', {name: 'Add to cart'});
-        this.quantityField = QuantityField.createWithoutNth(page);
-        this.message = page.locator(this.messageSelector);
-        this.producTitle = page.locator('.product_title ');
-        this.productPrice = page.locator('p').filter({hasText: "zł"});
-        this.quantityLocator = page.locator('div.quantity');
+        this.PRODUCT_NAME = page.locator(this.PRODUCT_INFORMATION_SELECTOR).locator('h2');
+        this.PRODUCT_PRICE = page.locator(this.PRODUCT_INFORMATION_SELECTOR).locator('span').nth(1);
+        this.QUANTITY_FIELD = page.locator(this.PRODUCT_INFORMATION_SELECTOR).locator('#quantity');
+        this.ADD_TO_CART_BUTTON = page.getByRole('button', {name: ' Add to cart'});
     }
 
-    async getProductTitle() {
+    async setQuantity(quantity: string) {
 
-        return await this.producTitle.textContent();
-    }
-
-    async getProductPrice() {
-
-        return await this.productPrice.textContent();
+        await this.QUANTITY_FIELD.fill(quantity, {force: true});
     }
 
     async clickAddToCartButton() {
 
-        await this.addToCartButton.click();
+        await this.ADD_TO_CART_BUTTON.click();
     }
 
-    async getQuantityField() {
+    async getProductName() {
 
-        return new QuantityField(await this.getPage(), this.quantityLocator);
+        return await this.PRODUCT_NAME.textContent();
     }
 
-    getMessageSelector() {
+    async getProductPrice() {
 
-        return this.messageSelector;
+        return await this.PRODUCT_PRICE.textContent();
     }
 
-    async getMessageContent() {
+    async getQuantity() {
 
-        return await this.message.textContent();
+        return await this.QUANTITY_FIELD.inputValue();
+    }
+
+    getQuantityField() {
+
+        return this.QUANTITY_FIELD;
     }
 }
