@@ -1,0 +1,26 @@
+{
+    "correct": [
+        "oduffield0@hexun.com",
+        "jtarbert0@wiley.com",
+        "ldemitri0@freewebs.com",
+        "vchown0@themeforest.net",
+        "gbeechcraft0@cmu.edu",
+        "mbergstram0@yelp.com",
+        "rbaston0@noaa.gov",
+        "tdyson0@creativecommons.org",
+        "wkillby0@shop-pro.jp",
+        "ckeems0@facebook.com"
+    ],
+    "incorrect": [
+        "plainaddress",
+        "#@%^%#$@#$@#.com",
+        "@example.com",
+        "Joe Smith <email@example.com>",
+        "email.example.com",
+        "email@example@example.com",
+        ".email@example.com",
+        "email.@example.com",
+        "email..email@example.com",
+        "あいうえお@example.com"
+    ]
+}
