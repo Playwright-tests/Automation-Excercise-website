@@ -3,26 +3,25 @@ import { BasePage } from "../base/BasePage";
 
 export class SearchResultsPage extends BasePage {
 
-    readonly productsContainer: Locator;
-    readonly foundMessage: Locator;
-    readonly nothingFoundMessage: Locator;
+    private readonly FEATURES_ITEM = '.features_items';
+    private readonly COLUMN_SELECTOR = '.col-sm-4';
+    private columns: number;
 
     constructor(page: Page) {
 
         super(page);
-
-        this.productsContainer = page.locator('#primary');
-        this.foundMessage = page.getByRole('heading', {name: 'Search Results for: '});
-        this.nothingFoundMessage = page.getByRole('heading', {name: 'Nothing Found'})
     }
 
-    async getFoundMessageLocator() {
+    async findColumns() {
 
-        return this.foundMessage;
+        const temp = await (await this.getPage())
+                                    .locator(this.FEATURES_ITEM)
+                                    .locator(this.COLUMN_SELECTOR).all();
+        this.columns = temp.length;
     }
 
-    async getNothingFoundLocator() {
+    getColumns() {
 
-        return this.nothingFoundMessage;
+        return this.columns;
     }
 }
