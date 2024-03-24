@@ -1,0 +1,16 @@
+{
+    "correct": [
+        "madame",
+        "kids",
+        "shirts",
+        "women",
+        "men"
+    ],
+    "incorrect": [
+        "Jagel",
+        "Hong Kong",
+        "Tsewi",
+        "Indagen",
+        "Blablabla"
+    ]
+}
