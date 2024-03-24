@@ -1,24 +1,19 @@
-import { Locator, Page } from "@playwright/test";
+import { ElementHandle, Page } from "@playwright/test";
 import { BasePage } from "../base/BasePage";
-import { QuantityField } from "../quantity-field/quantityField";
 
 export class Table extends BasePage {
-
-    readonly contents: Locator;
-    private rows: Locator[];
-    readonly rowSelector: string;
+    
+    private readonly SELECTOR: string = '#cart_info_table';
+    private rows: ElementHandle<SVGElement | HTMLElement>[];
 
     constructor(page: Page) {
 
         super(page);
-
-        this.contents = page.locator("table.shop_table.shop_table_responsive.cart.woocommerce-cart-form__contents");
-        this.rowSelector = ".woocommerce-cart-form__cart-item.cart_item";
     }
 
     async findRows() {
 
-        this.rows = await (await this.getPage()).locator(this.rowSelector).all();
+        this.rows = await (await this.getPage()).$$(this.SELECTOR + ' tbody > tr');
     }
 
     getRowsCount() {
@@ -26,28 +21,23 @@ export class Table extends BasePage {
         return this.rows.length;
     }
 
-    async clickRemoveButton(row: number) {
+    async getProductName(index: number) {
 
-        await this.rows[row].locator('.remove').click();
+        return await (await this.rows.at(index)?.$('.cart_description > h4'))?.textContent();
     }
 
-    async getProductName(row: number) {
+    async getPrice(index: number) {
 
-        return (await this.rows[row].locator('.product-name').textContent())?.trim();
+        return await (await this.rows.at(index)?.$('.cart_price > p'))?.textContent();
     }
 
-    async getPrice(row: number) {
+    async getQuantity(index: number) {
 
-        return (await this.rows[row].locator('.product-price').textContent())?.trim();
+        return await (await this.rows.at(index)?.$('.cart_quantity > .disabled'))?.textContent();
     }
 
-    async getTotal(row: number) {
+    async getTotal(index: number) {
 
-        return (await this.rows[row].locator('.product-subtotal').textContent())?.trim();
-    }
-
-    async getQuantityField(row: number) {
-
-        return new QuantityField(await this.getPage(), this.rows[row]);
+        return await (await this.rows.at(index)?.$('.cart_total_price'))?.textContent();
     }
 }
