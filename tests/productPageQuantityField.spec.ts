@@ -2,7 +2,6 @@ import { TestDataFileNames } from "../enums/testdataFileNames";
 import { test, expect } from "../fixtures/productPage";
 import { expect as HD_Expect } from "../expect/toHaveHiddenSelector";
 import { expect as NHD_Expect } from "../expect/tohaveNotHiddenSelector";
-import { ConfirmModalDialog } from "../page-object/confirm-modal-dialog/confirmModalDialog";
 import { ProductPage } from "../page-object/product-page/productPage";
 import { inputVerification } from "../support/inputVerification";
 import { getRandomProductURL } from "../support/randomProductURL";
@@ -14,14 +13,10 @@ const quantities = getStrings(TestDataFileNames.INCORRECT_QUANTITIES, 'values');
 test.describe('A product page quantity field',async () => {
     
     let minimum: string;
-    let confirmModalDialogSelector: string;
 
     test.beforeEach(async ({productPage}) => {
         
-        const confirmModalDialog = new ConfirmModalDialog(await productPage.getPage());
         minimum = await productPage.getQuantityField().getAttribute('min') ?? '';
-        confirmModalDialogSelector = confirmModalDialog.getSelector();
-
     })
 
     async function actions(productPage: ProductPage, quantity: string, func: any) {
@@ -53,7 +48,8 @@ test.describe('A product page quantity field',async () => {
         
         await actions(productPage, minimum, async (validationMessage: string) => {
             expect(validationMessage).toEqual('');
-            await NHD_Expect(await productPage.getPage()).toHaveNotHiddenSelector(confirmModalDialogSelector);
+            await NHD_Expect(await productPage.getPage())
+                    .toHaveNotHiddenSelector(productPage.getConfirmModalDialog().getSelector());
         });
            
     })
@@ -62,7 +58,8 @@ test.describe('A product page quantity field',async () => {
         
         await actions(productPage, (parseInt(minimum) + 1).toString(), async (validationMessage: string) => {
             expect(validationMessage).toEqual('');
-            await NHD_Expect(await productPage.getPage()).toHaveNotHiddenSelector(confirmModalDialogSelector);
+            await NHD_Expect(await productPage.getPage())
+                    .toHaveNotHiddenSelector(productPage.getConfirmModalDialog().getSelector());
         });
     })
 
@@ -70,7 +67,8 @@ test.describe('A product page quantity field',async () => {
         
         await actions(productPage, (parseInt(minimum) - 1).toString(), async (validationMessage: string) => {
             expect(validationMessage).not.toEqual('');
-            await HD_Expect(await productPage.getPage()).toHaveHiddenSelector(confirmModalDialogSelector);
+            await HD_Expect(await productPage.getPage())
+                    .toHaveHiddenSelector(productPage.getConfirmModalDialog().getSelector());
         });
     })
 
@@ -80,7 +78,8 @@ test.describe('A product page quantity field',async () => {
             
             await actions(productPage, quantity, async (validationMessage: string) => {
                 expect(validationMessage).not.toEqual('');
-                await HD_Expect(await productPage.getPage()).toHaveHiddenSelector(confirmModalDialogSelector);
+                await HD_Expect(await productPage.getPage())
+                        .toHaveHiddenSelector(productPage.getConfirmModalDialog().getSelector());
             }); 
         })
     }
