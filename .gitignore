@@ -3,3 +3,5 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+testdata/AE_Credentials.json
+tests/example.spec.ts
