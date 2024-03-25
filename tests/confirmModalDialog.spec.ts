@@ -17,13 +17,13 @@ test.describe('The modal confirm dialog',async () => {
             await productPage.clickAddToCartButton();
         })
 
-        await NHD_Expect(await hidden.getPage()).toHaveNotHiddenSelector(hidden.getSelector());
+        await NHD_Expect(await hidden.getPage()).toHaveNotHiddenSelector(hidden.getConfirmModalDialog().getSelector());
     })
 
     test('The "View Cart" link',async ({visible}) => {
         
         await test.step('Click the "View Cart" link',async () => {
-            await visible.clickViewCartLink();
+            await visible.getConfirmModalDialog().clickViewCartLink();
         })
 
         await expect(await visible.getPage()).toHaveURL(URLs.SHOPPING_CART_PAGE);
@@ -32,9 +32,9 @@ test.describe('The modal confirm dialog',async () => {
     test('The "Continue Shopping" button',async ({visible}) => {
         
         await test.step('Clic the "Continue Shopping" button',async () => {
-            await visible.clickContinueShoppingButton();
+            await visible.getConfirmModalDialog().clickContinueShoppingButton();
         })
 
-        await HD_Expect(await visible.getPage()).toHaveHiddenSelector(visible.getSelector());
+        await HD_Expect(await visible.getPage()).toHaveHiddenSelector(visible.getConfirmModalDialog().getSelector());
     })
 })
