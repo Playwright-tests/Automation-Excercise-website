@@ -4,7 +4,7 @@ import { TestDataFileNames } from "../enums/testdataFileNames";
 import { ProductData } from "../types/types";
 import { ProductPage } from "../page-object/product-page/productPage";
 import { URLs } from "../enums/URLs";
-import { ConfirmModalDialog } from "../page-object/confirm-modal-dialog/confirmModalDialog";
+import { ConfirmModalDialog } from "../page-object/product-page/confirmModalDialog";
 import { ShoppingCart } from "../page-object/shopping-cart/shoppingCart";
 import { calculateTotal } from "../support/calculateTotal";
 
@@ -55,19 +55,19 @@ test.describe('The shopping cart data',async () => {
         }
     }
 
-    test('Adding products to the shopping cart',async ({shoppingCart}) => {
+    test('Adding products to the shopping cart',async ({empty}) => {
         
         for(const url of productPageURLs) {
-            await (await shoppingCart.getPage()).goto(url);
+            await (await empty.getPage()).goto(url);
             await setData();
             await productPage.clickAddToCartButton();
-            await (await shoppingCart.getPage()).waitForSelector(confirmModalDialog.getSelector());
+            await (await empty.getPage()).waitForSelector(confirmModalDialog.getSelector());
         }
 
-        await (await shoppingCart.getPage()).goto(URLs.SHOPPING_CART_PAGE);
-        await shoppingCart.getTable().findRows();
-        checkNumberOfProducts(shoppingCart);
-        await checkData(shoppingCart);
-        await checkTotal(shoppingCart);
+        await (await empty.getPage()).goto(URLs.SHOPPING_CART_PAGE);
+        await empty.getTable().findRows();
+        checkNumberOfProducts(empty);
+        await checkData(empty);
+        await checkTotal(empty);
     })
 })
