@@ -3,11 +3,11 @@ import { ShoppingCart } from "../page-object/shopping-cart/shoppingCart";
 
 export { expect } from "@playwright/test";
 
-export const test = base.extend<{shoppingCart: ShoppingCart}>({
+export const test = base.extend<{empty: ShoppingCart}>({
 
-    shoppingCart:async ({page}, use) => {
+    empty:async ({page}, use) => {
         
-        const shoppingCart = new ShoppingCart(page);
-        await use(shoppingCart);
+        const empty = new ShoppingCart(page);
+        await use(empty);
     }
 }) 
