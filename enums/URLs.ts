@@ -22,5 +22,6 @@ export enum URLs {
     BABYHUG_PAGE = 'https://www.automationexercise.com/brand_products/Babyhug',
     ALLEN_SOLLY_JUNIOR_PAGE = 'https://www.automationexercise.com/brand_products/Allen%20Solly%20Junior',
     KOOKIE_KIDS_PAGE = 'https://www.automationexercise.com/brand_products/Kookie%20Kids',
-    BIBA_PAGE = 'https://www.automationexercise.com/brand_products/Biba'
+    BIBA_PAGE = 'https://www.automationexercise.com/brand_products/Biba',
+    CHECKOUT_PAGE = 'https://www.automationexercise.com/checkout'
 }
