@@ -4,3 +4,9 @@ export type ProductData = {
     price: string,
     quantity: string
 }
+
+export type Credentials = {
+
+    email: string,
+    password: string
+}
