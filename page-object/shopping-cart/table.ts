@@ -3,7 +3,7 @@ import { BasePage } from "../base/BasePage";
 
 export class Table extends BasePage {
     
-    private readonly SELECTOR: string = '#cart_info_table';
+    private readonly SELECTOR: string = '#cart_info';
     private rows: ElementHandle<SVGElement | HTMLElement>[];
 
     constructor(page: Page) {
