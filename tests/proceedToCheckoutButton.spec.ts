@@ -1,9 +1,9 @@
 import { URLs } from "../enums/URLs";
 import { test, expect } from "../fixtures/shoppingCart";
 
-test.describe('Checkout',async () => {
+test.describe('The "Proceed to Checkout" button',async () => {
     
-    test('The "Proceed to Checkout" button',async ({authenticated}) => {
+    test('Opening the checkout page',async ({authenticated}) => {
         
         await test.step('Click the "Proceed to checkout" button',async () => {
             await authenticated.clickCheckoutButton();
