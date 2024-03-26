@@ -26,9 +26,11 @@ test.describe('The checkout page table',async () => {
 
     async function checkTable(checkoutPage: CheckoutPage) {
         
-        expect.soft(await checkoutPage.getTable().getProductName(0)).toEqual(productData.name);
-        expect.soft(await checkoutPage.getTable().getPrice(0)).toEqual(productData.price);
-        expect.soft(await checkoutPage.getTable().getQuantity(0)).toEqual(productData.quantity);
+        const index = checkoutPage.getTable().getRowsCount() - 2;
+
+        expect.soft(await checkoutPage.getTable().getProductName(index)).toEqual(productData.name);
+        expect.soft(await checkoutPage.getTable().getPrice(index)).toEqual(productData.price);
+        expect.soft(await checkoutPage.getTable().getQuantity(index)).toEqual(productData.quantity);
     }
 
     test('Verification the checkout page table',async ({withoutProduct}) => {
