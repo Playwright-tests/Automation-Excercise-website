@@ -4,5 +4,6 @@ export enum TestDataFileNames {
     PHRASES = 'AE_Phrases.json',
     PRODUCT_PAGE_URLS = 'AE_ProductURLs.json',
     INCORRECT_QUANTITIES = 'AE_IncorrectQuantities.json',
-    CREDENTIALS = 'AE_Credentials.json'
+    CREDENTIALS = 'AE_Credentials.json',
+    CREDIT_CARD_DATA = 'AE_CreditCard.json'
 }
