@@ -1,0 +1,147 @@
+{
+    "correct": [
+        {
+            "brand": "jcb",
+            "number": "3540893135729878",
+            "cvc": "934",
+            "month": "7",
+            "year": "2028"
+        },
+        {
+            "brand": "jcb",
+            "number": "3564423888615941",
+            "cvc": "641",
+            "month": "10",
+            "year": "2028"
+        },
+        {
+            "brand": "diners-club-enroute",
+            "number": "201521114513288",
+            "cvc": "683",
+            "month": "5",
+            "year": "2030"
+        }
+    ],
+    "incorrectBrand": [
+        {
+            "brand": "98729975a3",
+            "number": "30342228361481",
+            "cvc": "273",
+            "month": "6",
+            "year": "2028"
+        }
+    ],
+    "incorrectNumber": [
+        {
+            "brand": "visa",
+            "number": "A",
+            "cvc": "974",
+            "month": "7",
+            "year": "2025"
+        },
+        {
+            "brand": "jcb",
+            "number": "AB",
+            "cvc": "568",
+            "month": "5",
+            "year": "2034"
+        },
+        {
+            "brand": "laser",
+            "number": "B",
+            "cvc": "294",
+            "month": "1",
+            "year": "2026"
+        },
+        {
+            "brand": "jcb",
+            "number": "a",
+            "cvc": "238",
+            "month": "5",
+            "year": "2032"
+        },
+        {
+            "brand": "jcb",
+            "number": "b",
+            "cvc": "727",
+            "month": "10",
+            "year": "2026"
+        }
+    ],
+    "incorrectMonth": [
+        {
+            "brand": "diners-club-enroute",
+            "number": "201787841805988",
+            "cvc": "364",
+            "month": "aa",
+            "year": "2028"
+        }
+    ],
+    "incorrectYear": [
+        {
+            "brand": "bankcard",
+            "number": "5602247867994459",
+            "cvc": "968",
+            "month": "9",
+            "year": "BBab"
+        },
+        {
+            "brand": "jcb",
+            "number": "3587260225092993",
+            "cvc": "585",
+            "month": "2",
+            "year": "AaAb"
+        },
+        {
+            "brand": "jcb",
+            "number": "3542485791691290",
+            "cvc": "987",
+            "month": "12",
+            "year": "baAa"
+        },
+        {
+            "brand": "americanexpress",
+            "number": "372301232466153",
+            "cvc": "465",
+            "month": "10",
+            "year": "AABA"
+        },
+        {
+            "brand": "jcb",
+            "number": "3544724183489048",
+            "cvc": "984",
+            "month": "8",
+            "year": "ABAb"
+        }
+    ],
+    "yearInPast": [
+        {
+            "brand": "visa-electron",
+            "number": "4026112181269858",
+            "cvc": "168",
+            "month": "9",
+            "year": "2021"
+        },
+        {
+            "brand": "visa",
+            "number": "4041598294775529",
+            "cvc": "641",
+            "month": "6",
+            "year": "2022"
+        },
+        {
+            "brand": "visa-electron",
+            "number": "4508740507334605",
+            "cvc": "125",
+            "month": "3",
+            "year": "2023"
+        },
+        {
+            "brand": "diners-club-us-ca",
+            "number": "5539985122617757",
+            "cvc": "887",
+            "month": "12",
+            "year": "2020"
+        }
+    ]
+}
