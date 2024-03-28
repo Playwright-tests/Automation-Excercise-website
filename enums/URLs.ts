@@ -24,5 +24,6 @@ export enum URLs {
     KOOKIE_KIDS_PAGE = 'https://www.automationexercise.com/brand_products/Kookie%20Kids',
     BIBA_PAGE = 'https://www.automationexercise.com/brand_products/Biba',
     CHECKOUT_PAGE = 'https://www.automationexercise.com/checkout',
-    PAYMENT_PAGE = 'https://www.automationexercise.com/payment'
+    PAYMENT_PAGE = 'https://www.automationexercise.com/payment',
+    PAYMENT_DONE_PAGE = 'https://www.automationexercise.com/payment_done/'
 }
