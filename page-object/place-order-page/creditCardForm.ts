@@ -8,6 +8,7 @@ export class CreditCardForm extends BasePage {
     private readonly CVC_FIELD: Locator;
     private readonly EXPIRATION_MONTH_FIELD: Locator;
     private readonly EXPIRATION_YEAR_FIELD: Locator;
+    private readonly BUTTON: Locator;
 
     constructor(page: Page) {
 
@@ -18,6 +19,7 @@ export class CreditCardForm extends BasePage {
         this.CVC_FIELD = page.locator('input[name="cvc"]');
         this.EXPIRATION_MONTH_FIELD = page.locator('input[name="expiry_month"]');
         this.EXPIRATION_YEAR_FIELD = page.locator('input[name="expiry_year"]');
+        this.BUTTON = page.getByRole('button', {name: 'Pay and Confirm Order'});
     }
 
     async setBrand(brand: string) {
@@ -42,31 +44,36 @@ export class CreditCardForm extends BasePage {
 
     async setYear(year: string) {
 
-        this.EXPIRATION_YEAR_FIELD.fill(year);
+        await this.EXPIRATION_YEAR_FIELD.fill(year);
     }
 
     async getBrand() {
 
-        return await this.NAME_ON_CART_FIELD.textContent();
+        return await this.NAME_ON_CART_FIELD.inputValue();
     }
 
     async getNumber() {
 
-        return await this.CARD_NUMBER_FIELD.textContent();
+        return await this.CARD_NUMBER_FIELD.inputValue();
     }
 
     async getCvc() {
 
-        return await this.CVC_FIELD.textContent();
+        return await this.CVC_FIELD.inputValue();
     }
 
     async getMonth() {
 
-        return await this.EXPIRATION_MONTH_FIELD.textContent();
+        return await this.EXPIRATION_MONTH_FIELD.inputValue();
     }
 
     async getYear() {
 
-        return await this.EXPIRATION_YEAR_FIELD.textContent();
+        return await this.EXPIRATION_YEAR_FIELD.inputValue();
+    }
+
+    async clickButton() {
+
+        await this.BUTTON.click();
     }
 }
