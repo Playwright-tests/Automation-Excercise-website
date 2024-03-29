@@ -33,7 +33,7 @@ test.describe('A product page quantity field',async () => {
         await func(validationMessage);
     }
 
-    test.skip('Text input validation',async ({productPage}) => {
+    test('Text input validation',async ({productPage}) => {
         
         const quantity: string = '12';
 
