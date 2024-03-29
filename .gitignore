@@ -7,3 +7,7 @@ testdata/AE_Credentials.json
 tests/example.spec.ts/
 allure-results/
 results.json
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
